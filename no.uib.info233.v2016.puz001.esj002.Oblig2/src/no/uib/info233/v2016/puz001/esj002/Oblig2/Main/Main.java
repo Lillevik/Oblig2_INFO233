@@ -1,6 +1,3 @@
-/**
- * 
- */
 package no.uib.info233.v2016.puz001.esj002.Oblig2.Main;
 
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -14,8 +11,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import java.io.File;
 /**
- * @author marius
- *
+ * @author esj002 and puz001
  */
 public class Main {
 

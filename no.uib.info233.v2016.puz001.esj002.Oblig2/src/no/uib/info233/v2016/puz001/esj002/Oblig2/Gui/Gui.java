@@ -6,7 +6,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 /**
- * Created by svimanet on 13/02/16.
+ * Created by esj002 and puz001
  */
 public class Gui extends JFrame {
 
@@ -59,7 +59,7 @@ public class Gui extends JFrame {
         //Initialize the JTexFields
         txtSearch = new JTextField("Search");
         
-        //Initilizes the JTables
+        //Initializes the JTables
         table1 = new JTable();
         
        
@@ -92,13 +92,22 @@ public class Gui extends JFrame {
         btnSearch.setSize(new Dimension( 20, 20));
 
         txtInfo = new JTextPane();
-        txtInfo.setText(" o o o o o oo o o o o oo o o o o oo o o o o oo o o o o oo o o o o oo o o o o oo o o o o o  ");
+        txtInfo.setText("Search Field");
         txtInfo.setPreferredSize(new Dimension(190, 500));
         txtInfo.setBackground(Color.gray);
         
         table1.setPreferredSize(new Dimension(540, 640));
         table1.setBackground(Color.white);
         table1.getAutoResizeMode();
+        
+        
+        
+        Object rowData[][] = { { "Row1-Column1", "Row1-Column2", "Row1-Column3" },
+                { "Row2-Column1", "Row2-Column2", "Row2-Column3" } };
+            Object columnNames[] = { "Column One", "Column Two", "Column Three" };
+            this.table1 = new JTable(rowData, columnNames);
+
+            JScrollPane scrollPane = new JScrollPane(table1);
 
         //Adds the components to the Panels
         spine.add(panelBackRight, BorderLayout.CENTER);
