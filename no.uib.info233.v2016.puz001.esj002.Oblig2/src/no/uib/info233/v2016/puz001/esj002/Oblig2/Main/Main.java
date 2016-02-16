@@ -1,6 +1,7 @@
 package no.uib.info233.v2016.puz001.esj002.Oblig2.Main;
 
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.swing.JTable;
 import javax.xml.parsers.DocumentBuilder;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
@@ -15,6 +16,8 @@ import java.io.File;
  */
 public class Main {
 
+	
+	
 	/**
 	 * @param args
 	 */
@@ -62,5 +65,4 @@ public class Main {
 		e.printStackTrace();
 	    }
 	  }
-
-	}
+}

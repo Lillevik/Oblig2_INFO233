@@ -1,4 +1,5 @@
 //org.eclipse.ui.commands/state/org.eclipse.ui.navigator.resources.nested.changeProjectPresentation/org.eclipse.ui.commands.radioState=false
+//org.eclipse.ui.commands/state/org.eclipse.wst.xml.views.XPathView.processor.xpathprocessor/org.eclipse.ui.commands.radioState=xpath10
 COUNTER_COLOR=37,151,157
 ColorsAndFontsPreferencePage.expandedCategories=Torg.eclipse.ui.workbenchMisc
 ColorsAndFontsPreferencePage.selectedElement=CCOUNTER_COLOR

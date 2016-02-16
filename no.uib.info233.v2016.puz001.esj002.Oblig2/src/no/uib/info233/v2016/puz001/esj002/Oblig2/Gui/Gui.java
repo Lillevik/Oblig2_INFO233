@@ -3,6 +3,8 @@ package no.uib.info233.v2016.puz001.esj002.Oblig2.Gui;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import no.uib.info233.v2016.puz001.esj002.Oblig2.Main.Main;
+
 import java.awt.*;
 
 /**
@@ -45,6 +47,11 @@ public class Gui extends JFrame {
     }
     
     public void setupComponents(){
+    	
+        Object rowData[][]= { { "Issue ID: ", "Assigned to: ", "Created: " },
+ 				   { "Row2-Colum", "Row2-Column2", "Row2-Column3" } };
+Object columnNames[] = { "Column One", "Column Two", "Column Three" };
+
         
         
     	//Initialize the JPanels
@@ -60,7 +67,8 @@ public class Gui extends JFrame {
         txtSearch = new JTextField("Search");
         
         //Initializes the JTables
-        table1 = new JTable();
+        table1 = new JTable(rowData, columnNames);
+ 
         
        
         panelBackLeft.setPreferredSize(new Dimension(200, 300));
@@ -100,12 +108,12 @@ public class Gui extends JFrame {
         table1.setBackground(Color.white);
         table1.getAutoResizeMode();
         
+	      
+	        
+
+		
+
         
-        
-        Object rowData[][] = { { "Row1-Column1", "Row1-Column2", "Row1-Column3" },
-                { "Row2-Column1", "Row2-Column2", "Row2-Column3" } };
-            Object columnNames[] = { "Column One", "Column Two", "Column Three" };
-            this.table1 = new JTable(rowData, columnNames);
 
             JScrollPane scrollPane = new JScrollPane(table1);
 
@@ -118,10 +126,13 @@ public class Gui extends JFrame {
         panelBackLeft.add(txtInfo);
         panelMidTopLeft.add(table1);
         
+
+        
     }
     
     
-    public JPanel getSpine(){
+
+	public JPanel getSpine(){
         return spine;
     }
 
