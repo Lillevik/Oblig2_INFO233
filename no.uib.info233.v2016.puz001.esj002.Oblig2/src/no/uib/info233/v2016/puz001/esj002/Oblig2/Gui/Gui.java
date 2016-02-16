@@ -42,6 +42,8 @@ public class Gui extends JFrame {
 		setVisible(true);
     }
     
+    
+    
     public void setupComponents(){
     	
         Object rowData[][]= { { "Issue ID: ", "Assigned to: ", "Created: " },
@@ -61,13 +63,10 @@ Object columnNames[] = { "Column One", "Column Two", "Column Three" };
         txtSearch = new JTextField("Search");
         
         //Initializes the JTables
-<<<<<<< HEAD
-        table1 = new JTable(rowData, columnNames);
+        qTable = new JTable(rowData, columnNames);
  
-        
-=======
-        qTable = new JTable();
->>>>>>> origin/master
+       
+
        
         panelBackLeft.setPreferredSize(new Dimension(200, 300));
         panelBackLeft.setBackground(Color.gray);
@@ -90,26 +89,8 @@ Object columnNames[] = { "Column One", "Column Two", "Column Three" };
         txtInfo.setText("info field");
         txtInfo.setPreferredSize(new Dimension(190, 500));
         txtInfo.setBackground(Color.gray);
-<<<<<<< HEAD
-        
-        table1.setPreferredSize(new Dimension(540, 640));
-        table1.setBackground(Color.white);
-        table1.getAutoResizeMode();
-        
-	      
-	        
-
-		
 
         
-=======
-
-        Object rowData[][] = { { "Row1-Column1", "Row1-Column2", "Row1-Column3" },
-                { "Row2-Column1", "Row2-Column2", "Row2-Column3" } };
-            Object columnNames[] = { "Column One", "Column Two", "Column Three" };
-            this.qTable = new JTable(rowData, columnNames);
->>>>>>> origin/master
-
         qTable.setPreferredSize(new Dimension(540, 640));
         qTable.setBackground(Color.white);
         qTable.getAutoResizeMode();
@@ -125,14 +106,13 @@ Object columnNames[] = { "Column One", "Column Two", "Column Three" };
         panelBackLeft.add(txtSearch);
         panelBackLeft.add(btnSearch);
         panelBackLeft.add(txtInfo);
-<<<<<<< HEAD
-        panelMidTopLeft.add(table1);
+        panelMidTopLeft.add(qTable);
         
 
         
-=======
 
->>>>>>> origin/master
+
+
     }
     
     
