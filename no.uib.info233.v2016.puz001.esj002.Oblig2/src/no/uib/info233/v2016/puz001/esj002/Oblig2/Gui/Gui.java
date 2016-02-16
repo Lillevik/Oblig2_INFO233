@@ -1,10 +1,6 @@
 package no.uib.info233.v2016.puz001.esj002.Oblig2.Gui;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-
-import no.uib.info233.v2016.puz001.esj002.Oblig2.Main.Main;
-
 import java.awt.*;
 
 /**
@@ -47,8 +43,8 @@ public class Gui extends JFrame {
     public void setupComponents(){
     	
         Object rowData[][]= { { "Issue ID: ", "Assigned to: ", "Created: " },
- 				   { "Row2-Colum", "Row2-Column2", "Row2-Column3" } };
-Object columnNames[] = { "Column One", "Column Two", "Column Three" };
+ 				   			{ "Row2-Colum", "Row2-Column2", "Row2-Column3" } };
+        Object columnNames[] = { "Column One", "Column Two", "Column Three" };
 
         
     	//Initialize the JPanels
@@ -96,6 +92,7 @@ Object columnNames[] = { "Column One", "Column Two", "Column Three" };
         qTable.getAutoResizeMode();
 
         JScrollPane scrollPane = new JScrollPane(qTable);
+        scrollPane.add(qTable);
 
         //Adds the components to the Panels
         spine.add(panelBackRight, BorderLayout.CENTER);
