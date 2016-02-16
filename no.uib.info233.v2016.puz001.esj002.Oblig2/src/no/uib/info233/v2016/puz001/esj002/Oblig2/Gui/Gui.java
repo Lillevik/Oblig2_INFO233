@@ -20,16 +20,13 @@ public class Gui extends JFrame {
     private JPanel panelBackRight;
     private JPanel panelBackLeft;
     private JPanel panelMidTopLeft;
-    
-    //private JPanel panelMidTopRight;
     private JButton btnSearch;
     private JTextField txtSearch;
     private JLabel searchLabel;
     private JTextPane txtInfo;
-    private JTable table1;
+    private JTable qTable;
 
 
-    
     /**
      * Constructor for the Gui class which extends from JFrame.
      */
@@ -37,7 +34,6 @@ public class Gui extends JFrame {
     	super("Issue Tracker");
         spine = new JPanel();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		spine.setBorder(new EmptyBorder(5, 5, 5, 5));
 		spine.setLayout(new BorderLayout(500, 150));
 		setContentPane(spine);
 		setupComponents();
@@ -53,13 +49,11 @@ public class Gui extends JFrame {
 Object columnNames[] = { "Column One", "Column Two", "Column Three" };
 
         
-        
     	//Initialize the JPanels
         panelBackLeft = new JPanel();
         panelBackRight = new JPanel();
         panelMidTopLeft = new JPanel();
-        
-        
+
         //Initialize the JLabels
         searchLabel = new JLabel();
         
@@ -67,42 +61,36 @@ Object columnNames[] = { "Column One", "Column Two", "Column Three" };
         txtSearch = new JTextField("Search");
         
         //Initializes the JTables
+<<<<<<< HEAD
         table1 = new JTable(rowData, columnNames);
  
         
+=======
+        qTable = new JTable();
+>>>>>>> origin/master
        
         panelBackLeft.setPreferredSize(new Dimension(200, 300));
         panelBackLeft.setBackground(Color.gray);
 
-
         panelBackRight.setPreferredSize(new Dimension(200, 50));
         panelBackRight.setBackground(Color.white);
-
         
         panelMidTopLeft.setPreferredSize(new Dimension(550, 650));
-        panelMidTopLeft.setBackground(Color.black);
+        panelMidTopLeft.setBackground(Color.gray);
 
-        //panelMidTopRight = new JPanel();
-        //panelMidTopRight.setPreferredSize(new Dimension(550, 650));
-        //panelMidTopRight.setBackground(Color.gray);
-
-        panelBackRight.add(panelMidTopLeft, BorderLayout.WEST);
-        //panelBackRight.add(panelMidTopRight, BorderLayout.EAST);
-
-        
         searchLabel.setPreferredSize(new Dimension(190, 20));
         searchLabel.setText("Querry here");
 
-        
         txtSearch.setPreferredSize(new Dimension(190, 20));
 
         btnSearch = new JButton("Search");
         btnSearch.setSize(new Dimension( 20, 20));
 
         txtInfo = new JTextPane();
-        txtInfo.setText("Search Field");
+        txtInfo.setText("info field");
         txtInfo.setPreferredSize(new Dimension(190, 500));
         txtInfo.setBackground(Color.gray);
+<<<<<<< HEAD
         
         table1.setPreferredSize(new Dimension(540, 640));
         table1.setBackground(Color.white);
@@ -114,20 +102,37 @@ Object columnNames[] = { "Column One", "Column Two", "Column Three" };
 		
 
         
+=======
 
-            JScrollPane scrollPane = new JScrollPane(table1);
+        Object rowData[][] = { { "Row1-Column1", "Row1-Column2", "Row1-Column3" },
+                { "Row2-Column1", "Row2-Column2", "Row2-Column3" } };
+            Object columnNames[] = { "Column One", "Column Two", "Column Three" };
+            this.qTable = new JTable(rowData, columnNames);
+>>>>>>> origin/master
+
+        qTable.setPreferredSize(new Dimension(540, 640));
+        qTable.setBackground(Color.white);
+        qTable.getAutoResizeMode();
+
+        JScrollPane scrollPane = new JScrollPane(qTable);
 
         //Adds the components to the Panels
         spine.add(panelBackRight, BorderLayout.CENTER);
         spine.add(panelBackLeft, BorderLayout.WEST);
+        panelBackRight.add(panelMidTopLeft);
+        panelMidTopLeft.add(qTable);
         panelBackLeft.add(searchLabel);
         panelBackLeft.add(txtSearch);
         panelBackLeft.add(btnSearch);
         panelBackLeft.add(txtInfo);
+<<<<<<< HEAD
         panelMidTopLeft.add(table1);
         
 
         
+=======
+
+>>>>>>> origin/master
     }
     
     
@@ -151,10 +156,4 @@ Object columnNames[] = { "Column One", "Column Two", "Column Three" };
     public JPanel getPanelMidTopLeft(){
         return panelMidTopLeft;
     }
-
-   // public JPanel getPanelMidTopRight(){
-   //     return panelMidTopRight;
-   // }
-    
-    
 }
