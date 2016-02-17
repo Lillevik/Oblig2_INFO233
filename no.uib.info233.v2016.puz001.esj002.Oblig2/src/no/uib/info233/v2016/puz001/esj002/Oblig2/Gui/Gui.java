@@ -23,11 +23,11 @@ public class Gui extends JFrame {
     private JLabel searchLabel;
     private JTextPane txtInfo;
     private IssueTable it = new IssueTable();
-//    private DefaultTableModel model;
     private JTable qTable = new JTable(it.getModel());
     
     /**
      * Constructor for the Gui class which extends from JFrame.
+     * Creates the Gui and starts it up.
      */
     public Gui(){
     	super("Issue Tracker");
@@ -43,9 +43,15 @@ public class Gui extends JFrame {
     
     
     
+    /**
+     * Initializes components and
+     * sets them up with custom designs.
+     */
     public void setupComponents(){
-    	//Initializes the JTables
-
+    	//Sets up the JTable
+    	qTable.setBackground(Color.white);
+    	qTable.getAutoResizeMode();
+    	qTable.setFillsViewportHeight(true);
         
     	
     	//Initialize the JPanels
@@ -59,36 +65,32 @@ public class Gui extends JFrame {
         //Initialize the JTexFields
         txtSearch = new JTextField("Search");
         
+        //Sets up the JPanel panelBackLeft
         panelBackLeft.setPreferredSize(new Dimension(200, 300));
         panelBackLeft.setBackground(Color.gray);
 
+        //Sets up the JPanel panelBackRight
         panelBackRight.setPreferredSize(new Dimension(200, 50));
         panelBackRight.setBackground(Color.white);
-        
-//        panelMidTopLeft.setPreferredSize(new Dimension(550, 650));
-//        panelMidTopLeft.setBackground(Color.gray);
-
+   
+        //Sets up the JLabel searchLabel
         searchLabel.setPreferredSize(new Dimension(190, 20));
         searchLabel.setText("Query here");
-
+        
+        //Sets up the JTextfield txtSearch
         txtSearch.setPreferredSize(new Dimension(190, 20));
 
+        //Sets up the JButton btnSearch
         btnSearch = new JButton("Search");
         btnSearch.setSize(new Dimension( 20, 20));
 
+        //Sets up the JLabel txtInfo
         txtInfo = new JTextPane();
         txtInfo.setText("info field");
         txtInfo.setPreferredSize(new Dimension(190, 500));
         txtInfo.setBackground(Color.gray);
         	
         
-
-        	qTable.setBackground(Color.white);
-        	qTable.getAutoResizeMode();
-        	qTable.setFillsViewportHeight(true);
-        	
-
-
         //Adds the components to the Panels
         spine.add(panelBackRight, BorderLayout.CENTER);
         spine.add(panelBackLeft, BorderLayout.WEST);
@@ -101,9 +103,6 @@ public class Gui extends JFrame {
     }
     
     
-    
-
-
 	/**
 	 * @return the panelBackRight
 	 */

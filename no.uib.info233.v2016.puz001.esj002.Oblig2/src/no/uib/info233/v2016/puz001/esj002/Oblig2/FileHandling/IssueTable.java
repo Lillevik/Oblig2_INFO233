@@ -28,12 +28,19 @@ public class IssueTable extends JTable{
 		private static final long serialVersionUID = 1L;
 		private DefaultTableModel model = new DefaultTableModel();
 		
+		
+		/**
+		 * Constructor for the IssueTable class.
+		 */
 		public IssueTable(){
 			tableForIssues();
 		}
 	
 
-		
+		/**
+		 * Creates a model containing all the 
+		 * elements in the xml file old_issues.xml.
+		 */
 	    public void tableForIssues(){
 	    	
 	      	try {
@@ -80,12 +87,6 @@ public class IssueTable extends JTable{
 	public void setModel(DefaultTableModel model) {
 		this.model = model;
 	}
-
-
-
-
-
-
 
 }
 	
