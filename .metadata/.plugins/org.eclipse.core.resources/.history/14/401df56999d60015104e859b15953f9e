@@ -106,12 +106,7 @@ public class IssueTable extends JTable{
 
 	    
 	    public void uniqueUsers(){
-	    	try {
-		      	File fXmlFile = new File("old_issues.xml");
-		    			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		    			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-		    			Document doc = dBuilder.parse(fXmlFile);
-		    			doc.getDocumentElement().normalize();
+
 	    	model.setColumnCount(0);
 	        model.addColumn("Users: ");
 	    	Set<String> setUniqueNumbers = new LinkedHashSet<String>();
@@ -121,13 +116,21 @@ public class IssueTable extends JTable{
 	    	for(String x : setUniqueNumbers) {
 	    		model.addRow(new Object[]{x});
 	    	}
-	    	}
+	      NodeList nodelist1 = doc.getElementsByTagName("ISSUES");
+	      for (int i = 0; i < nodelist1.getLength(); i++)
+	      {
+	          Node node = nodelist1.item(i);
+	          Element eElement = (Element) node;
 
+	        	  model.addRow(new Object[]{eElement.getAttribute("assigned_user")});
+
+	      }
+	      	}
+	   			
 	   		    catch (Exception e) {
 	   			e.printStackTrace();
 	   		    }
-	    }
-
+	    
 	    
 	    
 	
@@ -135,7 +138,6 @@ public class IssueTable extends JTable{
 	    
 	    
 	    /**
-	     * 
 	 * @return the model
 	 */
 	public DefaultTableModel getModel() {

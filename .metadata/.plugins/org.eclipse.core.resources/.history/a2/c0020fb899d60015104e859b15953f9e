@@ -121,7 +121,6 @@ public class IssueTable extends JTable{
 	    	for(String x : setUniqueNumbers) {
 	    		model.addRow(new Object[]{x});
 	    	}
-	    	}
 
 	   		    catch (Exception e) {
 	   			e.printStackTrace();
