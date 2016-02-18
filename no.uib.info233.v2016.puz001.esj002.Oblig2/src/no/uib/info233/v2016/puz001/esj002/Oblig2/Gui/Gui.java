@@ -34,10 +34,10 @@ public class Gui extends JFrame {
     	super("Issue Tracker");
         spine = new JPanel();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		spine.setLayout(new BorderLayout(500, 150));
+		spine.setLayout(new BorderLayout(0, 0));
+		spine.setPreferredSize(new Dimension(700, 450));
 		setContentPane(spine);
 		setupComponents();
-		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		pack();
 		setVisible(true);
     }
@@ -53,8 +53,7 @@ public class Gui extends JFrame {
     	qTable.setBackground(Color.white);
     	qTable.getAutoResizeMode();
     	qTable.setFillsViewportHeight(true);
-        
-    	
+
     	//Initialize the JPanels
         panelBackLeft = new JPanel();
         panelBackRight = new JPanel();
@@ -91,11 +90,10 @@ public class Gui extends JFrame {
 
         //Sets up the JLabel txtInfo
         txtInfo = new JTextPane();
-        txtInfo.setText("info field");
+        txtInfo.setText("Made by Puz001 and Esj002");
         txtInfo.setPreferredSize(new Dimension(190, 500));
         txtInfo.setBackground(Color.gray);
-        	
-        
+
         //Adds the components to the Panels
         spine.add(panelBackRight, BorderLayout.CENTER);
         spine.add(panelBackLeft, BorderLayout.WEST);

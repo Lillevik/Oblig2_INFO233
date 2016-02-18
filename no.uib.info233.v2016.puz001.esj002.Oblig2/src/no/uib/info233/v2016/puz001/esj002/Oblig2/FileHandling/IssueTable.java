@@ -62,7 +62,12 @@ public class IssueTable extends JTable{
 	      {
 	          Node node = nodelist1.item(i);
 	          Element eElement = (Element) node;
-	          model.addRow(new Object[]{eElement.getAttribute("id"), eElement.getAttribute("assigned_user"), eElement.getAttribute("created"), eElement.getAttribute("text"), eElement.getAttribute("priority"), eElement.getAttribute("location")});
+	          model.addRow(new Object[]{eElement.getAttribute("id"),
+					  eElement.getAttribute("assigned_user"),
+					  eElement.getAttribute("created"),
+					  eElement.getAttribute("text"),
+					  eElement.getAttribute("priority"),
+					  eElement.getAttribute("location")});
 	      }
 	      	}
 	   			
@@ -73,8 +78,6 @@ public class IssueTable extends JTable{
 	   	}
 	    
 
-	    
-	    
 	    public void employees(){
 
 	    	
@@ -93,19 +96,15 @@ public class IssueTable extends JTable{
 	      {
 	          Node node = nodelist1.item(i);
 	          Element eElement = (Element) node;
-	          
-	          
+
 	        	  model.addRow(new Object[]{eElement.getAttribute("assigned_user")});
-	          
-	          
+
 	      }
 	      	}
 	   			
 	   		    catch (Exception e) {
 	   			e.printStackTrace();
 	   		    }
-	   	 
-	   	
 	    }
 	
 	    

@@ -31,9 +31,7 @@ public class Main {
 				gui.getIt().employees();
 				
 			}
-	  
-	
-	});
+		});
 		
 		gui.getListAllIssues().addActionListener(new ActionListener(){
 
