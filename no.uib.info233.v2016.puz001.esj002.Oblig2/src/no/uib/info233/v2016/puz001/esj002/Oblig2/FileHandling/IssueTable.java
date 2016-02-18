@@ -3,7 +3,10 @@
  */
 package no.uib.info233.v2016.puz001.esj002.Oblig2.FileHandling;
 
+import java.util.*;
 import java.io.File;
+import java.util.ArrayList;
+
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -27,6 +30,7 @@ public class IssueTable extends JTable{
 	 */
 		private static final long serialVersionUID = 1L;
 		private DefaultTableModel model = new DefaultTableModel();
+		private ArrayList<String> users = new ArrayList <String>(); 
 		
 		
 		/**
@@ -62,7 +66,12 @@ public class IssueTable extends JTable{
 	      {
 	          Node node = nodelist1.item(i);
 	          Element eElement = (Element) node;
-	          model.addRow(new Object[]{eElement.getAttribute("id"), eElement.getAttribute("assigned_user"), eElement.getAttribute("created"), eElement.getAttribute("text"), eElement.getAttribute("priority"), eElement.getAttribute("location")});
+	          model.addRow(new Object[]{eElement.getAttribute("id"),
+					  eElement.getAttribute("assigned_user"),
+					  eElement.getAttribute("created"),
+					  eElement.getAttribute("text"),
+					  eElement.getAttribute("priority"),
+					  eElement.getAttribute("location")});
 	      }
 	      	}
 	   			
@@ -72,41 +81,71 @@ public class IssueTable extends JTable{
 	   	 
 	   	}
 	    
+<<<<<<< HEAD
+	    
+	    
+=======
 
-	    
-	    
 	    public void employees(){
+>>>>>>> origin/master
 
-	    	
+	    
+	    public void fillUsers(){
 	      	try {
 	      	File fXmlFile = new File("old_issues.xml");
 	    			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	    			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 	    			Document doc = dBuilder.parse(fXmlFile);
 	    			doc.getDocumentElement().normalize();
-	    			model.setColumnCount(0);
-	    	        model.addColumn("User: ");
 	    	       
+	    			NodeList nodelist = doc.getElementsByTagName("ISSUES");
+					      for (int i = 0; i < nodelist.getLength(); i++)
+					      {
+					          Node node = nodelist.item(i);
+					          Element eElement = (Element) node;
+					        	  users.add(eElement.getAttribute("assigned_user"));
+					      }
+					      	}
+					   			
+					   		    catch (Exception e) {
+					   			e.printStackTrace();
+					   		    }
+	    }
 
+<<<<<<< HEAD
+	    
+	    public void uniqueUsers(){
+
+	    	model.setColumnCount(0);
+	        model.addColumn("Users: ");
+	    	Set<String> setUniqueNumbers = new LinkedHashSet<String>();
+	    	for(String x : users) {
+	    	    setUniqueNumbers.add(x);
+	    	}
+	    	for(String x : setUniqueNumbers) {
+	    		model.addRow(new Object[]{x});
+	    	}
+=======
 	      NodeList nodelist1 = doc.getElementsByTagName("ISSUES");
 	      for (int i = 0; i < nodelist1.getLength(); i++)
 	      {
 	          Node node = nodelist1.item(i);
 	          Element eElement = (Element) node;
-	          
-	          
+
 	        	  model.addRow(new Object[]{eElement.getAttribute("assigned_user")});
-	          
-	          
+
 	      }
 	      	}
 	   			
 	   		    catch (Exception e) {
 	   			e.printStackTrace();
 	   		    }
-	   	 
-	   	
+>>>>>>> origin/master
 	    }
+	    
+	    
+	    
+	
 	
 	    
 	    

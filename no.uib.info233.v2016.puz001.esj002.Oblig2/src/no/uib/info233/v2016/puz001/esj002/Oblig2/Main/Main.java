@@ -28,12 +28,11 @@ public class Main {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gui.getIt().getModel().setRowCount(0);
-				gui.getIt().employees();
+				gui.getIt().fillUsers();
+				gui.getIt().uniqueUsers();
 				
 			}
-	  
-	
-	});
+		});
 		
 		gui.getListAllIssues().addActionListener(new ActionListener(){
 
@@ -44,5 +43,7 @@ public class Main {
 				
 			}
 		});
+		
+
 }
 }
