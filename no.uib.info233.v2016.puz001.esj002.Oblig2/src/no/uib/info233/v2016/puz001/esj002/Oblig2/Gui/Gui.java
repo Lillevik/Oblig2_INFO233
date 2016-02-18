@@ -19,6 +19,7 @@ public class Gui extends JFrame {
     private JPanel panelBackLeft;
     private JPanel panelMidTopLeft;
     private JButton btnSearch;
+    private JButton listAllIssues;
     private JTextField txtSearch;
     private JLabel searchLabel;
     private JTextPane txtInfo;
@@ -81,8 +82,12 @@ public class Gui extends JFrame {
         txtSearch.setPreferredSize(new Dimension(190, 20));
 
         //Sets up the JButton btnSearch
-        btnSearch = new JButton("Search");
+        btnSearch = new JButton("List employees");
         btnSearch.setSize(new Dimension( 20, 20));
+        
+        //Sets up the JButton listAll
+        listAllIssues = new JButton("List all Issues");
+        listAllIssues.setSize(new Dimension( 20, 20));
 
         //Sets up the JLabel txtInfo
         txtInfo = new JTextPane();
@@ -98,6 +103,7 @@ public class Gui extends JFrame {
         panelBackLeft.add(searchLabel);
         panelBackLeft.add(txtSearch);
         panelBackLeft.add(btnSearch);
+        panelBackLeft.add(listAllIssues);
         panelBackLeft.add(txtInfo);
         panelMidTopLeft.add(new JScrollPane(qTable));
     }
@@ -226,5 +232,86 @@ public class Gui extends JFrame {
 	 */
 	public void setqTable(JTable qTable) {
 		this.qTable = qTable;
+	}
+
+
+
+	/**
+	 * @return the it
+	 */
+	public IssueTable getIt() {
+		return it;
+	}
+
+
+
+	/**
+	 * @param it the it to set
+	 */
+	public void setIt(IssueTable it) {
+		this.it = it;
+	}
+
+
+
+	/**
+	 * @return the spine
+	 */
+	public JPanel getSpine() {
+		return spine;
+	}
+
+
+
+	/**
+	 * @return the panelMidTopLeft
+	 */
+	public JPanel getPanelMidTopLeft() {
+		return panelMidTopLeft;
+	}
+
+
+
+	/**
+	 * @return the btnSearch
+	 */
+	public JButton getBtnSearch() {
+		return btnSearch;
+	}
+
+
+
+	/**
+	 * @return the txtSearch
+	 */
+	public JTextField getTxtSearch() {
+		return txtSearch;
+	}
+
+
+
+	/**
+	 * @return the searchLabel
+	 */
+	public JLabel getSearchLabel() {
+		return searchLabel;
+	}
+
+
+
+	/**
+	 * @return the listAllIssues
+	 */
+	public JButton getListAllIssues() {
+		return listAllIssues;
+	}
+
+
+
+	/**
+	 * @param listAllIssues the listAllIssues to set
+	 */
+	public void setListAllIssues(JButton listAllIssues) {
+		this.listAllIssues = listAllIssues;
 	}
 }

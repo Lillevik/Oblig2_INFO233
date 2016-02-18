@@ -1,5 +1,8 @@
 package no.uib.info233.v2016.puz001.esj002.Oblig2.Main;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Gui.Gui;
 /**
  * This class only has one purpose, 
@@ -18,6 +21,28 @@ public class Main {
 	public static void main(String[] args) {
 
 		
-		new Gui();
-	  }
+		Gui gui = new Gui();
+		
+		gui.getBtnSearch().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gui.getIt().getModel().setRowCount(0);
+				gui.getIt().employees();
+				
+			}
+	  
+	
+	});
+		
+		gui.getListAllIssues().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gui.getIt().getModel().setRowCount(0);
+				gui.getIt().tableForIssues();
+				
+			}
+		});
+}
 }

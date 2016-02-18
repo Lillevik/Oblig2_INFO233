@@ -49,6 +49,7 @@ public class IssueTable extends JTable{
 	    			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 	    			Document doc = dBuilder.parse(fXmlFile);
 	    			doc.getDocumentElement().normalize();
+	    			model.setColumnCount(0);
 	    	        model.addColumn("Issue ID: ");
 	    	        model.addColumn("Assigned to: ");
 	    	        model.addColumn("Created: ");
@@ -72,7 +73,44 @@ public class IssueTable extends JTable{
 	   	}
 	    
 
-	/**
+	    
+	    
+	    public void employees(){
+
+	    	
+	      	try {
+	      	File fXmlFile = new File("old_issues.xml");
+	    			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+	    			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+	    			Document doc = dBuilder.parse(fXmlFile);
+	    			doc.getDocumentElement().normalize();
+	    			model.setColumnCount(0);
+	    	        model.addColumn("User: ");
+	    	       
+
+	      NodeList nodelist1 = doc.getElementsByTagName("ISSUES");
+	      for (int i = 0; i < nodelist1.getLength(); i++)
+	      {
+	          Node node = nodelist1.item(i);
+	          Element eElement = (Element) node;
+	          
+	          
+	        	  model.addRow(new Object[]{eElement.getAttribute("assigned_user")});
+	          
+	          
+	      }
+	      	}
+	   			
+	   		    catch (Exception e) {
+	   			e.printStackTrace();
+	   		    }
+	   	 
+	   	
+	    }
+	
+	    
+	    
+	    /**
 	 * @return the model
 	 */
 	public DefaultTableModel getModel() {
@@ -86,6 +124,14 @@ public class IssueTable extends JTable{
 	 */
 	public void setModel(DefaultTableModel model) {
 		this.model = model;
+	}
+
+
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }
