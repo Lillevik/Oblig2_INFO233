@@ -21,7 +21,8 @@ public class Gui extends JFrame {
     
     //Jbuttons
     private JButton btnSearch;
-    private JButton listAllIssues;
+    private JButton btnListAllIssues;
+	private JButton btnListAllUsers;
     
     //JTextFields 
     private JTextField txtSearch;
@@ -55,10 +56,8 @@ public class Gui extends JFrame {
 		pack();
 		setVisible(true);
     }
-    
-    
-    
-    /**
+
+	/**
      * Initializes components and
      * sets them up with custom designs.
      */
@@ -95,12 +94,15 @@ public class Gui extends JFrame {
         txtSearch.setPreferredSize(new Dimension(190, 20));
 
         //Sets up the JButton btnSearch
-        btnSearch = new JButton("List employees");
+        btnSearch = new JButton("Search");
         btnSearch.setSize(new Dimension( 20, 20));
         
         //Sets up the JButton listAll
-        listAllIssues = new JButton("List all Issues");
-        listAllIssues.setSize(new Dimension( 20, 20));
+        btnListAllIssues = new JButton("List Issues");
+        btnListAllIssues.setSize(new Dimension( 20, 20));
+
+		btnListAllUsers = new JButton("List users");
+		btnListAllUsers.setSize(new Dimension(20, 20));
 
         //Sets up the JLabel txtInfo
         txtInfo = new JTextPane();
@@ -115,7 +117,9 @@ public class Gui extends JFrame {
         panelBackLeft.add(searchLabel);
         panelBackLeft.add(txtSearch);
         panelBackLeft.add(btnSearch);
-        panelBackLeft.add(listAllIssues);
+
+		panelBackLeft.add(btnListAllUsers);
+        panelBackLeft.add(btnListAllIssues);
         panelBackLeft.add(txtInfo);
         panelMidTopLeft.add(new JScrollPane(qTable));
     }
@@ -312,18 +316,22 @@ public class Gui extends JFrame {
 
 
 	/**
-	 * @return the listAllIssues
+	 * @return the btnListAllIssues
 	 */
-	public JButton getListAllIssues() {
-		return listAllIssues;
+	public JButton getBtnListAllIssues() {
+		return btnListAllIssues;
+	}
+
+	public JButton getBtnListAllUsers() {
+		return btnListAllUsers;
 	}
 
 
 
 	/**
-	 * @param listAllIssues the listAllIssues to set
+	 * @param btnListAllIssues the btnListAllIssues to set
 	 */
-	public void setListAllIssues(JButton listAllIssues) {
-		this.listAllIssues = listAllIssues;
+	public void setListAllIssues(JButton btnListAllIssues) {
+		this.btnListAllIssues = btnListAllIssues;
 	}
 }

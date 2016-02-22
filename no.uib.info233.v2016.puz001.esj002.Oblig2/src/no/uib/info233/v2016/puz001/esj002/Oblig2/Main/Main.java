@@ -23,7 +23,7 @@ public class Main {
 		
 		Gui gui = new Gui();
 		
-		gui.getBtnSearch().addActionListener(new ActionListener(){
+		gui.getBtnListAllUsers().addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -32,7 +32,7 @@ public class Main {
 			}
 		});
 		
-		gui.getListAllIssues().addActionListener(new ActionListener(){
+		gui.getBtnListAllIssues().addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
