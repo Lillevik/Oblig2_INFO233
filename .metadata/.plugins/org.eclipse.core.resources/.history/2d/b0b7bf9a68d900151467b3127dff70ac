@@ -42,10 +42,9 @@ public class IssueTable extends JTable{
 		 * Constructor for the IssueTable class.
 		 */
 		public IssueTable(){
-			fillUsers();
 			fillIssues();
 			tableForIssues();
-			
+			fillUsers();
 		}
 	    
 	    /**
@@ -84,12 +83,11 @@ public class IssueTable extends JTable{
 	     */
 	    public void listUniqueUsers(){
 	    	try {
-		    
-	    	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-		    Document doc = dBuilder.parse(file);
-		 	doc.getDocumentElement().normalize();
-		    model.setRowCount(0);
+		    			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		    			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		    			Document doc = dBuilder.parse(file);
+		    			doc.getDocumentElement().normalize();
+		    			model.setRowCount(0);
 	    	model.setColumnCount(0);
 	        model.addColumn("Users: ");
 	    	Set<String> setUniqueNumbers = new LinkedHashSet<String>();
