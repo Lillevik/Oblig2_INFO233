@@ -13,12 +13,14 @@ import javax.swing.table.DefaultTableModel;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import no.uib.info233.v2016.puz001.esj002.Oblig2.Gui.Gui;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Issue.Issues;
+import no.uib.info233.v2016.puz001.esj002.Oblig2.Main.Main;
 
 /**
  * @author mariuslillevik
@@ -192,8 +194,8 @@ public class IssueTable extends JTable{
 	   		    }
 	   	 
 	   	}
+	    
 
-	   
 	    
 	    
 	    /**

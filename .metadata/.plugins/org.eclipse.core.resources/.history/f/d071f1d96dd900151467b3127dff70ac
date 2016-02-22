@@ -192,8 +192,43 @@ public class IssueTable extends JTable{
 	   		    }
 	   	 
 	   	}
+<<<<<<< HEAD
+=======
+	public void searchUsers() {
 
-	   
+
+		try {
+
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(file);
+			doc.getDocumentElement().normalize();
+
+			NodeList nodelist1 = doc.getElementsByTagName("ISSUES");
+
+			if (nodelist1 != null && nodelist1.getLength() > 0) {
+				for (int j = 0; j < nodelist1.getLength(); j++) {
+					Node node = nodelist1.item(j);
+					Element eElement = (Element) node;
+
+
+						System.out.println("type id:" + eElement.getAttribute("assigned_user"));
+					}
+				}
+			}
+
+
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	    
+	    
+	    
+
+>>>>>>> origin/master
+	    
+
 	    
 	    
 	    /**

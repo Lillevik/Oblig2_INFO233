@@ -31,9 +31,16 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+<<<<<<< HEAD
 		Gui gui = new Gui();
 		IssueTable it = new IssueTable();
 
+=======
+
+
+		Gui gui = new Gui();
+		IssueTable it = new IssueTable();
+>>>>>>> origin/master
 
 		gui.getBtnSearch().addActionListener(new ActionListener() {
 			@Override
