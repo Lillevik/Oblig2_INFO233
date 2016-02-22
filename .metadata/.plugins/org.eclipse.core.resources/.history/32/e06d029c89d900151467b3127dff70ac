@@ -3,14 +3,6 @@ package no.uib.info233.v2016.puz001.esj002.Oblig2.Main;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Gui.Gui;
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Issue.Issues;
 
@@ -52,6 +44,7 @@ public class Main {
 					gui.getIt().getModel().addColumn("Location: ");
 
 
+//<<<<<<< HEAD
 					
 					for(Issues issue : gui.getIt().getIssues()){
 						if(issue.getAssigned().equals(gui.getTxtSearch().getText())){
@@ -61,7 +54,20 @@ public class Main {
 				    			  issue.getIssue(),
 				    			  issue.getPriority(),
 				    			  issue.getLocation()});
-
+//=======
+//						for (int j = 0; j < nodelist1.getLength(); j++) {
+//							Node node = nodelist1.item(j);
+//							Element eElement = (Element) node;
+//
+//							if (eElement.getAttribute("assigned_user").equals(gui.getTxtSearch().getText())) {
+//
+//								gui.getIt().getModel().addRow(new Object[]{eElement.getAttribute("id"),
+//										eElement.getAttribute("assigned_user"),
+//										eElement.getAttribute("created"),
+//										eElement.getAttribute("text"),
+//										eElement.getAttribute("priority"),
+//										eElement.getAttribute("location")});
+//
 							}
 						}
 					}

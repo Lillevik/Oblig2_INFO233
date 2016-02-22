@@ -25,9 +25,13 @@ public class Gui extends JFrame {
 	private JButton btnListAllUsers;
 	private JButton btnAddUser;
 	private JButton btnAddIssue;
+	private JButton btnDate;
+	private JButton btnPrior;
     
     //JTextFields 
     private JTextField txtSearch;
+	private JTextField txtDate;
+	private JTextField txtPriority;
     
     //JLabels
     private JLabel searchLabel;
@@ -64,6 +68,22 @@ public class Gui extends JFrame {
 		setVisible(true);
     }
 
+	public JTextField getTxtDate() {
+		return txtDate;
+	}
+
+	public JTextField getTxtPriority() {
+		return txtPriority;
+	}
+
+	public JButton getBtnDate() {
+		return btnDate;
+	}
+
+	public JButton getBtnPrior() {
+		return btnPrior;
+	}
+
 	/**
      * Initializes components and
      * sets them up with custom designs.
@@ -76,6 +96,7 @@ public class Gui extends JFrame {
 
     	//Initialize the JPanels
         panelBackLeft = new JPanel();
+
         panelBackRight = new JPanel();
         panelMidTopLeft = new JPanel();
 
@@ -84,6 +105,8 @@ public class Gui extends JFrame {
         
         //Initialize the JTexFields
         txtSearch = new JTextField("Input username here");
+		txtDate = new JTextField("Date");
+		txtPriority = new JTextField("Prior");
         
         //Sets up the JPanel panelBackLeft
         panelBackLeft.setPreferredSize(new Dimension(200, 300));
@@ -97,27 +120,28 @@ public class Gui extends JFrame {
         searchLabel.setPreferredSize(new Dimension(190, 20));
         searchLabel.setText("Query here");
         
-        //Sets up the JTextfield txtSearch
+        //Sets up the JTextfiels
         txtSearch.setPreferredSize(new Dimension(190, 20));
+		txtDate.setPreferredSize(new Dimension(50, 20));
+		txtPriority.setPreferredSize(new Dimension(50, 20));
 
-        //Sets up the JButton btnSearch
-        btnSearch = new JButton("Search");
-        btnSearch.setSize(new Dimension( 20, 20));
-        
-        //Sets up the JButton listAll
+        //Sets up the buttons
+		btnSearch = new JButton("Search");
         btnListAllIssues = new JButton("List Issues");
-        btnListAllIssues.setSize(new Dimension( 20, 20));
-
-        //Sets up the JButton btnListAllUsers
 		btnListAllUsers = new JButton("List users");
-		btnListAllUsers.setSize(new Dimension(20, 20));
-		
-		//Sets up the JButton btnAddUser
 		btnAddUser = new JButton("Add user");
+		btnAddIssue = new JButton("Add issue");
+		btnDate = new JButton("date");
+		btnPrior = new JButton("prior");
+
+		//size the buttons
+		btnSearch.setSize(new Dimension( 20, 20));
+		btnListAllUsers.setSize(new Dimension(20, 20));
 		btnAddUser.setSize(new Dimension(20, 20));
-		
-		//Sets up the JButton btnAddIssue
-		btnAddIssue = new JButton("Add new issue");
+		btnListAllIssues.setSize(new Dimension( 20, 20));
+
+
+
 		
 		
 		
@@ -134,9 +158,12 @@ public class Gui extends JFrame {
         panelBackRight.add(panelMidTopLeft);
         panelBackLeft.add(searchLabel);
         panelBackLeft.add(txtSearch);
+		panelBackLeft.add(txtDate);
+		panelBackLeft.add(txtPriority);
         panelBackLeft.add(btnSearch);
+		panelBackLeft.add(btnDate);
+		panelBackLeft.add(btnPrior);
         panelBackLeft.add(btnAddUser);
-
 		panelBackLeft.add(btnListAllUsers);
         panelBackLeft.add(btnListAllIssues);
         panelBackLeft.add(btnAddIssue);
