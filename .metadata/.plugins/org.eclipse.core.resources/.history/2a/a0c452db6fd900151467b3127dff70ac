@@ -1,0 +1,18 @@
+/**
+ * 
+ */
+package no.uib.info233.v2016.puz001.esj002.Oblig2.Gui;
+
+import javax.swing.JPanel;
+
+/**
+ * @author mariuslillevik
+ *
+ */
+public class AddIssue extends JPanel{
+
+    public AddIssue() {
+        setBackground(Color.GREEN);
+        add(new JLabel("Panel one"));
+    }
+}

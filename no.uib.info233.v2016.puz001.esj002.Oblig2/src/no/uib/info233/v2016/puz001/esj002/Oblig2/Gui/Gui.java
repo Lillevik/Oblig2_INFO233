@@ -24,6 +24,7 @@ public class Gui extends JFrame {
     private JButton btnListAllIssues;
 	private JButton btnListAllUsers;
 	private JButton btnAddUser;
+	private JButton btnAddIssue;
     
     //JTextFields 
     private JTextField txtSearch;
@@ -40,6 +41,10 @@ public class Gui extends JFrame {
     //JTable
     private JTable qTable = new JTable(it.getModel());
     
+
+    private CardLayout layout = new CardLayout();
+    private AddIssue addissue = new AddIssue();
+    
     
     /**
      * Constructor for the Gui class which extends from JFrame.
@@ -48,7 +53,8 @@ public class Gui extends JFrame {
     
     public Gui(){
     	super("Issue Tracker");
-        spine = new JPanel();
+        spine = new JPanel(layout);
+//        spine.add(addissue, "Add issue");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		spine.setLayout(new BorderLayout(0, 0));
 		spine.setPreferredSize(new Dimension(700, 450));
@@ -110,6 +116,9 @@ public class Gui extends JFrame {
 		btnAddUser = new JButton("Add user");
 		btnAddUser.setSize(new Dimension(20, 20));
 		
+		//Sets up the JButton btnAddIssue
+		btnAddIssue = new JButton("Add new issue");
+		
 		
 		
 
@@ -130,6 +139,7 @@ public class Gui extends JFrame {
 
 		panelBackLeft.add(btnListAllUsers);
         panelBackLeft.add(btnListAllIssues);
+        panelBackLeft.add(btnAddIssue);
         panelBackLeft.add(txtInfo);
         panelMidTopLeft.add(new JScrollPane(qTable));
     }
@@ -141,7 +151,6 @@ public class Gui extends JFrame {
 	public JPanel getPanelBackRight() {
 		return panelBackRight;
 	}
-
 
 
 	/**
@@ -371,5 +380,49 @@ public class Gui extends JFrame {
 	 */
 	public void setBtnListAllUsers(JButton btnListAllUsers) {
 		this.btnListAllUsers = btnListAllUsers;
+	}
+
+
+
+	/**
+	 * @return the layout
+	 */
+	public CardLayout getLayout() {
+		return layout;
+	}
+
+	/**
+	 * @param layout the layout to set
+	 */
+	public void setLayout(CardLayout layout) {
+		this.layout = layout;
+	}
+
+	/**
+	 * @return the addissue
+	 */
+	public AddIssue getAddissue() {
+		return addissue;
+	}
+
+	/**
+	 * @param addissue the addissue to set
+	 */
+	public void setAddissue(AddIssue addissue) {
+		this.addissue = addissue;
+	}
+
+	/**
+	 * @return the btnAddIssue
+	 */
+	public JButton getBtnAddIssue() {
+		return btnAddIssue;
+	}
+
+	/**
+	 * @param btnAddIssue the btnAddIssue to set
+	 */
+	public void setBtnAddIssue(JButton btnAddIssue) {
+		this.btnAddIssue = btnAddIssue;
 	}
 }

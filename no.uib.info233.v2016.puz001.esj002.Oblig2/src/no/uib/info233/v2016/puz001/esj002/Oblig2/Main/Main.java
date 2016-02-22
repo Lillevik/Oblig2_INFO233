@@ -80,7 +80,6 @@ public class Main {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gui.getIt().fillIssues();
 				gui.getIt().tableForIssues();
 				
 			}
@@ -94,6 +93,16 @@ public class Main {
 				gui.getIt().addUser(gui.getTxtSearch().getText());
 				System.out.println("Added the user " + gui.getTxtSearch().getText() + " to the list of users.");
 				gui.getIt().listUniqueUsers();
+
+				
+			}
+		});
+		
+		gui.getBtnAddIssue().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gui.getLayout().show(gui.getAddissue(), "Add issue");
 
 				
 			}
