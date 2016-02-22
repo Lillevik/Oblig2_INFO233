@@ -54,7 +54,7 @@ public class Gui extends JFrame {
     public Gui(){
     	super("Issue Tracker");
         spine = new JPanel(layout);
-//        spine.add(addissue, "Add issue");
+//        add(addissue, "add_issue");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		spine.setLayout(new BorderLayout(0, 0));
 		spine.setPreferredSize(new Dimension(700, 450));
