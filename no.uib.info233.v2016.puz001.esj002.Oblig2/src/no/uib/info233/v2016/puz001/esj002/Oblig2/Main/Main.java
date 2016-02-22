@@ -69,6 +69,7 @@ public class Main {
 								System.out.println("ost");
 
 								for(Issues searchTabel : it.getIssues()){
+									
 
 									it.getModel().addRow(new Object[]{searchTabel.getId(),
 											searchTabel.getAssigned(),
