@@ -18,6 +18,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import no.uib.info233.v2016.puz001.esj002.Oblig2.Issue.Issues;
+
 /**
  * @author mariuslillevik
  *
@@ -29,15 +31,17 @@ public class IssueTable extends JTable{
 	 * 
 	 */
 		private static final long serialVersionUID = 1L;
+		private File file = new File("old_issues.xml");
 		private DefaultTableModel model = new DefaultTableModel();
 		private ArrayList<String> users = new ArrayList <String>(); 
-		
-		
+		private ArrayList<Issues> issues = new ArrayList <Issues>();
 		/**
 		 * Constructor for the IssueTable class.
 		 */
 		public IssueTable(){
+			issues();
 			tableForIssues();
+			fillUsers();
 		}
 	
 
@@ -48,11 +52,12 @@ public class IssueTable extends JTable{
 	    public void tableForIssues(){
 	    	
 	      	try {
-	      	File fXmlFile = new File("old_issues.xml");
 	    			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	    			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-	    			Document doc = dBuilder.parse(fXmlFile);
+	    			Document doc = dBuilder.parse(file);
 	    			doc.getDocumentElement().normalize();
+	    			model.setRowCount(0);
+	    		    model.setColumnCount(0);
 	    			model.setColumnCount(0);
 	    	        model.addColumn("Issue ID: ");
 	    	        model.addColumn("Assigned to: ");
@@ -66,6 +71,7 @@ public class IssueTable extends JTable{
 	      {
 	          Node node = nodelist1.item(i);
 	          Element eElement = (Element) node;
+	       
 	          model.addRow(new Object[]{eElement.getAttribute("id"),
 					  eElement.getAttribute("assigned_user"),
 					  eElement.getAttribute("created"),
@@ -81,13 +87,15 @@ public class IssueTable extends JTable{
 	   	 
 	   	}
 	    
-	    
+	    /**
+	     * This method takes all the assigned users from the 
+	     * xml document "old_issues.xml" and places them into the ArrayList users. 
+	     */
 	    public void fillUsers(){
 	      	try {
-	      	File fXmlFile = new File("old_issues.xml");
 	    			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	    			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-	    			Document doc = dBuilder.parse(fXmlFile);
+	    			Document doc = dBuilder.parse(file);
 	    			doc.getDocumentElement().normalize();
 	    	       
 	    			NodeList nodelist = doc.getElementsByTagName("ISSUES");
@@ -103,15 +111,22 @@ public class IssueTable extends JTable{
 					   			e.printStackTrace();
 					   		    }
 	    }
-
 	    
+	    
+	    
+	    
+
+	    /**
+	     * This method simply changes users to only contain 
+	     * non duplicate employees.
+	     */
 	    public void uniqueUsers(){
 	    	try {
-		      	File fXmlFile = new File("old_issues.xml");
 		    			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		    			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-		    			Document doc = dBuilder.parse(fXmlFile);
+		    			Document doc = dBuilder.parse(file);
 		    			doc.getDocumentElement().normalize();
+		    			model.setRowCount(0);
 	    	model.setColumnCount(0);
 	        model.addColumn("Users: ");
 	    	Set<String> setUniqueNumbers = new LinkedHashSet<String>();
@@ -127,13 +142,54 @@ public class IssueTable extends JTable{
 	   			e.printStackTrace();
 	   		    }
 	    }
+	    
+	    
+	    /**
+	     * A method to fill the issues array with all the issues in old_issues.xml
+	     */
+	    public void issues(){
+	    	
+	      	try {
+	    			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+	    			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+	    			Document doc = dBuilder.parse(file);
+	    			doc.getDocumentElement().normalize();
 
+	      NodeList nodelist1 = doc.getElementsByTagName("ISSUES");
+	      for (int i = 0; i < nodelist1.getLength(); i++)
+	      {
+	          Node node = nodelist1.item(i);
+	          Element eElement = (Element) node;
+	       
+	          Issues i1 = new Issues(eElement.getAttribute("id"), 
+	        		  eElement.getAttribute("assigned_user"), 
+	        		  eElement.getAttribute("created"),
+	        		  eElement.getAttribute("text"),
+	        		  eElement.getAttribute("priority"),
+	        		  eElement.getAttribute("location")
+	        		  );
+
+	          
+	          
+	          issues.add(i1);
+	      }
+	      	}
+	   			
+	   		    catch (Exception e) {
+	   			e.printStackTrace();
+	   		    }
+	   	 
+	   	}
 	    
 	    
-	
-	
 	    
 	    
+	    
+	    
+	    
+	    
+	    
+
 	    /**
 	     * 
 	 * @return the model
@@ -157,6 +213,54 @@ public class IssueTable extends JTable{
 	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+
+	/**
+	 * @return the file
+	 */
+	public File getFile() {
+		return file;
+	}
+
+
+	/**
+	 * @param file the file to set
+	 */
+	public void setFile(File file) {
+		this.file = file;
+	}
+
+
+	/**
+	 * @return the users
+	 */
+	public ArrayList<String> getUsers() {
+		return users;
+	}
+
+
+	/**
+	 * @param users the users to set
+	 */
+	public void setUsers(ArrayList<String> users) {
+		this.users = users;
+	}
+
+
+	/**
+	 * @return the issues
+	 */
+	public ArrayList<Issues> getIssues() {
+		return issues;
+	}
+
+
+	/**
+	 * @param issues the issues to set
+	 */
+	public void setIssues(ArrayList<Issues> issues) {
+		this.issues = issues;
 	}
 
 }

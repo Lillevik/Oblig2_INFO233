@@ -18,12 +18,24 @@ public class Gui extends JFrame {
     private JPanel panelBackRight;
     private JPanel panelBackLeft;
     private JPanel panelMidTopLeft;
+    
+    //Jbuttons
     private JButton btnSearch;
     private JButton listAllIssues;
+    
+    //JTextFields 
     private JTextField txtSearch;
+    
+    //JLabels
     private JLabel searchLabel;
+    
+    //JTextPanes
     private JTextPane txtInfo;
+    
+    //Instance of the IssueTable class
     private IssueTable it = new IssueTable();
+    
+    //JTable
     private JTable qTable = new JTable(it.getModel());
     
     /**
