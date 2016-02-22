@@ -30,11 +30,18 @@ public class Main {
 	 * instances together in one class.
 	 * @param args
 	 */
-
+<<<<<<< HEAD
 	public static void main(String[] args) {
 		Gui gui = new Gui();
 		IssueTable it = new IssueTable();
 
+=======
+	public static void main(String[] args) {
+
+
+		Gui gui = new Gui();
+		IssueTable it = new IssueTable();
+>>>>>>> origin/master
 
 		gui.getBtnSearch().addActionListener(new ActionListener() {
 			@Override
