@@ -22,6 +22,13 @@ public class Main {
 
 		
 		Gui gui = new Gui();
+
+		gui.getBtnSearch().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gui.getIt().searchUsers();
+			}
+		});
 		
 		gui.getBtnListAllUsers().addActionListener(new ActionListener(){
 
