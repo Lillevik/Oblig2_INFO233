@@ -3,7 +3,16 @@ package no.uib.info233.v2016.puz001.esj002.Oblig2.Main;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import no.uib.info233.v2016.puz001.esj002.Oblig2.FileHandling.IssueTable;
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Gui.Gui;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
 /**
  * This class only has one purpose, 
  * which is to start the program.
@@ -20,13 +29,38 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 
-		
+
 		Gui gui = new Gui();
+		IssueTable it = new IssueTable();
 
 		gui.getBtnSearch().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gui.getIt().searchUsers();
+				try {
+
+					DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+					DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+					Document doc = dBuilder.parse(it.getFile());
+					doc.getDocumentElement().normalize();
+
+					NodeList nodelist1 = doc.getElementsByTagName("ISSUES");
+
+					if (nodelist1 != null && nodelist1.getLength() > 0) {
+						for (int j = 0; j < nodelist1.getLength(); j++) {
+							Node node = nodelist1.item(j);
+							Element eElement = (Element) node;
+							if (eElement.hasAttribute("assigned_user") && eElement.getAttribute("assigned_user").equals(gui.getTxtSearch())) {
+
+								System.out.println("type id:" + eElement.getAttribute("assigned_user"));
+							}
+						}
+					}
+				}
+
+
+				catch (Exception f ){
+					f.printStackTrace();
+				}
 			}
 		});
 		

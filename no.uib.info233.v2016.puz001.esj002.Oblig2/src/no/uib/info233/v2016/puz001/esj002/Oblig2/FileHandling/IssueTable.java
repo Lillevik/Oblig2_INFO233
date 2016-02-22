@@ -31,12 +31,15 @@ public class IssueTable extends JTable{
 	/**
 	 * Fields for the IssueTable class
 	 */
-		private static final long serialVersionUID = 1L;
-		private File file = new File("old_issues.xml");
-		private DefaultTableModel model = new DefaultTableModel();
-		private ArrayList<String> users = new ArrayList <String>(); 
-		private ArrayList<Issues> issues = new ArrayList <Issues>();
-		
+	private static final long serialVersionUID = 1L;
+	private File file = new File("old_issues.xml");
+	private DefaultTableModel model = new DefaultTableModel();
+	private ArrayList<String> users = new ArrayList <String>();
+	private ArrayList<Issues> issues = new ArrayList <Issues>();
+
+
+
+
 		
 		
 		/**
@@ -191,7 +194,7 @@ public class IssueTable extends JTable{
 	   	 
 	   	}
 	public void searchUsers() {
-		Gui gui = new Gui();
+
 
 		try {
 
@@ -207,14 +210,13 @@ public class IssueTable extends JTable{
 					Node node = nodelist1.item(j);
 					Element eElement = (Element) node;
 
-					if (eElement.hasAttribute("assigned_user") && eElement.getAttribute("assigned_user").equals(gui.getTxtSearch())) {
 
 						System.out.println("type id:" + eElement.getAttribute("assigned_user"));
 					}
 				}
 			}
 
-		}
+
 		catch (Exception e) {
 			e.printStackTrace();
 		}
