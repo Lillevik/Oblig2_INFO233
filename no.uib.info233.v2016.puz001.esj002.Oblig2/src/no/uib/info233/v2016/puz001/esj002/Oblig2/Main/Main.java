@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import no.uib.info233.v2016.puz001.esj002.Oblig2.FileHandling.IssueTable;
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Gui.Gui;
+import no.uib.info233.v2016.puz001.esj002.Oblig2.Issue.Issues;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -36,6 +37,7 @@ public class Main {
 		IssueTable it = new IssueTable();
 
 
+
 		gui.getBtnSearch().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -48,22 +50,43 @@ public class Main {
 
 					NodeList nodelist1 = doc.getElementsByTagName("ISSUES");
 
+					it.getModel().setRowCount(0);
+					it.getModel().setColumnCount(0);
+					it.getModel().setColumnCount(0);
+					it.getModel().addColumn("Issue ID: ");
+					it.getModel().addColumn("Assigned to: ");
+					it.getModel().addColumn("Created: ");
+					it.getModel().addColumn("Issue: ");
+					it.getModel().addColumn("Priority: ");
+					it.getModel().addColumn("Location: ");
+
 					if (nodelist1 != null && nodelist1.getLength() > 0) {
 						for (int j = 0; j < nodelist1.getLength(); j++) {
 							Node node = nodelist1.item(j);
 							Element eElement = (Element) node;
-							if (eElement.hasAttribute("assigned_user") && eElement.getAttribute("assigned_user").equals(gui.getTxtSearch())) {
+							if (eElement.getAttribute("assigned_user").equals(gui.getTxtSearch().getText())) {
 
-								System.out.println("type id:" + eElement.getAttribute("assigned_user"));
+								System.out.println("ost");
+
+								for(Issues searchTabel : it.getIssues()){
+									
+
+									it.getModel().addRow(new Object[]{searchTabel.getId(),
+											searchTabel.getAssigned(),
+											searchTabel.getCreated(),
+											searchTabel.getIssue(),
+											searchTabel.getPriority(),
+											searchTabel.getLocation()});
+								}
 							}
 						}
 					}
 				}
 
-
 				catch (Exception f ){
 					f.printStackTrace();
 				}
+
 			}
 		});
 		

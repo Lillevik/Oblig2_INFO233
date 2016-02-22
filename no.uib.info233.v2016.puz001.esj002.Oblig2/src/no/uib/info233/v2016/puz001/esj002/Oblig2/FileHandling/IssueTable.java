@@ -162,7 +162,6 @@ public class IssueTable extends JTable{
 	    			doc.getDocumentElement().normalize();
 	    			model.setRowCount(0);
 	    		    model.setColumnCount(0);
-	    			model.setColumnCount(0);
 	    	        model.addColumn("Issue ID: ");
 	    	        model.addColumn("Assigned to: ");
 	    	        model.addColumn("Created: ");
@@ -172,6 +171,7 @@ public class IssueTable extends JTable{
 
 	      
 	      for (Issues issue : issues) {
+
 	    	  
 	    	  model.addRow(new Object[]{issue.getId(),
 	    			  issue.getAssigned(),

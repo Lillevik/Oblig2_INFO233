@@ -6,7 +6,6 @@ INDEX VERSION 1.127+/Users/mariuslillevik/Dropbox/Prosjekter/GitHub/Oblig2_INFO2
 1665731504.index
 314395480.index
 2587947521.index
-3129454824.index
 2545238116.index
 1666608670.index
 156905802.index
