@@ -5,10 +5,12 @@ package no.uib.info233.v2016.puz001.esj002.Oblig2.Issue;
 
 /**
  * @author mariuslillevik
- *
+ *This class is made to create objects containing the
+ *values from the ISSUES elements in the old_issues.xml file.
  */
 public class Issues {
 
+	//These are the fields for the Issues class
 	private String id;
 	private String assigned;
 	private String created;
@@ -16,8 +18,15 @@ public class Issues {
 	private String priority;
 	private String location;
 	
-	
-	
+	/**
+	 * This is the constructor for the Issues class.
+	 * @param id
+	 * @param assigned
+	 * @param created
+	 * @param issue
+	 * @param priority
+	 * @param location
+	 */
 	public Issues(String id, String assigned, String created, String issue, String priority, String location){
 		this.id = id;
 		this.assigned = assigned;
@@ -134,7 +143,4 @@ public class Issues {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	
-	
-	
 }

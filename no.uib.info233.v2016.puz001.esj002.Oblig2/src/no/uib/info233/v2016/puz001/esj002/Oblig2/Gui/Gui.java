@@ -7,6 +7,8 @@ import java.awt.*;
 
 /**
  * Created by esj002 and puz001
+ * This class creates a graphical user interface and 
+ * represents components there.
  */
 public class Gui extends JFrame {
 

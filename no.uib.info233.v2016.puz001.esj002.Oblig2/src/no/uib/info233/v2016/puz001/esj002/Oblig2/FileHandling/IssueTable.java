@@ -22,7 +22,8 @@ import no.uib.info233.v2016.puz001.esj002.Oblig2.Issue.Issues;
 
 /**
  * @author mariuslillevik
- *
+ * This is a class which deals with handling the xml files
+ * and creating lists of strings and object from the xml file.
  */
 public class IssueTable extends JTable{
 	
@@ -146,12 +147,12 @@ public class IssueTable extends JTable{
    		    catch (Exception e) {
    			e.printStackTrace();
    		    }
-	    	
-
 	    }
 	    
+	    
 	    /**
-	     * A method to fill the issues array with all the issues in old_issues.xml
+	     * A method to represents all the Issues objects from
+	     * the issues ArrayList and represent them in the JTable qTable.
 	     */
 	    public void tableForIssues(){
 	    	
@@ -171,8 +172,6 @@ public class IssueTable extends JTable{
 
 	      
 	      for (Issues issue : issues) {
-
-	    	  
 	    	  model.addRow(new Object[]{issue.getId(),
 	    			  issue.getAssigned(),
 	    			  issue.getCreated(),
