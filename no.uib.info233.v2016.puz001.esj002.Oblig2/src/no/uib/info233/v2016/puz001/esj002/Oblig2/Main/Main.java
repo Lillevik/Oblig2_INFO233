@@ -62,19 +62,19 @@ public class Main {
 						for (int j = 0; j < nodelist1.getLength(); j++) {
 							Node node = nodelist1.item(j);
 							Element eElement = (Element) node;
+
 							if (eElement.getAttribute("assigned_user").equals(gui.getTxtSearch().getText())) {
 
-								System.out.println(1);
 								gui.getIt().getModel().addRow(new Object[]{eElement.getAttribute("id"),
 										eElement.getAttribute("assigned_user"),
 										eElement.getAttribute("created"),
 										eElement.getAttribute("text"),
 										eElement.getAttribute("priority"),
 										eElement.getAttribute("location")});
-							
+
+							}
 						}
 					}
-				}
 
 				catch (Exception f ){
 					f.printStackTrace();
@@ -82,7 +82,106 @@ public class Main {
 
 			}
 		});
-		
+
+		gui.getBtnPrior().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				try {
+
+					DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+					DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+					Document doc = dBuilder.parse(gui.getIt().getFile());
+					doc.getDocumentElement().normalize();
+
+					NodeList nodelist1 = doc.getElementsByTagName("ISSUES");
+
+					gui.getIt().getModel().setRowCount(0);
+					gui.getIt().getModel().setColumnCount(0);
+					gui.getIt().getModel().setColumnCount(0);
+					gui.getIt().getModel().addColumn("Issue ID: ");
+					gui.getIt().getModel().addColumn("Assigned to: ");
+					gui.getIt().getModel().addColumn("Created: ");
+					gui.getIt().getModel().addColumn("Issue: ");
+					gui.getIt().getModel().addColumn("Priority: ");
+					gui.getIt().getModel().addColumn("Location: ");
+
+
+					for (int j = 0; j < nodelist1.getLength(); j++) {
+						Node node = nodelist1.item(j);
+						Element eElement = (Element) node;
+
+						int priorInt = Integer.parseInt(eElement.getAttribute("priority").trim());
+						int priorTxt = Integer.parseInt(gui.getTxtPriority().getText());
+
+						if(priorInt >= priorTxt){
+
+							gui.getIt().getModel().addRow(new Object[]{eElement.getAttribute("id"),
+									eElement.getAttribute("assigned_user"),
+									eElement.getAttribute("created"),
+									eElement.getAttribute("text"),
+									eElement.getAttribute("priority"),
+									eElement.getAttribute("location")});
+
+						}
+					}
+				}
+
+				catch (Exception f ){
+					f.printStackTrace();
+				}
+			}
+		});
+
+		gui.getBtnDate().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+
+					DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+					DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+					Document doc = dBuilder.parse(gui.getIt().getFile());
+					doc.getDocumentElement().normalize();
+
+					NodeList nodelist1 = doc.getElementsByTagName("ISSUES");
+
+					gui.getIt().getModel().setRowCount(0);
+					gui.getIt().getModel().setColumnCount(0);
+					gui.getIt().getModel().setColumnCount(0);
+					gui.getIt().getModel().addColumn("Issue ID: ");
+					gui.getIt().getModel().addColumn("Assigned to: ");
+					gui.getIt().getModel().addColumn("Created: ");
+					gui.getIt().getModel().addColumn("Issue: ");
+					gui.getIt().getModel().addColumn("Priority: ");
+					gui.getIt().getModel().addColumn("Location: ");
+
+
+					for (int j = 0; j < nodelist1.getLength(); j++) {
+						Node node = nodelist1.item(j);
+						Element eElement = (Element) node;
+
+						int dateInt = Integer.parseInt(eElement.getAttribute("created").replaceAll("/", ""));
+						int dateTxt = Integer.parseInt(gui.getTxtDate().getText().replaceAll("/", ""));
+
+						if(dateInt >= dateTxt){
+
+							gui.getIt().getModel().addRow(new Object[]{eElement.getAttribute("id"),
+									eElement.getAttribute("assigned_user"),
+									eElement.getAttribute("created"),
+									eElement.getAttribute("text"),
+									eElement.getAttribute("priority"),
+									eElement.getAttribute("location")});
+
+						}
+					}
+				}
+
+				catch (Exception f ){
+					f.printStackTrace();
+				}
+			}
+		});
+
 		gui.getBtnListAllUsers().addActionListener(new ActionListener(){
 
 			@Override
