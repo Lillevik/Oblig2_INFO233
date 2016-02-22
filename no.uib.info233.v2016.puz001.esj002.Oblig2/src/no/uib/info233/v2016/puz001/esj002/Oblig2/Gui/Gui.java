@@ -38,10 +38,12 @@ public class Gui extends JFrame {
     //JTable
     private JTable qTable = new JTable(it.getModel());
     
+    
     /**
      * Constructor for the Gui class which extends from JFrame.
      * Creates the Gui and starts it up.
      */
+    
     public Gui(){
     	super("Issue Tracker");
         spine = new JPanel();

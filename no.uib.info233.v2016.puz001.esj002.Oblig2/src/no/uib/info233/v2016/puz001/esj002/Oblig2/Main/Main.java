@@ -27,7 +27,7 @@ public class Main {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gui.getIt().uniqueUsers();
+				gui.getIt().listUniqueUsers();
 				
 			}
 		});
@@ -36,6 +36,7 @@ public class Main {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				gui.getIt().fillIssues();
 				gui.getIt().tableForIssues();
 				
 			}
