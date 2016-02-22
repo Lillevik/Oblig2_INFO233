@@ -58,7 +58,7 @@ public class Main {
 					gui.getIt().getModel().addColumn("Priority: ");
 					gui.getIt().getModel().addColumn("Location: ");
 
-
+//					if (nodelist1 != null && nodelist1.getLength() > 0) {
 						for (int j = 0; j < nodelist1.getLength(); j++) {
 							Node node = nodelist1.item(j);
 							Element eElement = (Element) node;

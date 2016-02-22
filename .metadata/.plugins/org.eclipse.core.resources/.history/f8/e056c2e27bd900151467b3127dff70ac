@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Gui.Gui;
+import no.uib.info233.v2016.puz001.esj002.Oblig2.Issue.Issues;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -58,7 +59,7 @@ public class Main {
 					gui.getIt().getModel().addColumn("Priority: ");
 					gui.getIt().getModel().addColumn("Location: ");
 
-
+//					if (nodelist1 != null && nodelist1.getLength() > 0) {
 						for (int j = 0; j < nodelist1.getLength(); j++) {
 							Node node = nodelist1.item(j);
 							Element eElement = (Element) node;
