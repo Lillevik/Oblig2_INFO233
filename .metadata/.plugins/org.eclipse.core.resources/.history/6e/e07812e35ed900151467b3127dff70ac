@@ -77,7 +77,7 @@ public class Gui extends JFrame {
         searchLabel = new JLabel();
         
         //Initialize the JTexFields
-        txtSearch = new JTextField("Input username here");
+        txtSearch = new JTextField("Search");
         
         //Sets up the JPanel panelBackLeft
         panelBackLeft.setPreferredSize(new Dimension(200, 300));
@@ -108,8 +108,6 @@ public class Gui extends JFrame {
 		
 		//Sets up the JButton btnAddUser
 		btnAddUser = new JButton("Add user");
-		btnAddUser.setSize(new Dimension(20, 20));
-		
 		
 		
 
@@ -126,7 +124,6 @@ public class Gui extends JFrame {
         panelBackLeft.add(searchLabel);
         panelBackLeft.add(txtSearch);
         panelBackLeft.add(btnSearch);
-        panelBackLeft.add(btnAddUser);
 
 		panelBackLeft.add(btnListAllUsers);
         panelBackLeft.add(btnListAllIssues);
@@ -343,33 +340,5 @@ public class Gui extends JFrame {
 	 */
 	public void setListAllIssues(JButton btnListAllIssues) {
 		this.btnListAllIssues = btnListAllIssues;
-	}
-
-	/**
-	 * @return the btnAddUser
-	 */
-	public JButton getBtnAddUser() {
-		return btnAddUser;
-	}
-
-	/**
-	 * @param btnAddUser the btnAddUser to set
-	 */
-	public void setBtnAddUser(JButton btnAddUser) {
-		this.btnAddUser = btnAddUser;
-	}
-
-	/**
-	 * @param btnListAllIssues the btnListAllIssues to set
-	 */
-	public void setBtnListAllIssues(JButton btnListAllIssues) {
-		this.btnListAllIssues = btnListAllIssues;
-	}
-
-	/**
-	 * @param btnListAllUsers the btnListAllUsers to set
-	 */
-	public void setBtnListAllUsers(JButton btnListAllUsers) {
-		this.btnListAllUsers = btnListAllUsers;
 	}
 }

@@ -48,9 +48,6 @@ public class Main {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gui.getIt().addUser(gui.getTxtSearch().getText());
-				System.out.println("Added the user " + gui.getTxtSearch().getText() + " to the list of users.");
-				gui.getIt().listUniqueUsers();
-
 				
 			}
 		});

@@ -77,7 +77,7 @@ public class Gui extends JFrame {
         searchLabel = new JLabel();
         
         //Initialize the JTexFields
-        txtSearch = new JTextField("Input username here");
+        txtSearch = new JTextField("Search");
         
         //Sets up the JPanel panelBackLeft
         panelBackLeft.setPreferredSize(new Dimension(200, 300));
