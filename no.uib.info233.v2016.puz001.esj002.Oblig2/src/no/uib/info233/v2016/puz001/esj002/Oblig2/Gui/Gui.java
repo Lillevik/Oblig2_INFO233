@@ -29,7 +29,6 @@ public class Gui extends JFrame {
 	private JButton btnListAllUsers;
 	private JButton btnAddUser;
 	private JButton btnAddIssue;
-	private JButton btnAddLocation;
 	private JButton btnDate;
 	private JButton btnPrior;
 	private JButton btnLogin;
@@ -42,8 +41,6 @@ public class Gui extends JFrame {
 	private JTextField txtAddLocation;
 	private JTextField txtLogin;
 
-	//JComboBox
-	private JComboBox chooseUser= new JComboBox();
 
 	//JLabels
 	private JLabel searchLabel;
@@ -75,7 +72,7 @@ public class Gui extends JFrame {
 //        add(addissue, "add_issue");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		spine.setLayout(new BorderLayout(0, 0));
-		spine.setPreferredSize(new Dimension(700, 500));
+		spine.setPreferredSize(new Dimension(700, 600));
 		setContentPane(spine);
 		setupComponents();
 		pack();
@@ -122,7 +119,7 @@ public class Gui extends JFrame {
 		//sets panelBackLeftTop and bot
 		panelBackLeftTop.setBackground(Color.GRAY);
 		panelBackLeftBot.setBackground(Color.LIGHT_GRAY);
-		panelBackLeftTop.setPreferredSize(new Dimension(100, 440));
+		panelBackLeftTop.setPreferredSize(new Dimension(100, 500));
 
 		//Sets up the JLabel searchLabel
 		searchLabel.setPreferredSize(new Dimension(190, 20));
@@ -130,13 +127,14 @@ public class Gui extends JFrame {
 
 		//Sets up the JTextfiels
 		txtSearch.setPreferredSize(new Dimension(190, 20));
-		txtDate.setPreferredSize(new Dimension(50, 20));
-		txtPriority.setPreferredSize(new Dimension(50, 20));
-		txtAddIssue.setPreferredSize(new Dimension(190, 60));
-		txtAddLocation.setPreferredSize(new Dimension(50, 20));
+		txtDate.setPreferredSize(new Dimension(190, 20));
+		txtPriority.setPreferredSize(new Dimension(190, 20));
+		txtAddIssue.setPreferredSize(new Dimension(190, 20));
+		txtAddLocation.setPreferredSize(new Dimension(190, 20));
+		txtLogin.setPreferredSize(new Dimension(90, 20));
 
 		//password field setup
-		passwordField.setPreferredSize(new Dimension(50, 20));
+		passwordField.setPreferredSize(new Dimension(90, 20));
 
 
 		//Sets up the buttons
@@ -145,7 +143,6 @@ public class Gui extends JFrame {
 		btnListAllUsers = new JButton("List users");
 		btnAddUser = new JButton("Add user");
 		btnAddIssue = new JButton("Add issue");
-		btnAddLocation = new JButton("Add Location");
 		btnDate = new JButton("Search Date");
 		btnPrior = new JButton("Search Prior");
 		btnLogin = new JButton("Login");
@@ -163,6 +160,7 @@ public class Gui extends JFrame {
 		txtInfo.setBackground(Color.gray);
 		txtLoggedIn.setText("Not logged in");
 		txtLoggedIn.setBackground(Color.LIGHT_GRAY);
+		txtLoggedIn.setPreferredSize(new Dimension(190, 100));
 
 		//Adds the components to the Panels
 		spine.add(panelBackRight, BorderLayout.CENTER);
@@ -182,7 +180,6 @@ public class Gui extends JFrame {
 		panelBackLeftTop.add(btnSearch);
 		panelBackLeftTop.add(btnDate);
 		panelBackLeftTop.add(btnPrior);
-		panelBackLeftTop.add(btnAddLocation);
 		panelBackLeftTop.add(btnAddIssue);
 		panelBackLeftTop.add(btnAddUser);
 		panelBackLeftTop.add(btnAddIssue);
@@ -488,10 +485,6 @@ public class Gui extends JFrame {
 		return txtLoggedIn;
 	}
 
-	public JComboBox getChooseUser() {
-		return chooseUser;
-	}
-
 	public JTextField getTxtLogin() {
 		return txtLogin;
 	}
@@ -502,10 +495,6 @@ public class Gui extends JFrame {
 
 	public JTextField getTxtAddIssue() {
 		return txtAddIssue;
-	}
-
-	public JButton getBtnAddLocation() {
-		return btnAddLocation;
 	}
 
 	public JPanel getPanelBackLeftBot() {

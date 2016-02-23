@@ -34,7 +34,7 @@ public class IssueTable extends JTable{
 	private DefaultTableModel model = new DefaultTableModel();
 	private ArrayList<String> users = new ArrayList <String>();
 	private ArrayList<Issues> issues = new ArrayList <Issues>();
-	private ArrayList <Integer>prio = new ArrayList<Integer>() ;
+	private ArrayList<Integer> prio = new ArrayList<Integer>() ;
 	
 	
 		/**

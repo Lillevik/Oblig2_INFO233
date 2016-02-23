@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
 
+import no.uib.info233.v2016.puz001.esj002.Oblig2.FileHandling.IssueTable;
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Gui.Gui;
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Issue.Issues;
 
@@ -27,7 +28,6 @@ public class Main {
 
 	public static void main(String[] args) {
 		Gui gui = new Gui();
-
 
 
 		/**
@@ -193,44 +193,33 @@ public class Main {
 		/**
 		 * Method under construction. 
 		 */
-		//gui.getBtnAddIssue().addActionListener(new ActionListener(){
-//
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//			    	Issues is = new Issues(gui.getIt().maxIssueId() ,
-//			    			gui.getChooseUser().getSelectedItem().toString(),
-//			    			gui.getIt().currentDate(),
-//			    			gui.getTxtSearch().getText(),
-//			    			gui.getChoosePrio().getSelectedItem().toString(),
-//			    			gui.getTxtDate().getText());
-//			    	gui.getIt().getIssues().add(is);
-//			    	gui.getIt().tableForIssues();
-//				gui.getIt().fillUsers();
-//		};
-//
-  //});
+		gui.getBtnAddIssue().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			    	Issues is = new Issues(gui.getIt().maxIssueId() ,
+			    			gui.getTxtSearch().toString(),
+			    			gui.getIt().currentDate(),
+			    			gui.getTxtSearch().getText(),
+			    			gui.getTxtPriority().toString(),
+			    			gui.getTxtDate().getText());
+			    	gui.getIt().getIssues().add(is);
+			    	gui.getIt().tableForIssues();
+				gui.getIt().fillUsers();
+		};
+
+  });
 		gui.getBtnLogin().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try {
-					for (Issues issue : gui.getIt().getIssues()) {
 
-						if (issue.getAssigned().equals(gui.getTxtLogin().getText())) {
-							gui.getTxtLoggedIn().setText(gui.getTxtLogin().getText());
+				if (ISSUES KLASSE HER MARIUS.getAssigned().equals(gui.getTxtLogin().getText()) && gui.getPasswordField() != null) {
+					gui.getTxtLoggedIn().setText("Logged in as: " + gui.getTxtLogin().getText());
 
-						} else {
-							gui.getTxtLoggedIn().setText("User not found");
-						}
-
-					}
-				}
-				catch (Exception f ){
-					f.printStackTrace();
+				} else {
+					gui.getTxtLoggedIn().setText("User not found");
 				}
 			}
-
 		});
-		
-
-}
+	}
 }
