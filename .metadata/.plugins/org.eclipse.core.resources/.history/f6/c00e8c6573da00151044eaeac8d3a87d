@@ -39,14 +39,13 @@ public class IssueTable extends JTable{
 	
 		/**
 		 * Constructor for the IssueTable class.
-		 * The constructor runs some methods at runtime to fill 
-		 * certain arrays and arrayLists.
 		 */
 		public IssueTable(){
 			fillPrio();
 			fillUsers();
 			fillIssues();
 			tableForIssues();
+			
 		}
 	    
 		
@@ -83,6 +82,9 @@ public class IssueTable extends JTable{
 					   			e.printStackTrace();
 					   		    }
 	    }
+	    
+	    
+	    
 	    
 
 	    /**
@@ -192,7 +194,6 @@ public class IssueTable extends JTable{
 	   			e.printStackTrace();
 	   		    }
 	   	}
-	  
 	    
 	    /**
 	     * 
@@ -204,11 +205,6 @@ public class IssueTable extends JTable{
 	    }
 	    
 	    
-	    /**
-	     * This method returns a string of the current date the day it is called.
-	     * Used in the assIssue button.
-	     * @return current date as a string
-	     */
 	    public String currentDate(){
 		    Date d = new Date();
 			Calendar cal = Calendar.getInstance();

@@ -85,7 +85,7 @@ public class Main {
 					gui.getIt().getModel().addColumn("Location: ");
 
 					
-					for(Issues issue : gui.getIt().getIssueList()){
+					for(Issues issue : gui.getIt().getIssues()){
 						int priorInt = Integer.parseInt(issue.getPriority().trim());
 						int priorTxt = Integer.parseInt(gui.getTxtPriority().getText());
 						if(priorInt >= priorTxt){
@@ -124,7 +124,7 @@ public class Main {
 					gui.getIt().getModel().addColumn("Location: ");
 
 
-					for(Issues issue : gui.getIt().getIssueList()){
+					for(Issues issue : gui.getIt().getIssues()){
 						int dateInt = Integer.parseInt(issue.getCreated().replaceAll("/", ""));
 						int dateTxt = Integer.parseInt(gui.getTxtDate().getText().replaceAll("/", ""));
 						if(dateInt >= dateTxt){
@@ -188,36 +188,29 @@ public class Main {
 		});
 		
 		/**
-		 * Adds an issue depending on the user input.
+		 * Method under construction. 
 		 */
 		gui.getBtnAddIssue().addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			    	Issues is = new Issues(gui.getIt().maxIssueId() ,
-			    			gui.getTxtSearch().getText(),
+			    			gui.getTxtSearch().toString(),
 			    			gui.getIt().currentDate(),
 			    			gui.getTxtSearch().getText(),
 			    			gui.getTxtPriority().toString(),
 			    			gui.getTxtDate().getText());
-			    	gui.getIt().getIssueList().add(is);
+			    	gui.getIt().getIssues().add(is);
 			    	gui.getIt().tableForIssues();
 		};
 
   });
-		
-		/**
-		 * This actionslistener for the login button
-		 * checks if the user input is in the list of users.
-		 * If the user is not found, a textLabel is changed to "User not found."
-		 * and if true Sets the user to logged in.
-		 */
 		gui.getBtnLogin().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gui.authenticateLogin();
 				if(gui.authenticateLogin() == false){
-					gui.getTxtLoggedIn().setText("User not found.");
+					gui.getTxtLoggedIn().setText("Users not found.");
 				}
 			}
 		});

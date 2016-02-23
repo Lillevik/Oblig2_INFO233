@@ -39,14 +39,13 @@ public class IssueTable extends JTable{
 	
 		/**
 		 * Constructor for the IssueTable class.
-		 * The constructor runs some methods at runtime to fill 
-		 * certain arrays and arrayLists.
 		 */
 		public IssueTable(){
 			fillPrio();
 			fillUsers();
 			fillIssues();
 			tableForIssues();
+			
 		}
 	    
 		

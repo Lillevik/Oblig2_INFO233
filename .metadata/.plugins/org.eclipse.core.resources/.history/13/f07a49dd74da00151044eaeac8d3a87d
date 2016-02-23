@@ -209,8 +209,8 @@ public class Main {
 		/**
 		 * This actionslistener for the login button
 		 * checks if the user input is in the list of users.
-		 * If the user is not found, a textLabel is changed to "User not found."
-		 * and if true Sets the user to logged in.
+		 * If the user is not found, a textLabel is changed to "User not found."and
+		 * if it is true its changed aswell.
 		 */
 		gui.getBtnLogin().addActionListener(new ActionListener() {
 			@Override
