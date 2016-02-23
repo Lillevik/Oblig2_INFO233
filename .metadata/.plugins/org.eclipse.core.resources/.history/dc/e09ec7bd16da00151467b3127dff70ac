@@ -41,6 +41,7 @@ public class IssueTable extends JTable{
 		 */
 		public IssueTable(){
 			fillUsers();
+			listUniqueUsers();
 			fillIssues();
 			tableForIssues();
 			
@@ -62,10 +63,9 @@ public class IssueTable extends JTable{
 					      {
 					          Node node = nodelist.item(i);
 					          Element eElement = (Element) node;
-					          if(!users.contains(eElement.getAttribute("assigned_user")))
+					          if(!users.contains(eElement))
 					        	  users.add(eElement.getAttribute("assigned_user"));
 					      }
-					      System.out.println(users);
 					      	}
 					   			
 					   		    catch (Exception e) {
@@ -92,9 +92,11 @@ public class IssueTable extends JTable{
 		    model.setRowCount(0);
 	    	model.setColumnCount(0);
 	        model.addColumn("Users: ");
-
-	    	
+	    	Set<String> setUniqueNumbers = new LinkedHashSet<String>();
 	    	for(String x : users) {
+	    	    setUniqueNumbers.add(x);
+	    	}
+	    	for(String x : setUniqueNumbers) {
 	    		model.addRow(new Object[]{x});
 	    	}
 	    	}

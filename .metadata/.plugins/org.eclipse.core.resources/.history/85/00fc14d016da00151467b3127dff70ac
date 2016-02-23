@@ -208,7 +208,7 @@ public class Main {
 			    	Issues is = new Issues(gui.getIt().maxIssueId() , "dryan3", date, "Issue text", "99", "Norway");
 			    	gui.getIt().getIssues().add(is);
 			    	gui.getIt().tableForIssues();
-				gui.getIt().fillUsers();
+				
 		};
 	
   });

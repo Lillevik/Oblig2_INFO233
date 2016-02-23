@@ -34,6 +34,9 @@ public class Gui extends JFrame {
     private JTextField txtSearch;
 	private JTextField txtDate;
 	private JTextField txtPriority;
+	
+	//JComboBox
+	private JComboBox chooseUser= new JComboBox();
     
     //JLabels
     private JLabel searchLabel;
@@ -46,9 +49,6 @@ public class Gui extends JFrame {
     
     //JTable
     private JTable qTable = new JTable(it.getModel());
-    
-  //JComboBox
-  	private JComboBox chooseUser= new JComboBox(it.getUsers().toArray());
     
 
     private CardLayout layout = new CardLayout();
@@ -172,7 +172,6 @@ public class Gui extends JFrame {
 		panelBackLeft.add(btnListAllUsers);
         panelBackLeft.add(btnListAllIssues);
         panelBackLeft.add(btnAddIssue);
-        panelBackLeft.add(chooseUser);
         panelBackLeft.add(txtInfo);
         panelMidTopLeft.add(new JScrollPane(qTable));
     }
@@ -457,19 +456,5 @@ public class Gui extends JFrame {
 	 */
 	public void setBtnAddIssue(JButton btnAddIssue) {
 		this.btnAddIssue = btnAddIssue;
-	}
-
-	/**
-	 * @return the chooseUser
-	 */
-	public JComboBox getChooseUser() {
-		return chooseUser;
-	}
-
-	/**
-	 * @param chooseUser the chooseUser to set
-	 */
-	public void setChooseUser(JComboBox chooseUser) {
-		this.chooseUser = chooseUser;
 	}
 }

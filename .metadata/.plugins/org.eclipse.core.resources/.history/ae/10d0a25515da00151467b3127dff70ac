@@ -48,7 +48,7 @@ public class Gui extends JFrame {
     private JTable qTable = new JTable(it.getModel());
     
   //JComboBox
-  	private JComboBox chooseUser= new JComboBox(it.getUsers().toArray());
+  	private JComboBox chooseUser= new JComboBox(it.getUserStrings());
     
 
     private CardLayout layout = new CardLayout();
@@ -172,7 +172,6 @@ public class Gui extends JFrame {
 		panelBackLeft.add(btnListAllUsers);
         panelBackLeft.add(btnListAllIssues);
         panelBackLeft.add(btnAddIssue);
-        panelBackLeft.add(chooseUser);
         panelBackLeft.add(txtInfo);
         panelMidTopLeft.add(new JScrollPane(qTable));
     }

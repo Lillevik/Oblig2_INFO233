@@ -172,7 +172,6 @@ public class Gui extends JFrame {
 		panelBackLeft.add(btnListAllUsers);
         panelBackLeft.add(btnListAllIssues);
         panelBackLeft.add(btnAddIssue);
-        panelBackLeft.add(chooseUser);
         panelBackLeft.add(txtInfo);
         panelMidTopLeft.add(new JScrollPane(qTable));
     }

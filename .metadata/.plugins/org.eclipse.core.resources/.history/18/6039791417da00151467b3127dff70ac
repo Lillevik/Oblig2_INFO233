@@ -41,6 +41,7 @@ public class IssueTable extends JTable{
 		 */
 		public IssueTable(){
 			fillUsers();
+			listUniqueUsers();
 			fillIssues();
 			tableForIssues();
 			
@@ -92,9 +93,11 @@ public class IssueTable extends JTable{
 		    model.setRowCount(0);
 	    	model.setColumnCount(0);
 	        model.addColumn("Users: ");
-
-	    	
+	    	Set<String> setUniqueNumbers = new LinkedHashSet<String>();
 	    	for(String x : users) {
+	    	    setUniqueNumbers.add(x);
+	    	}
+	    	for(String x : setUniqueNumbers) {
 	    		model.addRow(new Object[]{x});
 	    	}
 	    	}
