@@ -2,8 +2,6 @@ package no.uib.info233.v2016.puz001.esj002.Oblig2.Main;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.*;
-
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Gui.Gui;
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Issue.Issues;
 
@@ -27,8 +25,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Gui gui = new Gui();
-
-
+		System.out.println(gui.getIt().getUsers());
 
 		/**
 		 * This button lists all the issues from the user given
@@ -183,6 +180,7 @@ public class Main {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gui.getIt().addUser(gui.getTxtSearch().getText());
+				System.out.println("Added the user " + gui.getTxtSearch().getText() + " to the list of users.");
 				gui.getIt().listUniqueUsers();
 
 				
@@ -197,17 +195,26 @@ public class Main {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			    	Issues is = new Issues(gui.getIt().maxIssueId() ,
-			    			gui.getChooseUser().getSelectedItem().toString(),
+			    			gui.getTxtSearch().toString(),
 			    			gui.getIt().currentDate(),
 			    			gui.getTxtSearch().getText(),
-			    			gui.getChoosePrio().getSelectedItem().toString(),
+			    			gui.getTxtPriority().toString(),
 			    			gui.getTxtDate().getText());
-			    	
 			    	gui.getIt().getIssues().add(is);
-			    gui.getIt().tableForIssues();
+			    	gui.getIt().tableForIssues();
 		};
-	});
-		
 
+  });
+		gui.getBtnLogin().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gui.authenticateLogin();
+				if(gui.authenticateLogin() == false){
+					gui.getTxtLoggedIn().setText("Users not found.");
+				}
+			}
+		});
+	}
 }
-}
+
+
