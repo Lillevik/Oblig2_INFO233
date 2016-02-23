@@ -197,12 +197,14 @@ public class Main {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			    	Issues is = new Issues(gui.getIt().maxIssueId() ,
-			    			gui.getChooseUser().getSelectedItem().toString(),
-			    			gui.getIt().currentDate(),
-			    			gui.getTxtSearch().getText(),
-			    			gui.getChoosePrio().getSelectedItem().toString(),
-			    			gui.getTxtDate().getText());
+				Date d = new Date();
+				Calendar cal = Calendar.getInstance();
+				cal.setTime(d);
+				int month = cal.get(Calendar.MONTH) + 1;
+				int day = cal.get(Calendar.DAY_OF_MONTH);
+				int year = cal.get(Calendar.YEAR);
+				String date = month + "/" + day + "/" + year;
+			    	Issues is = new Issues(gui.getIt().maxIssueId() , gui.getChooseUser().getSelectedItem().toString(), date, "Issue text", "99", "Norway");
 			    	gui.getIt().getIssues().add(is);
 			    	gui.getIt().tableForIssues();
 				gui.getIt().fillUsers();

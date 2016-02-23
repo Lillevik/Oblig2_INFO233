@@ -49,7 +49,6 @@ public class Gui extends JFrame {
     
   //JComboBox
   	private JComboBox chooseUser = new JComboBox(it.getUsers().toArray());
-  	private JComboBox choosePrio = new JComboBox(it.getPrio().toArray());
     
 
     private CardLayout layout = new CardLayout();
@@ -174,9 +173,7 @@ public class Gui extends JFrame {
         panelBackLeft.add(btnListAllIssues);
         panelBackLeft.add(btnAddIssue);
         panelBackLeft.add(chooseUser);
-        panelBackLeft.add(choosePrio);
         panelBackLeft.add(txtInfo);
-       
         panelMidTopLeft.add(new JScrollPane(qTable));
     }
     
@@ -502,19 +499,5 @@ public class Gui extends JFrame {
 	 */
 	public void setTxtPriority(JTextField txtPriority) {
 		this.txtPriority = txtPriority;
-	}
-
-	/**
-	 * @return the choosePrio
-	 */
-	public JComboBox getChoosePrio() {
-		return choosePrio;
-	}
-
-	/**
-	 * @param choosePrio the choosePrio to set
-	 */
-	public void setChoosePrio(JComboBox choosePrio) {
-		this.choosePrio = choosePrio;
 	}
 }

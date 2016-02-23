@@ -51,11 +51,10 @@ public class IssueTable extends JTable{
 		
 		public void fillPrio(){
 			
-			for (int a = 0; a < 101; a++) {
-			    prio.add(a);
+			for (int a = 0; a < 100; a++) {
+			    prio[a] = a + 1;
 			}
 		}
-		
 		
 	    /**
 	     * This method takes all the assigned users from the 
@@ -205,18 +204,7 @@ public class IssueTable extends JTable{
 	    }
 	    
 	    
-	    public String currentDate(){
-		Date d = new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(d);
-		int month = cal.get(Calendar.MONTH) + 1;
-		int day = cal.get(Calendar.DAY_OF_MONTH);
-		int year = cal.get(Calendar.YEAR);
-		String date = month + "/" + day + "/" + year;
-		return date;
-	    }    
-		
-		
+	   	    
 	    /**
 	     * 
 	 * @return the model
@@ -294,7 +282,7 @@ public class IssueTable extends JTable{
 	/**
 	 * @return the prio
 	 */
-	public ArrayList<Integer> getPrio() {
+	public int[] getPrio() {
 		return prio;
 	}
 
@@ -302,12 +290,11 @@ public class IssueTable extends JTable{
 	/**
 	 * @param prio the prio to set
 	 */
-	public void setPrio(ArrayList<Integer> prio) {
+	public void setPrio(int[] prio) {
 		this.prio = prio;
 	}
 
 }
-
 	
 
 

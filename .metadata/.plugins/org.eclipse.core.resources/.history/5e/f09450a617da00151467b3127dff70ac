@@ -48,8 +48,7 @@ public class Gui extends JFrame {
     private JTable qTable = new JTable(it.getModel());
     
   //JComboBox
-  	private JComboBox chooseUser = new JComboBox(it.getUsers().toArray());
-  	private JComboBox choosePrio = new JComboBox(it.getPrio().toArray());
+  	private JComboBox chooseUser= new JComboBox(it.getUsers().toArray());
     
 
     private CardLayout layout = new CardLayout();
@@ -174,9 +173,7 @@ public class Gui extends JFrame {
         panelBackLeft.add(btnListAllIssues);
         panelBackLeft.add(btnAddIssue);
         panelBackLeft.add(chooseUser);
-        panelBackLeft.add(choosePrio);
         panelBackLeft.add(txtInfo);
-       
         panelMidTopLeft.add(new JScrollPane(qTable));
     }
     
@@ -474,47 +471,5 @@ public class Gui extends JFrame {
 	 */
 	public void setChooseUser(JComboBox chooseUser) {
 		this.chooseUser = chooseUser;
-	}
-
-	/**
-	 * @param btnDate the btnDate to set
-	 */
-	public void setBtnDate(JButton btnDate) {
-		this.btnDate = btnDate;
-	}
-
-	/**
-	 * @param btnPrior the btnPrior to set
-	 */
-	public void setBtnPrior(JButton btnPrior) {
-		this.btnPrior = btnPrior;
-	}
-
-	/**
-	 * @param txtDate the txtDate to set
-	 */
-	public void setTxtDate(JTextField txtDate) {
-		this.txtDate = txtDate;
-	}
-
-	/**
-	 * @param txtPriority the txtPriority to set
-	 */
-	public void setTxtPriority(JTextField txtPriority) {
-		this.txtPriority = txtPriority;
-	}
-
-	/**
-	 * @return the choosePrio
-	 */
-	public JComboBox getChoosePrio() {
-		return choosePrio;
-	}
-
-	/**
-	 * @param choosePrio the choosePrio to set
-	 */
-	public void setChoosePrio(JComboBox choosePrio) {
-		this.choosePrio = choosePrio;
 	}
 }

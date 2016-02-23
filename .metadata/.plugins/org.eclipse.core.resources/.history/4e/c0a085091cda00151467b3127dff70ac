@@ -34,29 +34,18 @@ public class IssueTable extends JTable{
 	private DefaultTableModel model = new DefaultTableModel();
 	private ArrayList<String> users = new ArrayList <String>();
 	private ArrayList<Issues> issues = new ArrayList <Issues>();
-	private ArrayList <Integer>prio = new ArrayList<Integer>() ;
 	
 	
 		/**
 		 * Constructor for the IssueTable class.
 		 */
 		public IssueTable(){
-			fillPrio();
 			fillUsers();
 			fillIssues();
 			tableForIssues();
 			
 		}
 	    
-		
-		public void fillPrio(){
-			
-			for (int a = 0; a < 101; a++) {
-			    prio.add(a);
-			}
-		}
-		
-		
 	    /**
 	     * This method takes all the assigned users from the 
 	     * xml document "old_issues.xml" and places them into the ArrayList users. 
@@ -205,18 +194,7 @@ public class IssueTable extends JTable{
 	    }
 	    
 	    
-	    public String currentDate(){
-		Date d = new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(d);
-		int month = cal.get(Calendar.MONTH) + 1;
-		int day = cal.get(Calendar.DAY_OF_MONTH);
-		int year = cal.get(Calendar.YEAR);
-		String date = month + "/" + day + "/" + year;
-		return date;
-	    }    
-		
-		
+	   	    
 	    /**
 	     * 
 	 * @return the model
@@ -290,24 +268,7 @@ public class IssueTable extends JTable{
 		this.issues = issues;
 	}
 
-
-	/**
-	 * @return the prio
-	 */
-	public ArrayList<Integer> getPrio() {
-		return prio;
-	}
-
-
-	/**
-	 * @param prio the prio to set
-	 */
-	public void setPrio(ArrayList<Integer> prio) {
-		this.prio = prio;
-	}
-
 }
-
 	
 
 
