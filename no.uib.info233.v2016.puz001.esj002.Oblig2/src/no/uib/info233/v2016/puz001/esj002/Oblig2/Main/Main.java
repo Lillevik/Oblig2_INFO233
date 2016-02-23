@@ -2,8 +2,7 @@ package no.uib.info233.v2016.puz001.esj002.Oblig2.Main;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.*;
 
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Gui.Gui;
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Issue.Issues;
@@ -198,7 +197,15 @@ public class Main {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			    	Issues is = new Issues(gui.getIt().maxIssueId() , "marius", "16/8/2016", "Issue text", "99", "Norway");
+				Date d = new Date();
+				Calendar cal = Calendar.getInstance();
+				cal.setTime(d);
+				int month = cal.get(Calendar.MONTH) + 1;
+				int day = cal.get(Calendar.DAY_OF_MONTH);
+				int year = cal.get(Calendar.YEAR);
+				String date = month + "/" + day + "/" + year;
+				System.out.println(d);
+			    	Issues is = new Issues(gui.getIt().maxIssueId() , "dryan3", date, "Issue text", "99", "Norway");
 			    	gui.getIt().getIssues().add(is);
 			    	gui.getIt().tableForIssues();
 				

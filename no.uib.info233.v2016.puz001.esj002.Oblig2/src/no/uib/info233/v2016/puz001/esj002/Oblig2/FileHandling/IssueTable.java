@@ -185,6 +185,10 @@ public class IssueTable extends JTable{
 	   		    }
 	   	}
 	    
+	    /**
+	     * 
+	     * @return The highest current Issue ID from the issues list.
+	     */
 	    public String maxIssueId(){
 	    	Comparator<Issues> iss = Comparator.comparing(Issues::idInt);
 	    	return Integer.toString(Collections.max(issues, iss).idInt() + 1);

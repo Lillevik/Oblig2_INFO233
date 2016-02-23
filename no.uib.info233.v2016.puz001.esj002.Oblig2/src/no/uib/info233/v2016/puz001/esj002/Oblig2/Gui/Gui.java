@@ -34,6 +34,9 @@ public class Gui extends JFrame {
     private JTextField txtSearch;
 	private JTextField txtDate;
 	private JTextField txtPriority;
+	
+	//JComboBox
+	private JComboBox chooseUser= new JComboBox();
     
     //JLabels
     private JLabel searchLabel;

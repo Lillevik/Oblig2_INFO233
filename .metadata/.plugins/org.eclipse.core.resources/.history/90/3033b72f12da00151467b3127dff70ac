@@ -1,0 +1,28 @@
+package no.uib.info233.v2016.puz001.esj002.Oblig2.Main;
+
+public class SimpleDateFormat {
+
+	/**
+	 * @param date
+	 */
+	public SimpleDateFormat(String date) {
+		super();
+		this.date = date;
+	}
+
+	private String date;
+
+	/**
+	 * @return the date
+	 */
+	public String getDate() {
+		return date;
+	}
+
+	/**
+	 * @param date the date to set
+	 */
+	public void setDate(String date) {
+		this.date = date;
+	}
+}
