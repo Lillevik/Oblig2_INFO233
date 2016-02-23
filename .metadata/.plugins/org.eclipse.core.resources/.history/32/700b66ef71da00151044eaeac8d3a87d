@@ -2,7 +2,12 @@ package no.uib.info233.v2016.puz001.esj002.Oblig2.Main;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+<<<<<<< HEAD
+=======
+import java.util.*;
 
+import no.uib.info233.v2016.puz001.esj002.Oblig2.FileHandling.IssueTable;
+>>>>>>> origin/master
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Gui.Gui;
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Issue.Issues;
 
@@ -26,6 +31,11 @@ public class Main {
 
 	public static void main(String[] args) {
 		Gui gui = new Gui();
+<<<<<<< HEAD
+		System.out.println(gui.getIt().getUsers());
+=======
+
+>>>>>>> origin/master
 
 		/**
 		 * This button lists all the issues from the user given
@@ -208,11 +218,26 @@ public class Main {
 		gui.getBtnLogin().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
 				gui.authenticateLogin();
 				if(gui.authenticateLogin() == false){
 					gui.getTxtLoggedIn().setText("Users not found.");
+=======
+
+				if (ISSUES KLASSE HER MARIUS.getAssigned().equals(gui.getTxtLogin().getText()) && gui.getPasswordField() != null) {
+					gui.getTxtLoggedIn().setText("Logged in as: " + gui.getTxtLogin().getText());
+
+				} else {
+					gui.getTxtLoggedIn().setText("User not found");
+>>>>>>> origin/master
 				}
 			}
 		});
 	}
+<<<<<<< HEAD
 }
+
+
+=======
+}
+>>>>>>> origin/master

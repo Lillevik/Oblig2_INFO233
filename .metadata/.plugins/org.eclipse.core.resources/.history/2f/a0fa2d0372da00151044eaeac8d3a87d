@@ -26,6 +26,11 @@ public class Main {
 
 	public static void main(String[] args) {
 		Gui gui = new Gui();
+<<<<<<< HEAD
+		System.out.println(gui.getIt().getUsers());
+=======
+
+>>>>>>> origin/master
 
 		/**
 		 * This button lists all the issues from the user given
