@@ -17,6 +17,7 @@ public class Gui extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel spine;
+	private LoginPanel lp = new LoginPanel();
 	private JPanel panelBackRight;
 	private JPanel panelBackLeft;
 	private JPanel panelMidTopLeft;
@@ -31,15 +32,14 @@ public class Gui extends JFrame {
 	private JButton btnAddIssue;
 	private JButton btnDate;
 	private JButton btnPrior;
-	private JButton btnLogin;
-
+	
 	//JTextFields
 	private JTextField txtSearch;
 	private JTextField txtDate;
 	private JTextField txtPriority;
 	private JTextField txtAddIssue;
 	private JTextField txtAddLocation;
-	private JTextField txtLogin;
+
 
 
 	//JLabels
@@ -55,10 +55,9 @@ public class Gui extends JFrame {
 	//JTable
 	private JTable qTable = new JTable(it.getModel());
 
-	//passwordField
-	private JPasswordField passwordField = new JPasswordField();
-
 	private CardLayout layout = new CardLayout();
+	
+
 
 	
 	
@@ -73,8 +72,8 @@ public class Gui extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		spine.setLayout(new BorderLayout(0, 0));
 		spine.setPreferredSize(new Dimension(700, 600));
-		setContentPane(spine);
 		setupComponents();
+		setContentPane(lp);
 		pack();
 		setVisible(true);
 	}
@@ -105,7 +104,6 @@ public class Gui extends JFrame {
 		txtPriority = new JTextField("search/add Prior");
 		txtAddIssue = new JTextField("add Issue");
 		txtAddLocation = new JTextField("add Location");
-		txtLogin = new JTextField("Username");
 
 		//Sets up the JPanel panelBackLeft
 		panelBackLeft.setPreferredSize(new Dimension(200, 300));
@@ -131,10 +129,6 @@ public class Gui extends JFrame {
 		txtPriority.setPreferredSize(new Dimension(190, 20));
 		txtAddIssue.setPreferredSize(new Dimension(190, 20));
 		txtAddLocation.setPreferredSize(new Dimension(190, 20));
-		txtLogin.setPreferredSize(new Dimension(90, 20));
-
-		//password field setup
-		passwordField.setPreferredSize(new Dimension(90, 20));
 
 
 		//Sets up the buttons
@@ -145,7 +139,7 @@ public class Gui extends JFrame {
 		btnAddIssue = new JButton("Add issue");
 		btnDate = new JButton("Search Date");
 		btnPrior = new JButton("Search Prior");
-		btnLogin = new JButton("Login");
+
 
 		//size the buttons
 		btnSearch.setSize(new Dimension( 20, 20));
@@ -187,9 +181,7 @@ public class Gui extends JFrame {
 		panelBackLeftTop.add(btnListAllIssues);
 		panelBackLeftTop.add(txtInfo);
 
-		panelBackLeftBot.add(txtLogin);
-		panelBackLeftBot.add(passwordField);
-		panelBackLeftBot.add(btnLogin);
+
 		panelBackLeftBot.add(txtLoggedIn);
 
 		panelMidTopLeft.add(new JScrollPane(qTable));
@@ -204,11 +196,13 @@ public class Gui extends JFrame {
 	@SuppressWarnings("deprecation")
 	public boolean authenticateLogin(){
 		for(String s : getIt().getUsers()){
-			if(s.equals(getTxtLogin().getText()) && !getPasswordField().getText().equals(null)){
-				getTxtLoggedIn().setText("Logged in as: " + getTxtLogin().getText());
+			if(s.equals(lp.getUserText().getText()) && !lp.getPasswordText().getText().equals(null)){
+				getTxtLoggedIn().setText("Logged in as: " + lp.getUserText().getText());
+				setContentPane(getSpine());
 				return true;
 			} 
 		} 
+		
 		return false;
 	}
 	
@@ -536,19 +530,6 @@ public class Gui extends JFrame {
 		this.btnPrior = btnPrior;
 	}
 
-	/**
-	 * @return the btnLogin
-	 */
-	public JButton getBtnLogin() {
-		return btnLogin;
-	}
-
-	/**
-	 * @param btnLogin the btnLogin to set
-	 */
-	public void setBtnLogin(JButton btnLogin) {
-		this.btnLogin = btnLogin;
-	}
 
 	/**
 	 * @return the txtDate
@@ -606,19 +587,6 @@ public class Gui extends JFrame {
 		this.txtAddLocation = txtAddLocation;
 	}
 
-	/**
-	 * @return the txtLogin
-	 */
-	public JTextField getTxtLogin() {
-		return txtLogin;
-	}
-
-	/**
-	 * @param txtLogin the txtLogin to set
-	 */
-	public void setTxtLogin(JTextField txtLogin) {
-		this.txtLogin = txtLogin;
-	}
 
 	/**
 	 * @return the txtLoggedIn
@@ -634,18 +602,19 @@ public class Gui extends JFrame {
 		this.txtLoggedIn = txtLoggedIn;
 	}
 
+
 	/**
-	 * @return the passwordField
+	 * @return the lp
 	 */
-	public JPasswordField getPasswordField() {
-		return passwordField;
+	public LoginPanel getLp() {
+		return lp;
 	}
 
 	/**
-	 * @param passwordField the passwordField to set
+	 * @param lp the lp to set
 	 */
-	public void setPasswordField(JPasswordField passwordField) {
-		this.passwordField = passwordField;
+	public void setLp(LoginPanel lp) {
+		this.lp = lp;
 	}
 
 

@@ -212,12 +212,12 @@ public class Main {
 		 * If the user is not found, a textLabel is changed to "User not found."
 		 * and if true Sets the user to logged in.
 		 */
-		gui.getBtnLogin().addActionListener(new ActionListener() {
+		gui.getLp().getLoginButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gui.authenticateLogin();
 				if(gui.authenticateLogin() == false){
-					gui.getTxtLoggedIn().setText("User not found.");
+					gui.getLp().getStatus().setText("Username or password is incorrect.");
 				}
 			}
 		});
