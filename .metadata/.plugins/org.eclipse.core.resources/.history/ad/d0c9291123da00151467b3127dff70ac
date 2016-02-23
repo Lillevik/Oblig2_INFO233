@@ -202,11 +202,12 @@ public class Main {
 			    			gui.getTxtSearch().getText(),
 			    			gui.getChoosePrio().getSelectedItem().toString(),
 			    			gui.getTxtDate().getText());
-			    	
-			    	gui.getIt().getIssues().add(is);
-			    gui.getIt().tableForIssues();
+			    			gui.getIt().getIssues().add(is);
+			    			gui.getIt().tableForIssues();
+//			    			gui.getIt().fillUsers();
 		};
-	});
+	
+  });
 		
 
 }

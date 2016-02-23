@@ -183,6 +183,8 @@ public class Main {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gui.getIt().addUser(gui.getTxtSearch().getText());
+				gui.getIt().getUsers().toArray();
+				
 				gui.getIt().listUniqueUsers();
 
 				
@@ -202,11 +204,12 @@ public class Main {
 			    			gui.getTxtSearch().getText(),
 			    			gui.getChoosePrio().getSelectedItem().toString(),
 			    			gui.getTxtDate().getText());
-			    	
 			    	gui.getIt().getIssues().add(is);
-			    gui.getIt().tableForIssues();
+			    	gui.getIt().tableForIssues();
+				gui.getIt().fillUsers();
 		};
-	});
+	
+  });
 		
 
 }
