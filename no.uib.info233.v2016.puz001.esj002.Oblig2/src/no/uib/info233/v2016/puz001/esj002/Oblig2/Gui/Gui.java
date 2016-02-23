@@ -12,133 +12,143 @@ import java.awt.*;
  */
 public class Gui extends JFrame {
 
-    /**
+	/**
 	 * The fields of the Gui class
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel spine;
-    private JPanel panelBackRight;
-    private JPanel panelBackLeft;
-    private JPanel panelMidTopLeft;
-    
-    //Jbuttons
-    private JButton btnSearch;
-    private JButton btnListAllIssues;
+	private JPanel panelBackRight;
+	private JPanel panelBackLeft;
+	private JPanel panelMidTopLeft;
+	private JPanel panelBackLeftTop;
+	private JPanel panelBackLeftBot;
+
+	//Jbuttons
+	private JButton btnSearch;
+	private JButton btnListAllIssues;
 	private JButton btnListAllUsers;
 	private JButton btnAddUser;
 	private JButton btnAddIssue;
+	private JButton btnAddLocation;
 	private JButton btnDate;
 	private JButton btnPrior;
-    
-    //JTextFields 
-    private JTextField txtSearch;
+	private JButton btnLogin;
+
+	//JTextFields
+	private JTextField txtSearch;
 	private JTextField txtDate;
 	private JTextField txtPriority;
-    
-    //JLabels
-    private JLabel searchLabel;
-    
-    //JTextPanes
-    private JTextPane txtInfo;
-    
-    //Instance of the IssueTable class
-    private IssueTable it = new IssueTable();
-    
-    //JTable
-    private JTable qTable = new JTable(it.getModel());
-    
-  //JComboBox
-  	private JComboBox chooseUser = new JComboBox(it.getUsers().toArray());
-  	private JComboBox choosePrio = new JComboBox(it.getPrio().toArray());
-    
+	private JTextField txtAddIssue;
+	private JTextField txtAddLocation;
+	private JTextField txtLogin;
 
-    private CardLayout layout = new CardLayout();
-    private AddIssue addissue = new AddIssue();
-    
-    
-    /**
-     * Constructor for the Gui class which extends from JFrame.
-     * Creates the Gui and starts it up.
-     */
-    
-    public Gui(){
-    	super("Issue Tracker");
-        spine = new JPanel(layout);
+	//JComboBox
+	private JComboBox chooseUser= new JComboBox();
+
+	//JLabels
+	private JLabel searchLabel;
+
+	//JTextPanes
+	private JTextPane txtInfo;
+	private JTextPane txtLoggedIn = new JTextPane();
+
+	//Instance of the IssueTable class
+	private IssueTable it = new IssueTable();
+
+	//JTable
+	private JTable qTable = new JTable(it.getModel());
+
+	//passwordField
+	private JPasswordField passwordField = new JPasswordField();
+
+	private CardLayout layout = new CardLayout();
+	private AddIssue addissue = new AddIssue();
+
+	/**
+	 * Constructor for the Gui class which extends from JFrame.
+	 * Creates the Gui and starts it up.
+	 */
+
+	public Gui(){
+		super("Issue Tracker");
+		spine = new JPanel(layout);
 //        add(addissue, "add_issue");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		spine.setLayout(new BorderLayout(0, 0));
-		spine.setPreferredSize(new Dimension(700, 450));
+		spine.setPreferredSize(new Dimension(700, 500));
 		setContentPane(spine);
 		setupComponents();
 		pack();
 		setVisible(true);
-    }
-
-	public JTextField getTxtDate() {
-		return txtDate;
-	}
-
-	public JTextField getTxtPriority() {
-		return txtPriority;
-	}
-
-	public JButton getBtnDate() {
-		return btnDate;
-	}
-
-	public JButton getBtnPrior() {
-		return btnPrior;
 	}
 
 	/**
-     * Initializes components and
-     * sets them up with custom designs.
-     */
-    public void setupComponents(){
-    	//Sets up the JTable
-    	qTable.setBackground(Color.white);
-    	qTable.getAutoResizeMode();
-    	qTable.setFillsViewportHeight(true);
+	 * Initializes components and
+	 * sets them up with custom designs.
+	 */
+	public void setupComponents(){
+		//Sets up the JTable
+		qTable.setBackground(Color.white);
+		qTable.getAutoResizeMode();
+		qTable.setFillsViewportHeight(true);
 
-    	//Initialize the JPanels
-        panelBackLeft = new JPanel();
+		//Initialize the JPanels
+		panelBackLeft = new JPanel();
+		panelBackRight = new JPanel();
+		panelMidTopLeft = new JPanel();
+		panelBackLeftTop = new JPanel();
+		panelBackLeftBot = new JPanel();
 
-        panelBackRight = new JPanel();
-        panelMidTopLeft = new JPanel();
+		//Initialize the JLabels
+		searchLabel = new JLabel();
 
-        //Initialize the JLabels
-        searchLabel = new JLabel();
-        
-        //Initialize the JTexFields
-        txtSearch = new JTextField("Input username here");
-		txtDate = new JTextField("Date");
-		txtPriority = new JTextField("Prior");
-        
-        //Sets up the JPanel panelBackLeft
-        panelBackLeft.setPreferredSize(new Dimension(200, 300));
-        panelBackLeft.setBackground(Color.gray);
+		//Initialize the JTexFields
+		txtSearch = new JTextField("search/add User");
+		txtDate = new JTextField("search/add Date");
+		txtPriority = new JTextField("search/add Prior");
+		txtAddIssue = new JTextField("add Issue");
+		txtAddLocation = new JTextField("add Location");
+		txtLogin = new JTextField("Username");
 
-        //Sets up the JPanel panelBackRight
-        panelBackRight.setPreferredSize(new Dimension(200, 50));
-        panelBackRight.setBackground(Color.white);
-   
-        //Sets up the JLabel searchLabel
-        searchLabel.setPreferredSize(new Dimension(190, 20));
-        searchLabel.setText("Query here");
-        
-        //Sets up the JTextfiels
-        txtSearch.setPreferredSize(new Dimension(190, 20));
+		//Sets up the JPanel panelBackLeft
+		panelBackLeft.setPreferredSize(new Dimension(200, 300));
+		panelBackLeft.setBackground(Color.gray);
+		panelBackLeft.setLayout(new BorderLayout());
+
+		//Sets up the JPanel panelBackRight
+		panelBackRight.setPreferredSize(new Dimension(200, 50));
+		panelBackRight.setBackground(Color.white);
+
+		//sets panelBackLeftTop and bot
+		panelBackLeftTop.setBackground(Color.GRAY);
+		panelBackLeftBot.setBackground(Color.LIGHT_GRAY);
+		panelBackLeftTop.setPreferredSize(new Dimension(100, 440));
+
+		//Sets up the JLabel searchLabel
+		searchLabel.setPreferredSize(new Dimension(190, 20));
+		searchLabel.setText("Query here");
+
+		//Sets up the JTextfiels
+		txtSearch.setPreferredSize(new Dimension(190, 20));
 		txtDate.setPreferredSize(new Dimension(50, 20));
 		txtPriority.setPreferredSize(new Dimension(50, 20));
+		txtAddIssue.setPreferredSize(new Dimension(190, 60));
+		txtAddLocation.setPreferredSize(new Dimension(50, 20));
 
-        //Sets up the buttons
-		btnSearch = new JButton("Search");
-        btnListAllIssues = new JButton("List Issues");
+		//password field setup
+		passwordField.setPreferredSize(new Dimension(50, 20));
+
+
+		//Sets up the buttons
+		btnSearch = new JButton("Search User");
+		btnListAllIssues = new JButton("List Issues");
 		btnListAllUsers = new JButton("List users");
 		btnAddUser = new JButton("Add user");
 		btnAddIssue = new JButton("Add issue");
-		btnDate = new JButton("date");
-		btnPrior = new JButton("prior");
+		btnAddLocation = new JButton("Add Location");
+		btnDate = new JButton("Search Date");
+		btnPrior = new JButton("Search Prior");
+		btnLogin = new JButton("Login");
 
 		//size the buttons
 		btnSearch.setSize(new Dimension( 20, 20));
@@ -146,41 +156,49 @@ public class Gui extends JFrame {
 		btnAddUser.setSize(new Dimension(20, 20));
 		btnListAllIssues.setSize(new Dimension( 20, 20));
 
+		//Sets up the JLabels
+		txtInfo = new JTextPane();
+		txtInfo.setText("Fill a field and press the correct button to search. Date field -> Date btn etc");
+		txtInfo.setPreferredSize(new Dimension(190, 100));
+		txtInfo.setBackground(Color.gray);
+		txtLoggedIn.setText("Not logged in");
+		txtLoggedIn.setBackground(Color.LIGHT_GRAY);
+
+		//Adds the components to the Panels
+		spine.add(panelBackRight, BorderLayout.CENTER);
+		spine.add(panelBackLeft, BorderLayout.WEST);
+
+		panelBackRight.add(panelMidTopLeft);
+
+		panelBackLeft.add(panelBackLeftTop, BorderLayout.NORTH);
+		panelBackLeft.add(panelBackLeftBot, BorderLayout.CENTER);
+
+		panelBackLeftTop.add(searchLabel);
+		panelBackLeftTop.add(txtSearch);
+		panelBackLeftTop.add(txtDate);
+		panelBackLeftTop.add(txtPriority);
+		panelBackLeftTop.add(txtAddLocation);
+		panelBackLeftTop.add(txtAddIssue);
+		panelBackLeftTop.add(btnSearch);
+		panelBackLeftTop.add(btnDate);
+		panelBackLeftTop.add(btnPrior);
+		panelBackLeftTop.add(btnAddLocation);
+		panelBackLeftTop.add(btnAddIssue);
+		panelBackLeftTop.add(btnAddUser);
+		panelBackLeftTop.add(btnAddIssue);
+		panelBackLeftTop.add(btnListAllUsers);
+		panelBackLeftTop.add(btnListAllIssues);
+		panelBackLeftTop.add(txtInfo);
+
+		panelBackLeftBot.add(txtLogin);
+		panelBackLeftBot.add(passwordField);
+		panelBackLeftBot.add(btnLogin);
+		panelBackLeftBot.add(txtLoggedIn);
+
+		panelMidTopLeft.add(new JScrollPane(qTable));
+	}
 
 
-		
-		
-		
-
-        //Sets up the JLabel txtInfo
-        txtInfo = new JTextPane();
-        txtInfo.setText("Made by Puz001 and Esj002");
-        txtInfo.setPreferredSize(new Dimension(190, 500));
-        txtInfo.setBackground(Color.gray);
-
-        //Adds the components to the Panels
-        spine.add(panelBackRight, BorderLayout.CENTER);
-        spine.add(panelBackLeft, BorderLayout.WEST);
-        panelBackRight.add(panelMidTopLeft);
-        panelBackLeft.add(searchLabel);
-        panelBackLeft.add(txtSearch);
-		panelBackLeft.add(txtDate);
-		panelBackLeft.add(txtPriority);
-        panelBackLeft.add(btnSearch);
-		panelBackLeft.add(btnDate);
-		panelBackLeft.add(btnPrior);
-        panelBackLeft.add(btnAddUser);
-		panelBackLeft.add(btnListAllUsers);
-        panelBackLeft.add(btnListAllIssues);
-        panelBackLeft.add(btnAddIssue);
-        panelBackLeft.add(chooseUser);
-        panelBackLeft.add(choosePrio);
-        panelBackLeft.add(txtInfo);
-       
-        panelMidTopLeft.add(new JScrollPane(qTable));
-    }
-    
-    
 	/**
 	 * @return the panelBackRight
 	 */
@@ -462,59 +480,59 @@ public class Gui extends JFrame {
 		this.btnAddIssue = btnAddIssue;
 	}
 
-	/**
-	 * @return the chooseUser
-	 */
+	public JPasswordField getPasswordField() {
+		return passwordField;
+	}
+
+	public JTextPane getTxtLoggedIn() {
+		return txtLoggedIn;
+	}
+
 	public JComboBox getChooseUser() {
 		return chooseUser;
 	}
 
-	/**
-	 * @param chooseUser the chooseUser to set
-	 */
-	public void setChooseUser(JComboBox chooseUser) {
-		this.chooseUser = chooseUser;
+	public JTextField getTxtLogin() {
+		return txtLogin;
 	}
 
-	/**
-	 * @param btnDate the btnDate to set
-	 */
-	public void setBtnDate(JButton btnDate) {
-		this.btnDate = btnDate;
+	public JTextField getTxtAddLocation() {
+		return txtAddLocation;
 	}
 
-	/**
-	 * @param btnPrior the btnPrior to set
-	 */
-	public void setBtnPrior(JButton btnPrior) {
-		this.btnPrior = btnPrior;
+	public JTextField getTxtAddIssue() {
+		return txtAddIssue;
 	}
 
-	/**
-	 * @param txtDate the txtDate to set
-	 */
-	public void setTxtDate(JTextField txtDate) {
-		this.txtDate = txtDate;
+	public JButton getBtnAddLocation() {
+		return btnAddLocation;
 	}
 
-	/**
-	 * @param txtPriority the txtPriority to set
-	 */
-	public void setTxtPriority(JTextField txtPriority) {
-		this.txtPriority = txtPriority;
+	public JPanel getPanelBackLeftBot() {
+		return panelBackLeftBot;
 	}
 
-	/**
-	 * @return the choosePrio
-	 */
-	public JComboBox getChoosePrio() {
-		return choosePrio;
+	public JPanel getPanelBackLeftTop() {
+		return panelBackLeftTop;
 	}
 
-	/**
-	 * @param choosePrio the choosePrio to set
-	 */
-	public void setChoosePrio(JComboBox choosePrio) {
-		this.choosePrio = choosePrio;
+	public JTextField getTxtDate() {
+		return txtDate;
+	}
+
+	public JTextField getTxtPriority() {
+		return txtPriority;
+	}
+
+	public JButton getBtnDate() {
+		return btnDate;
+	}
+
+	public JButton getBtnPrior() {
+		return btnPrior;
+	}
+
+	public JButton getBtnLogin() {
+		return btnLogin;
 	}
 }

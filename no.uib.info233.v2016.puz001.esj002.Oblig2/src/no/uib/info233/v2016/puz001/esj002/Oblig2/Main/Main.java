@@ -193,22 +193,43 @@ public class Main {
 		/**
 		 * Method under construction. 
 		 */
-		gui.getBtnAddIssue().addActionListener(new ActionListener(){
-
+		//gui.getBtnAddIssue().addActionListener(new ActionListener(){
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//			    	Issues is = new Issues(gui.getIt().maxIssueId() ,
+//			    			gui.getChooseUser().getSelectedItem().toString(),
+//			    			gui.getIt().currentDate(),
+//			    			gui.getTxtSearch().getText(),
+//			    			gui.getChoosePrio().getSelectedItem().toString(),
+//			    			gui.getTxtDate().getText());
+//			    	gui.getIt().getIssues().add(is);
+//			    	gui.getIt().tableForIssues();
+//				gui.getIt().fillUsers();
+//		};
+//
+  //});
+		gui.getBtnLogin().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			    	Issues is = new Issues(gui.getIt().maxIssueId() ,
-			    			gui.getChooseUser().getSelectedItem().toString(),
-			    			gui.getIt().currentDate(),
-			    			gui.getTxtSearch().getText(),
-			    			gui.getChoosePrio().getSelectedItem().toString(),
-			    			gui.getTxtDate().getText());
-			    	gui.getIt().getIssues().add(is);
-			    	gui.getIt().tableForIssues();
-				gui.getIt().fillUsers();
-		};
-	
-  });
+				try {
+					for (Issues issue : gui.getIt().getIssues()) {
+
+						if (issue.getAssigned().equals(gui.getTxtLogin().getText())) {
+							gui.getTxtLoggedIn().setText(gui.getTxtLogin().getText());
+
+						} else {
+							gui.getTxtLoggedIn().setText("User not found");
+						}
+
+					}
+				}
+				catch (Exception f ){
+					f.printStackTrace();
+				}
+			}
+
+		});
 		
 
 }
