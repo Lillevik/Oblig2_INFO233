@@ -143,4 +143,9 @@ public class Issues {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	
+	public int idInt(){
+		int i = Integer.parseInt(this.id);
+		return i;
+	}
 }

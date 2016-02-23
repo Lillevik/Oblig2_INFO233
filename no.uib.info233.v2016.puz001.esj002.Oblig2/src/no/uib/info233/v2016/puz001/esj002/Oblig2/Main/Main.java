@@ -2,6 +2,8 @@ package no.uib.info233.v2016.puz001.esj002.Oblig2.Main;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Collections;
+import java.util.Comparator;
 
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Gui.Gui;
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Issue.Issues;
@@ -196,9 +198,14 @@ public class Main {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gui.getLayout().show(gui.getAddissue(), "add_issue");
+			    	Issues is = new Issues(gui.getIt().maxIssueId() , "marius", "16/8/2016", "Issue text", "99", "Norway");
+			    	gui.getIt().getIssues().add(is);
+			    	gui.getIt().tableForIssues();
+				
 		};
 	
   });
+		
+
 }
 }
