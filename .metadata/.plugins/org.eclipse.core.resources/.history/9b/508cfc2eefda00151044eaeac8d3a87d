@@ -42,6 +42,11 @@ public class IssuePanel extends JPanel{
 
 		panel.setLayout(null);
 
+		
+		
+		
+		
+		
 		userLabel.setBounds(200, 200, 80, 25);
 		panel.add(userLabel);
 

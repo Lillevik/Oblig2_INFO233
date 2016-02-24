@@ -39,7 +39,7 @@ public class IssueTable extends JTable{
 	 * Fields for the IssueTable class
 	 */
 	private static final long serialVersionUID = 1L;
-	private File file = new File("new_issues.xml");
+	private File file = new File("ExtraNew_issues.xml");
 	private DefaultTableModel model = new DefaultTableModel();
 	private Set<String> users = new HashSet <String>();
 	private ArrayList<Issues> issueList = new ArrayList <Issues>();
@@ -281,10 +281,6 @@ public class IssueTable extends JTable{
 	                FileWriter fos = new FileWriter("new_issues.xml");
 	                StreamResult result = new StreamResult(fos);
 	                aTransformer.transform(source, result);
-//	                
-//	                FileWriter fos1 = new FileWriter("\new_issues.xml");
-//	                StreamResult result1 = new StreamResult(fos1);
-//	                aTransformer.transform(source, result1);
 
 	                
 

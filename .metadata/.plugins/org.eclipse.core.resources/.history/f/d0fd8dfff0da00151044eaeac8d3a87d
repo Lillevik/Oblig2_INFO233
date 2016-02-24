@@ -166,7 +166,7 @@ public class Main {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gui.getIt().writeXmlFile();
+				writeXmlFile()
 				gui.getIt().tableForIssues();
 				
 			}
