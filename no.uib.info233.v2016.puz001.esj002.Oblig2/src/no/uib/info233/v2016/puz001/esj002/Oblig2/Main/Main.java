@@ -179,11 +179,9 @@ public class Main {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gui.getIt().addUser(gui.getTxtSearch().getText());
-				System.out.println("Added the user " + gui.getTxtSearch().getText() + " to the list of users.");
-				gui.getIt().listUniqueUsers();
-
-				
+					gui.getIt().addUser(gui.getTxtSearch().getText());
+					gui.updateChooseUser();
+					gui.getIt().listUniqueUsers();
 			}
 		});
 		
@@ -194,14 +192,30 @@ public class Main {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+			    	gui.setContentPane(gui.getIp());
+			    	gui.pack();
+		};
+
+  });
+		
+		/**
+		 * Adds an issue depending on the user input.
+		 */
+		gui.getIp().getCreateButton().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
 			    	Issues is = new Issues(gui.getIt().maxIssueId() ,
-			    			gui.getTxtSearch().getText(),
+			    			gui.getChooseUser().getSelectedItem().toString(),
 			    			gui.getIt().currentDate(),
-			    			gui.getTxtSearch().getText(),
-			    			gui.getTxtPriority().toString(),
-			    			gui.getTxtDate().getText());
+			    			gui.getIp().getIssueText().getText(),
+			    			gui.getChoosePriority().getSelectedItem().toString(),
+			    			gui.getIp().getLocationText().getText());
 			    	gui.getIt().getIssueList().add(is);
 			    	gui.getIt().tableForIssues();
+			    	gui.setContentPane(gui.getSpine());
+			    	gui.pack();
 		};
 
   });
@@ -221,5 +235,14 @@ public class Main {
 				}
 			}
 		});
+		
+		gui.getBtnSwitchUser().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gui.setContentPane(gui.getLp());
+			}
+		});
+		
+		
 	}
 }

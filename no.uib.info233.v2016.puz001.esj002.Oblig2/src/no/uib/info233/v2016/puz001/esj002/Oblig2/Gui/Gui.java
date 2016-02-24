@@ -16,8 +16,11 @@ public class Gui extends JFrame {
 	 * The fields of the Gui class
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	
 	private JPanel spine;
 	private LoginPanel lp = new LoginPanel();
+	private IssuePanel ip = new IssuePanel();
 	private JPanel panelBackRight;
 	private JPanel panelBackLeft;
 	private JPanel panelMidTopLeft;
@@ -32,13 +35,12 @@ public class Gui extends JFrame {
 	private JButton btnAddIssue;
 	private JButton btnDate;
 	private JButton btnPrior;
+	private JButton btnSwitchUser;
 	
 	//JTextFields
 	private JTextField txtSearch;
 	private JTextField txtDate;
 	private JTextField txtPriority;
-	private JTextField txtAddIssue;
-	private JTextField txtAddLocation;
 
 
 
@@ -51,11 +53,19 @@ public class Gui extends JFrame {
 
 	//Instance of the IssueTable class
 	private IssueTable it = new IssueTable();
+	
 
 	//JTable
 	private JTable qTable = new JTable(it.getModel());
 
 	private CardLayout layout = new CardLayout();
+	
+	//JComboBoxes
+	@SuppressWarnings("rawtypes")
+	private JComboBox<?> chooseUser = new JComboBox();
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private JComboBox choosePriority = new JComboBox(it.getPrio().toArray());
 	
 
 
@@ -68,11 +78,11 @@ public class Gui extends JFrame {
 	public Gui(){
 		super("Issue Tracker");
 		spine = new JPanel(layout);
-//        add(addissue, "add_issue");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		spine.setLayout(new BorderLayout(0, 0));
 		spine.setPreferredSize(new Dimension(700, 600));
 		setupComponents();
+		updateChooseUser();
 		setContentPane(lp);
 		pack();
 		setVisible(true);
@@ -100,10 +110,16 @@ public class Gui extends JFrame {
 
 		//Initialize the JTexFields
 		txtSearch = new JTextField("search/add User");
-		txtDate = new JTextField("search/add Date");
-		txtPriority = new JTextField("search/add Prior");
-		txtAddIssue = new JTextField("add Issue");
-		txtAddLocation = new JTextField("add Location");
+		txtDate = new JTextField("search date");
+		txtPriority = new JTextField("search prior");
+		
+		//JComboBoxes
+		chooseUser.setBounds(290, 200, 160, 25);
+		ip.add(chooseUser);
+		
+		choosePriority.setBounds(290, 240, 160, 25);
+		ip.add(choosePriority);
+
 
 		//Sets up the JPanel panelBackLeft
 		panelBackLeft.setPreferredSize(new Dimension(200, 300));
@@ -117,7 +133,7 @@ public class Gui extends JFrame {
 		//sets panelBackLeftTop and bot
 		panelBackLeftTop.setBackground(Color.GRAY);
 		panelBackLeftBot.setBackground(Color.LIGHT_GRAY);
-		panelBackLeftTop.setPreferredSize(new Dimension(100, 500));
+		panelBackLeftTop.setPreferredSize(new Dimension(100, 525));
 
 		//Sets up the JLabel searchLabel
 		searchLabel.setPreferredSize(new Dimension(190, 20));
@@ -127,18 +143,17 @@ public class Gui extends JFrame {
 		txtSearch.setPreferredSize(new Dimension(190, 20));
 		txtDate.setPreferredSize(new Dimension(190, 20));
 		txtPriority.setPreferredSize(new Dimension(190, 20));
-		txtAddIssue.setPreferredSize(new Dimension(190, 20));
-		txtAddLocation.setPreferredSize(new Dimension(190, 20));
 
 
 		//Sets up the buttons
-		btnSearch = new JButton("Search User");
+		btnSearch = new JButton("Search");
 		btnListAllIssues = new JButton("List Issues");
 		btnListAllUsers = new JButton("List users");
-		btnAddUser = new JButton("Add user");
+		btnAddUser = new JButton("Add");
 		btnAddIssue = new JButton("Add issue");
 		btnDate = new JButton("Search Date");
 		btnPrior = new JButton("Search Prior");
+		btnSwitchUser = new JButton("Switch user");
 
 
 		//size the buttons
@@ -146,6 +161,7 @@ public class Gui extends JFrame {
 		btnListAllUsers.setSize(new Dimension(20, 20));
 		btnAddUser.setSize(new Dimension(20, 20));
 		btnListAllIssues.setSize(new Dimension( 20, 20));
+		btnSwitchUser.setSize(new Dimension( 20, 20));
 
 		//Sets up the JLabels
 		txtInfo = new JTextPane();
@@ -154,7 +170,8 @@ public class Gui extends JFrame {
 		txtInfo.setBackground(Color.gray);
 		txtLoggedIn.setText("Not logged in");
 		txtLoggedIn.setBackground(Color.LIGHT_GRAY);
-		txtLoggedIn.setPreferredSize(new Dimension(190, 100));
+		txtLoggedIn.setEditable(false);
+		txtLoggedIn.setPreferredSize(new Dimension(190, 20));
 
 		//Adds the components to the Panels
 		spine.add(panelBackRight, BorderLayout.CENTER);
@@ -166,23 +183,23 @@ public class Gui extends JFrame {
 		panelBackLeft.add(panelBackLeftBot, BorderLayout.CENTER);
 
 		panelBackLeftTop.add(searchLabel);
+		
 		panelBackLeftTop.add(txtSearch);
-		panelBackLeftTop.add(txtDate);
-		panelBackLeftTop.add(txtPriority);
-		panelBackLeftTop.add(txtAddLocation);
-		panelBackLeftTop.add(txtAddIssue);
 		panelBackLeftTop.add(btnSearch);
+		panelBackLeftTop.add(btnAddUser);
+		panelBackLeftTop.add(txtDate);
 		panelBackLeftTop.add(btnDate);
+		panelBackLeftTop.add(txtPriority);
 		panelBackLeftTop.add(btnPrior);
 		panelBackLeftTop.add(btnAddIssue);
-		panelBackLeftTop.add(btnAddUser);
-		panelBackLeftTop.add(btnAddIssue);
+
 		panelBackLeftTop.add(btnListAllUsers);
 		panelBackLeftTop.add(btnListAllIssues);
 		panelBackLeftTop.add(txtInfo);
 
 
 		panelBackLeftBot.add(txtLoggedIn);
+		panelBackLeftBot.add(btnSwitchUser);
 
 		panelMidTopLeft.add(new JScrollPane(qTable));
 	}
@@ -196,15 +213,21 @@ public class Gui extends JFrame {
 	@SuppressWarnings("deprecation")
 	public boolean authenticateLogin(){
 		for(String s : getIt().getUsers()){
-			if(s.equals(lp.getUserText().getText()) && !lp.getPasswordText().getText().equals(null)){
+			if(s.equals(lp.getUserText().getText()) && lp.getPasswordText().getText().equals("pass")){
 				getTxtLoggedIn().setText("Logged in as: " + lp.getUserText().getText());
 				setContentPane(getSpine());
 				return true;
 			} 
 		} 
-		
 		return false;
 	}
+	
+	
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public void updateChooseUser(){
+		chooseUser.setModel(new DefaultComboBoxModel(it.getUsers().toArray()));
+		}
 	
 	/**
 	 * @return the panelBackRight
@@ -559,34 +582,6 @@ public class Gui extends JFrame {
 		this.txtPriority = txtPriority;
 	}
 
-	/**
-	 * @return the txtAddIssue
-	 */
-	public JTextField getTxtAddIssue() {
-		return txtAddIssue;
-	}
-
-	/**
-	 * @param txtAddIssue the txtAddIssue to set
-	 */
-	public void setTxtAddIssue(JTextField txtAddIssue) {
-		this.txtAddIssue = txtAddIssue;
-	}
-
-	/**
-	 * @return the txtAddLocation
-	 */
-	public JTextField getTxtAddLocation() {
-		return txtAddLocation;
-	}
-
-	/**
-	 * @param txtAddLocation the txtAddLocation to set
-	 */
-	public void setTxtAddLocation(JTextField txtAddLocation) {
-		this.txtAddLocation = txtAddLocation;
-	}
-
 
 	/**
 	 * @return the txtLoggedIn
@@ -615,6 +610,63 @@ public class Gui extends JFrame {
 	 */
 	public void setLp(LoginPanel lp) {
 		this.lp = lp;
+	}
+
+	/**
+	 * @return the chooseUser
+	 */
+	public JComboBox<?> getChooseUser() {
+		return chooseUser;
+	}
+
+	/**
+	 * @param chooseUser the chooseUser to set
+	 */
+	public void setChooseUser(JComboBox<?> chooseUser) {
+		this.chooseUser = chooseUser;
+	}
+
+	/**
+	 * @return the choosePriority
+	 */
+	public JComboBox<?> getChoosePriority() {
+		return choosePriority;
+	}
+
+	/**
+	 * @return the ip
+	 */
+	public IssuePanel getIp() {
+		return ip;
+	}
+
+	/**
+	 * @param ip the ip to set
+	 */
+	public void setIp(IssuePanel ip) {
+		this.ip = ip;
+	}
+
+	/**
+	 * @return the btnSwitchUser
+	 */
+	public JButton getBtnSwitchUser() {
+		return btnSwitchUser;
+	}
+
+	/**
+	 * @param btnSwitchUser the btnSwitchUser to set
+	 */
+	public void setBtnSwitchUser(JButton btnSwitchUser) {
+		this.btnSwitchUser = btnSwitchUser;
+	}
+
+	/**
+	 * @param choosePriority the choosePriority to set
+	 */
+	@SuppressWarnings("rawtypes")
+	public void setChoosePriority(JComboBox choosePriority) {
+		this.choosePriority = choosePriority;
 	}
 
 

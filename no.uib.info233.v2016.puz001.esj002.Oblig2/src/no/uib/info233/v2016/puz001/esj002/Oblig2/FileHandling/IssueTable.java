@@ -32,7 +32,7 @@ public class IssueTable extends JTable{
 	private static final long serialVersionUID = 1L;
 	private File file = new File("old_issues.xml");
 	private DefaultTableModel model = new DefaultTableModel();
-	private ArrayList<String> users = new ArrayList <String>();
+	private Set<String> users = new HashSet <String>();
 	private ArrayList<Issues> issueList = new ArrayList <Issues>();
 	private ArrayList<Integer> prio = new ArrayList<Integer>() ;
 	
@@ -43,6 +43,7 @@ public class IssueTable extends JTable{
 		 * certain arrays and arrayLists.
 		 */
 		public IssueTable(){
+			users.add("admin");
 			fillPrio();
 			fillUsers();
 			fillIssues();
@@ -220,6 +221,9 @@ public class IssueTable extends JTable{
 		return date;
 	    }    
 		
+	    
+	  
+	    
 		
 	    /**
 	     * 
@@ -262,23 +266,6 @@ public class IssueTable extends JTable{
 		this.file = file;
 	}
 
-
-	/**
-	 * @return the users
-	 */
-	public ArrayList<String> getUsers() {
-		return users;
-	}
-
-
-	/**
-	 * @param users the users to set
-	 */
-	public void setUsers(ArrayList<String> users) {
-		this.users = users;
-	}
-
-
 	/**
 	 * @return the prio
 	 */
@@ -308,6 +295,22 @@ public class IssueTable extends JTable{
 	 */
 	public void setIssueList(ArrayList<Issues> issueList) {
 		this.issueList = issueList;
+	}
+
+
+	/**
+	 * @return the users
+	 */
+	public Set<String> getUsers() {
+		return users;
+	}
+
+
+	/**
+	 * @param users the users to set
+	 */
+	public void setUsers(Set<String> users) {
+		this.users = users;
 	}
 
 }
