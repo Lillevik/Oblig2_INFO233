@@ -39,7 +39,7 @@ public class IssueTable extends JTable{
 	 * Fields for the IssueTable class
 	 */
 	private static final long serialVersionUID = 1L;
-	private File file = new File("new_issues.xml");
+	private File file = new File("old_issues.xml");
 	private DefaultTableModel model = new DefaultTableModel();
 	private Set<String> users = new HashSet <String>();
 	private ArrayList<Issues> issueList = new ArrayList <Issues>();
@@ -79,13 +79,13 @@ public class IssueTable extends JTable{
 	    			Document doc = dBuilder.parse(file);
 	    			doc.getDocumentElement().normalize();
 	    	       
-	    			NodeList nodelist = doc.getElementsByTagName("USER");
+	    			NodeList nodelist = doc.getElementsByTagName("ISSUES");
 					      for (int i = 0; i < nodelist.getLength(); i++)
 					      {
 					          Node node = nodelist.item(i);
 					          Element eElement = (Element) node;
-					          if(!users.contains(eElement.getAttribute("name")))
-					        	  users.add(eElement.getAttribute("name"));
+					          if(!users.contains(eElement.getAttribute("assigned_user")))
+					        	  users.add(eElement.getAttribute("assigned_user"));
 					      }
 					      	}
 					   			
@@ -242,25 +242,25 @@ public class IssueTable extends JTable{
 	            Element root = doc.createElement("Dataset");
 	            doc.appendChild(root);
 
+	            Element Details = doc.createElement("Details");
+	            root.appendChild(Details);
+
 
 	            for (Issues i : issueList) {
-	            	
-	            	Element details = doc.createElement("ISSUES");
-		            root.appendChild(details);
 
-		            details.setAttribute("id", i.getId());
-		            details.setAttribute("assigned_user", i.getAssigned());
-		            details.setAttribute("created", i.getCreated());
-		            details.setAttribute("text", i.getIssue());
-		            details.setAttribute("priority", i.getPriority());
-		            details.setAttribute("location", i.getLocation());
-	            }
-	            
-	            for (String i : users){
-	            	Element user = doc.createElement("USER");
-	            	root.appendChild(user);
-	            	
-	            	user.setAttribute("name", i);
+	                Element name = doc.createElement("Name");
+	                name.appendChild(doc.createTextNode(String.valueOf(dtl
+	                        .getName())));
+	                Details.appendChild(name);
+
+	                Element id = doc.createElement("ID");
+	                id.appendChild(doc.createTextNode(String.valueOf(dtl.getId())));
+	                Details.appendChild(id);
+
+	                Element mmi = doc.createElement("Age");
+	                mmi.appendChild(doc.createTextNode(String.valueOf(dtl.getAge())));
+	                Details.appendChild(mmi);
+
 	            }
 
 	            // Save the document to the disk file
@@ -277,16 +277,9 @@ public class IssueTable extends JTable{
 	            DOMSource source = new DOMSource(doc);
 	            try {
 	                // location and name of XML file you can change as per need
-	            	// We added 2 because we have 1 IntelliJ user and 1 eclipse.
-	                FileWriter fos = new FileWriter("new_issues.xml");
+	                FileWriter fos = new FileWriter("./ros.xml");
 	                StreamResult result = new StreamResult(fos);
 	                aTransformer.transform(source, result);
-//	                
-//	                FileWriter fos1 = new FileWriter("\new_issues.xml");
-//	                StreamResult result1 = new StreamResult(fos1);
-//	                aTransformer.transform(source, result1);
-
-	                
 
 	            } catch (IOException e) {
 

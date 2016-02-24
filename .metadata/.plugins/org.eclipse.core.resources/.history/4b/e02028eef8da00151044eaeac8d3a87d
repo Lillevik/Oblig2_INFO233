@@ -277,15 +277,13 @@ public class IssueTable extends JTable{
 	            DOMSource source = new DOMSource(doc);
 	            try {
 	                // location and name of XML file you can change as per need
-	            	// We added 2 because we have 1 IntelliJ user and 1 eclipse.
+	            	//We added 2 because we have 1 IntelliJ user and 1 eclipse.
 	                FileWriter fos = new FileWriter("new_issues.xml");
+	                FileWriter fos1 = new FileWriter("/new_issues.xml");
 	                StreamResult result = new StreamResult(fos);
+	                StreamResult result1 = new StreamResult(fos1);
 	                aTransformer.transform(source, result);
-//	                
-//	                FileWriter fos1 = new FileWriter("\new_issues.xml");
-//	                StreamResult result1 = new StreamResult(fos1);
-//	                aTransformer.transform(source, result1);
-
+	                aTransformer.transform(source, result1);
 	                
 
 	            } catch (IOException e) {
