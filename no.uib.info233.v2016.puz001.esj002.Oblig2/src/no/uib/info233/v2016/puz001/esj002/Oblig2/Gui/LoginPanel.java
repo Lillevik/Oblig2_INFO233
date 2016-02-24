@@ -20,12 +20,12 @@ public class LoginPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 
 	
-	private JLabel userLabel = new JLabel("User");
+	private JLabel userLabel = new JLabel("Username");
 	private JLabel passwordLabel = new JLabel("Password");
 	private JButton loginButton = new JButton("login");
 	private JPasswordField passwordText = new JPasswordField(20);
 	private JTextField userText = new JTextField(20);
-	private JLabel status = new JLabel();
+	private JLabel info = new JLabel("Example: Username:admin Password:pass");
 	
 	
 	
@@ -39,6 +39,8 @@ public class LoginPanel extends JPanel{
 
 		panel.setLayout(null);
 
+		info.setBounds(200, 150, 500, 25);
+		panel.add(info);
 		
 		userLabel.setBounds(200, 200, 80, 25);
 		panel.add(userLabel);
@@ -56,14 +58,8 @@ public class LoginPanel extends JPanel{
 		panel.add(passwordText);
 
 
-		loginButton.setBounds(200, 280, 80, 25);
+		loginButton.setBounds(275, 280, 80, 25);
 		panel.add(loginButton);
-		
-		
-		status.setBounds(200, 320, 300, 25);
-		status.setText("Not logged in");	
-		status.setPreferredSize(new Dimension(190, 100));
-		panel.add(status);
 		
 	}
 
@@ -141,13 +137,13 @@ public class LoginPanel extends JPanel{
 	 * @return the status
 	 */
 	public JLabel getStatus() {
-		return status;
+		return info;
 	}
 
 	/**
 	 * @param status the status to set
 	 */
 	public void setStatus(JLabel status) {
-		this.status = status;
+		this.info = status;
 	}
 }
