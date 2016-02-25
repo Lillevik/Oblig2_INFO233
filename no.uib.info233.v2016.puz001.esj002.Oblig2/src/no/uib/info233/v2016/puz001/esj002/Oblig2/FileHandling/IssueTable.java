@@ -39,7 +39,7 @@ public class IssueTable extends JTable{
 	 * Fields for the IssueTable class
 	 */
 	private static final long serialVersionUID = 1L;
-	private File file = new File("new_issues.xml");
+	private File file = new File("old_issues.xml");
 	private DefaultTableModel model = new DefaultTableModel();
 	private Set<String> users = new HashSet <String>();
 	private ArrayList<Issues> issueList = new ArrayList <Issues>();
@@ -74,24 +74,24 @@ public class IssueTable extends JTable{
 	     */
 	    public void fillUsers(){
 	      	try {
-	    			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-	    			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-	    			Document doc = dBuilder.parse(file);
-	    			doc.getDocumentElement().normalize();
+                DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+                Document doc = dBuilder.parse(file);
+                doc.getDocumentElement().normalize();
 	    	       
-	    			NodeList nodelist = doc.getElementsByTagName("USER");
-					      for (int i = 0; i < nodelist.getLength(); i++)
-					      {
-					          Node node = nodelist.item(i);
-					          Element eElement = (Element) node;
-					          if(!users.contains(eElement.getAttribute("name")))
-					        	  users.add(eElement.getAttribute("name"));
-					      }
-					      	}
-					   			
-					   		    catch (Exception e) {
-					   			e.printStackTrace();
-					   		    }
+                NodeList nodelist = doc.getElementsByTagName("USER");
+                for (int i = 0; i < nodelist.getLength(); i++)
+                {
+                    Node node = nodelist.item(i);
+                    Element eElement = (Element) node;
+                    if(!users.contains(eElement.getAttribute("name")))
+                        users.add(eElement.getAttribute("name"));
+                }
+            }
+
+            catch (Exception e) {
+                e.printStackTrace();
+            }
 	    }
 	    
 
@@ -103,30 +103,27 @@ public class IssueTable extends JTable{
 	    public void listUniqueUsers(){
 	    	try {
 		    
-	    	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-		    Document doc = dBuilder.parse(file);
-		 	doc.getDocumentElement().normalize();
-		    model.setRowCount(0);
-	    	model.setColumnCount(0);
-	        model.addColumn("Users: ");
+	    	    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+                Document doc = dBuilder.parse(file);
+		    	doc.getDocumentElement().normalize();
+                model.setRowCount(0);
+	        	model.setColumnCount(0);
+                model.addColumn("Users: ");
 
-	    	
-	    	for(String x : users) {
+	    	    for(String x : users) {
 	    		model.addRow(new Object[]{x});
+	    	    }
 	    	}
-	    	}
-
-	   		    catch (Exception e) {
-	   			e.printStackTrace();
-	   		    }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
 	    }
 	    
 	    /**
 	     * Adds a user to the users ArrayList.
 	     * @param user
 	     */
-	    
 	    public void addUser(String user){
 	    	users.add(user);
 	    }
@@ -143,25 +140,25 @@ public class IssueTable extends JTable{
     			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
     			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
     			Document doc = dBuilder.parse(file);
+                NodeList nodelist = doc.getElementsByTagName("ISSUES");
 
-      NodeList nodelist = doc.getElementsByTagName("ISSUES");
-      for (int i = 0; i < nodelist.getLength(); i++)
-      {
-          Node node = nodelist.item(i);
-          Element eElement = (Element) node;
-          Issues issue = new Issues(eElement.getAttribute("id"), 
-      		  eElement.getAttribute("assigned_user"), 
-      		  eElement.getAttribute("created"),
-      		  eElement.getAttribute("text"),
-      		  eElement.getAttribute("priority"),
-      		  eElement.getAttribute("location")
-      		  );
-          issueList.add(issue);
-      }
-      	}
-   			
-   		    catch (Exception e) {
-   			e.printStackTrace();
+                for (int i = 0; i < nodelist.getLength(); i++) {
+
+                     Node node = nodelist.item(i);
+                     Element eElement = (Element) node;
+                     Issues issue = new Issues(eElement.getAttribute("id"),
+      		          eElement.getAttribute("assigned_user"),
+      		          eElement.getAttribute("created"),
+      		          eElement.getAttribute("text"),
+      		          eElement.getAttribute("priority"),
+      	        	  eElement.getAttribute("location"));
+
+                    issueList.add(issue);
+                }
+      	    }
+
+            catch (Exception e) {
+   			    e.printStackTrace();
    		    }
 	    }
 	    
@@ -173,34 +170,34 @@ public class IssueTable extends JTable{
 	    public void tableForIssues(){
 	    	
 	      	try {
-	    			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-	    			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-	    			Document doc = dBuilder.parse(file);
-	    			doc.getDocumentElement().normalize();
-	    			model.setRowCount(0);
-	    		    model.setColumnCount(0);
-	    	        model.addColumn("Issue ID: ");
-	    	        model.addColumn("Assigned to: ");
-	    	        model.addColumn("Created: ");
-	    	        model.addColumn("Issue: ");
-	    	        model.addColumn("Priority: ");
-	    	        model.addColumn("Location: ");
+                DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+                Document doc = dBuilder.parse(file);
+                doc.getDocumentElement().normalize();
+                model.setRowCount(0);
+                model.setColumnCount(0);
+                model.addColumn("Issue ID: ");
+                model.addColumn("Assigned to: ");
+                model.addColumn("Created: ");
+                model.addColumn("Issue: ");
+                model.addColumn("Priority: ");
+                model.addColumn("Location: ");
 
 	      
-	      for (Issues issue : issueList) {
-	    	  model.addRow(new Object[]{issue.getId(),
-	    			  issue.getAssigned(),
-	    			  issue.getCreated(),
-	    			  issue.getIssue(),
-	    			  issue.getPriority(),
-	    			  issue.getLocation()});
+                for (Issues issue : issueList) {
+                    model.addRow(new Object[]{issue.getId(),
+                           issue.getAssigned(),
+                           issue.getCreated(),
+                           issue.getIssue(),
+                           issue.getPriority(),
+                           issue.getLocation()});
 	     
-	      }
+                }
 	      	}
 	   			
-	   		    catch (Exception e) {
+            catch (Exception e) {
 	   			e.printStackTrace();
-	   		    }
+            }
 	   	}
 	  
 	    
@@ -227,10 +224,10 @@ public class IssueTable extends JTable{
 			int day = cal.get(Calendar.DAY_OF_MONTH);
 			int year = cal.get(Calendar.YEAR);
 			String date = month + "/" + day + "/" + year;
-		return date;
+
+		    return date;
 	    }    
-		
-	    
+
 	    public void writeXmlFile() {
 
 	        try {
@@ -278,15 +275,14 @@ public class IssueTable extends JTable{
 	            try {
 	                // location and name of XML file you can change as per need
 	            	// We added 2 because we have 1 IntelliJ user and 1 eclipse.
-	                FileWriter fos = new FileWriter("new_issues.xml");
+	                FileWriter fos = new FileWriter("old_issues.xml");
 	                StreamResult result = new StreamResult(fos);
 	                aTransformer.transform(source, result);
 //	                
-//	                FileWriter fos1 = new FileWriter("\new_issues.xml");
+//	                FileWriter fos1 = new FileWriter("\old_issues.xml");
 //	                StreamResult result1 = new StreamResult(fos1);
 //	                aTransformer.transform(source, result1);
 
-	                
 
 	            } catch (IOException e) {
 
@@ -300,7 +296,7 @@ public class IssueTable extends JTable{
 	            System.out.println("Error building document");
 	        }
 	    }
-	    
+
 		
 	    /**
 	     * 
