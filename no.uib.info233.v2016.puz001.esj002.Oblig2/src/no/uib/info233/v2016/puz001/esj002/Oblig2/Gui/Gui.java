@@ -17,7 +17,6 @@ public class Gui extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	
 	private JPanel spine;
 	private LoginPanel lp = new LoginPanel();
 	private IssuePanel ip = new IssuePanel();
@@ -42,8 +41,6 @@ public class Gui extends JFrame {
 	private JTextField txtDate;
 	private JTextField txtPriority;
 
-
-
 	//JLabels
 	private JLabel searchLabel;
 
@@ -53,11 +50,11 @@ public class Gui extends JFrame {
 
 	//Instance of the IssueTable class
 	private IssueTable it = new IssueTable();
-	
 
 	//JTable
 	private JTable qTable = new JTable(it.getModel());
 
+	//i dont fucking know
 	private CardLayout layout = new CardLayout();
 	
 	//JComboBoxes
@@ -68,9 +65,6 @@ public class Gui extends JFrame {
 	private JComboBox choosePriority = new JComboBox(it.getPrio().toArray());
 	
 
-
-	
-	
 	/**
 	 * Constructor for the Gui class which extends from JFrame.
 	 * Creates the Gui and starts it up.
@@ -120,7 +114,6 @@ public class Gui extends JFrame {
 		choosePriority.setBounds(290, 240, 160, 25);
 		ip.add(choosePriority);
 
-
 		//Sets up the JPanel panelBackLeft
 		panelBackLeft.setPreferredSize(new Dimension(200, 300));
 		panelBackLeft.setBackground(Color.gray);
@@ -144,7 +137,6 @@ public class Gui extends JFrame {
 		txtDate.setPreferredSize(new Dimension(190, 20));
 		txtPriority.setPreferredSize(new Dimension(190, 20));
 
-
 		//Sets up the buttons
 		btnSearch = new JButton("Search");
 		btnListAllIssues = new JButton("List Issues");
@@ -154,7 +146,6 @@ public class Gui extends JFrame {
 		btnDate = new JButton("Search Date");
 		btnPrior = new JButton("Search Prior");
 		btnSwitchUser = new JButton("Switch user");
-
 
 		//size the buttons
 		btnSearch.setSize(new Dimension( 20, 20));
@@ -176,14 +167,10 @@ public class Gui extends JFrame {
 		//Adds the components to the Panels
 		spine.add(panelBackRight, BorderLayout.CENTER);
 		spine.add(panelBackLeft, BorderLayout.WEST);
-
 		panelBackRight.add(panelMidTopLeft);
-
 		panelBackLeft.add(panelBackLeftTop, BorderLayout.NORTH);
 		panelBackLeft.add(panelBackLeftBot, BorderLayout.CENTER);
-
 		panelBackLeftTop.add(searchLabel);
-		
 		panelBackLeftTop.add(txtSearch);
 		panelBackLeftTop.add(btnSearch);
 		panelBackLeftTop.add(btnAddUser);
@@ -192,15 +179,11 @@ public class Gui extends JFrame {
 		panelBackLeftTop.add(txtPriority);
 		panelBackLeftTop.add(btnPrior);
 		panelBackLeftTop.add(btnAddIssue);
-
 		panelBackLeftTop.add(btnListAllUsers);
 		panelBackLeftTop.add(btnListAllIssues);
 		panelBackLeftTop.add(txtInfo);
-
-
 		panelBackLeftBot.add(txtLoggedIn);
 		panelBackLeftBot.add(btnSwitchUser);
-
 		panelMidTopLeft.add(new JScrollPane(qTable));
 	}
 

@@ -7,23 +7,17 @@ import no.uib.info233.v2016.puz001.esj002.Oblig2.Gui.Gui;
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Issue.Issues;
 
 /**
- * This class only has one purpose, 
- * which is to start the program.
+ * Class to start the program.
+ * Creates JButton methods.
  * @author esj002 and puz001
  */
 public class Main {
 
-	
-	
-	
-
-	
 	/**
 	 * This method starts the program and connects the different 
 	 * instances together in one class.
 	 * @param args
 	 */
-
 	public static void main(String[] args) {
 		Gui gui = new Gui();
 
@@ -55,9 +49,9 @@ public class Main {
 				    			  issue.getPriority(),
 				    			  issue.getLocation()});
 
-							}
-						}
-					}
+                        }
+                    }
+                }
 
 				catch (Exception f ){
 					f.printStackTrace();
@@ -95,9 +89,9 @@ public class Main {
 				    			  issue.getIssue(),
 				    			  issue.getPriority(),
 				    			  issue.getLocation()});
-							}
-						}
-					}
+                        }
+                    }
+                }
 
 				catch (Exception f ){
 					f.printStackTrace();
@@ -113,6 +107,7 @@ public class Main {
 		gui.getBtnDate().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				try {
 					gui.getIt().getModel().setRowCount(0);
 					gui.getIt().getModel().setColumnCount(0);
@@ -134,8 +129,8 @@ public class Main {
 				    			  issue.getIssue(),
 				    			  issue.getPriority(),
 				    			  issue.getLocation()});
-							}
-						}
+                        }
+                    }
 				}
 
 				catch (Exception f ){
@@ -195,31 +190,29 @@ public class Main {
 			public void actionPerformed(ActionEvent e) {
 			    	gui.setContentPane(gui.getIp());
 			    	gui.pack();
-		};
-
-  });
+		    }
+        });
 		
 		/**
 		 * Adds an issue depending on the user input.
 		 */
-		gui.getIp().getCreateButton().addActionListener(new ActionListener(){
+        gui.getIp().getCreateButton().addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-			    	Issues is = new Issues(gui.getIt().maxIssueId() ,
-			    			gui.getChooseUser().getSelectedItem().toString(),
-			    			gui.getIt().currentDate(),
-			    			gui.getIp().getIssueText().getText(),
-			    			gui.getChoosePriority().getSelectedItem().toString(),
-			    			gui.getIp().getLocationText().getText());
-			    	gui.getIt().getIssueList().add(is);
-			    	gui.getIt().tableForIssues();
-			    	gui.setContentPane(gui.getSpine());
-			    	gui.pack();
-		};
-
-  });
+				Issues is = new Issues(gui.getIt().maxIssueId() ,
+                        gui.getChooseUser().getSelectedItem().toString(),
+						gui.getIt().currentDate(),
+						gui.getIp().getIssueText().getText(),
+						gui.getChoosePriority().getSelectedItem().toString(),
+						gui.getIp().getLocationText().getText());
+			            gui.getIt().getIssueList().add(is);
+			    	    gui.getIt().tableForIssues();
+			    	    gui.setContentPane(gui.getSpine());
+			    	    gui.pack();
+	    	}
+        });
 		
 		/**
 		 * This actionslistener for the login button
@@ -236,14 +229,13 @@ public class Main {
 				}
 			}
 		});
-		
+
+
 		gui.getBtnSwitchUser().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gui.setContentPane(gui.getLp());
 			}
 		});
-		
-		
 	}
 }
