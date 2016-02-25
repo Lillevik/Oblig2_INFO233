@@ -2,7 +2,10 @@ package no.uib.info233.v2016.puz001.esj002.Oblig2.Main;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 
+
+import no.uib.info233.v2016.puz001.esj002.Oblig2.FileHandling.SaveProgram;
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Gui.Gui;
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Issue.Issues;
 
@@ -11,7 +14,7 @@ import no.uib.info233.v2016.puz001.esj002.Oblig2.Issue.Issues;
  * which is to start the program.
  * @author esj002 and puz001
  */
-public class Main {
+public class Main implements Serializable{
 
 	
 	
@@ -19,14 +22,22 @@ public class Main {
 
 	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1834915564586880152L;
+
+	/**
 	 * This method starts the program and connects the different 
 	 * instances together in one class.
 	 * @param args
 	 */
 
 	public static void main(String[] args) {
+		SaveProgram sp = new SaveProgram();
 		Gui gui = new Gui();
-
+			sp.load();
+//		
+		
 		/**
 		 * This button lists all the issues from the user given
 		 * in the textField and presents these in the JTable qtable.
@@ -34,7 +45,6 @@ public class Main {
 		gui.getBtnSearch().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try {
 					gui.getIt().getModel().setRowCount(0);
 					gui.getIt().getModel().setColumnCount(0);
 					gui.getIt().getModel().addColumn("Issue ID: ");
@@ -58,13 +68,37 @@ public class Main {
 							}
 						}
 					}
-
-				catch (Exception f ){
-					f.printStackTrace();
-				}
-
-			}
 		});
+		
+		
+		gui.getBtnId().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				
+					gui.getIt().getModel().setRowCount(0);
+					gui.getIt().getModel().setColumnCount(0);
+					gui.getIt().getModel().addColumn("Issue ID: ");
+					gui.getIt().getModel().addColumn("Assigned to: ");
+					gui.getIt().getModel().addColumn("Created: ");
+					gui.getIt().getModel().addColumn("Issue: ");
+					gui.getIt().getModel().addColumn("Priority: ");
+					gui.getIt().getModel().addColumn("Location: ");
+
+					
+					for(Issues issue : gui.getIt().getIssueList()){
+						if(issue.getId().equals(gui.getTxtId().getText())){
+						gui.getIt().getModel().addRow(new Object[]{issue.getId(),
+				    			  issue.getAssigned(),
+				    			  issue.getCreated(),
+				    			  issue.getIssue(),
+				    			  issue.getPriority(),
+				    			  issue.getLocation()});
+							}
+						}
+			System.out.println(gui.getTxtId().getText());}
+		});
+		
 
 		/**
 		 * This method finds all the issues with 
@@ -165,8 +199,7 @@ public class Main {
 		gui.getBtnListAllIssues().addActionListener(new ActionListener(){
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				gui.getIt().writeXmlFile();
+			public void actionPerformed(ActionEvent e){
 				gui.getIt().tableForIssues();
 				
 			}
@@ -205,8 +238,7 @@ public class Main {
 		gui.getIp().getCreateButton().addActionListener(new ActionListener(){
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				
+			public void actionPerformed(ActionEvent e) {			
 			    	Issues is = new Issues(gui.getIt().maxIssueId() ,
 			    			gui.getChooseUser().getSelectedItem().toString(),
 			    			gui.getIt().currentDate(),
@@ -231,7 +263,7 @@ public class Main {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gui.authenticateLogin();
-				if(gui.authenticateLogin() == false){
+				if(gui.authenticateLogin() == false){	
 					gui.getLp().getStatus().setText("Username or password is incorrect.");
 				}
 			}
@@ -241,9 +273,60 @@ public class Main {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gui.setContentPane(gui.getLp());
+				gui.pack();
+			}
+		});
+		
+		gui.getUpdate().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int i = gui.getqTable().getSelectedRow();
+				int prio = Integer.parseInt(gui.getqTable().getValueAt(i, 4).toString().trim());
+				String user = gui.getqTable().getValueAt(i, 1).toString();
+					gui.getChooseUser2().setSelectedItem(user);
+					gui.getChoosePrio2().setSelectedItem(prio);			
+					gui.getUp().getIssueText().setText(gui.getqTable().getValueAt(i, 3).toString());
+					gui.getUp().getLocationText().setText(gui.getqTable().getValueAt(i, 5).toString());
+					gui.setContentPane(gui.getUp());
+					gui.pack();
+			}
+		});
+		
+		gui.getUp().getCreateButton().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int j = gui.getqTable().getSelectedRow();
+				String prio = String.valueOf(gui.getChoosePrio2().getSelectedItem());
+				for(Issues i : gui.getIt().getIssueList()){
+					if(i.getId().trim() == gui.getqTable().getValueAt(j, 0).toString()){
+						gui.getIt().getModel().removeRow(j);
+						i.setAssigned(gui.getChooseUser2().getSelectedItem().toString());
+						i.setPriority(prio);
+						i.setIssue(gui.getUp().getIssueText().getText());
+						i.setLocation(gui.getUp().getLocationText().getText());
+						gui.getIt().tableForIssues();
+					}
+					
+				}
+				
+				
+				gui.setContentPane(gui.getSpine());
+				gui.pack();
+			}
+		});
+		
+		gui.getSave().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SaveProgram.save(gui.getIt());
+				System.out.println("TEst");
 			}
 		});
 		
 		
+		
+		
 	}
 }
+	
+

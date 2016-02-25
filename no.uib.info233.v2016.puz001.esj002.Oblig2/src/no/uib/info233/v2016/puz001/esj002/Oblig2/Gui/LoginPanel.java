@@ -1,6 +1,7 @@
 package no.uib.info233.v2016.puz001.esj002.Oblig2.Gui;
 
 import java.awt.Dimension;
+import java.io.Serializable;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -11,13 +12,17 @@ import javax.swing.JTextField;
 
 
 
-public class LoginPanel extends JPanel{
+public class LoginPanel extends JPanel implements Serializable{
 
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -2311655122465975281L;
+	/**
+	 * 
+	 */
+
 
 	
 	private JLabel userLabel = new JLabel("Username");

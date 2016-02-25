@@ -4,23 +4,29 @@ import javax.swing.*;
 import no.uib.info233.v2016.puz001.esj002.Oblig2.FileHandling.IssueTable;
 
 import java.awt.*;
+import java.io.Serializable;
 
 /**
  * Created by esj002 and puz001
  * This class creates a graphical user interface and 
  * represents components there.
  */
-public class Gui extends JFrame {
+public class Gui extends JFrame implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 167504218040359025L;
 	/**
 	 * The fields of the Gui class
 	 */
-	private static final long serialVersionUID = 1L;
+
 	
 	
 	private JPanel spine;
 	private LoginPanel lp = new LoginPanel();
 	private IssuePanel ip = new IssuePanel();
+	private UpdatePanel up = new UpdatePanel();
 	private JPanel panelBackRight;
 	private JPanel panelBackLeft;
 	private JPanel panelMidTopLeft;
@@ -36,11 +42,14 @@ public class Gui extends JFrame {
 	private JButton btnDate;
 	private JButton btnPrior;
 	private JButton btnSwitchUser;
+	private JButton update;
+	private JButton btnId;
 	
 	//JTextFields
 	private JTextField txtSearch;
 	private JTextField txtDate;
 	private JTextField txtPriority;
+	private JTextField txtId;
 
 
 
@@ -64,6 +73,19 @@ public class Gui extends JFrame {
 	@SuppressWarnings("rawtypes")
 	private JComboBox<?> chooseUser = new JComboBox();
 	
+	//JComboBoxes for the UpdatePanel class
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private JComboBox chooseUser2 = new JComboBox(it.getUsers().toArray());
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private JComboBox choosePrio2 = new JComboBox(it.getPrio().toArray());
+	
+	//JMenu
+	private JMenuBar menuBar = new JMenuBar();
+	private JMenu file = new JMenu("File");
+	private JMenu help = new JMenu("Help");
+	JMenuItem save = new JMenuItem("Save");
+	JMenuItem about = new JMenuItem("About");
+	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private JComboBox choosePriority = new JComboBox(it.getPrio().toArray());
 	
@@ -79,11 +101,15 @@ public class Gui extends JFrame {
 		super("Issue Tracker");
 		spine = new JPanel(layout);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		spine.setLayout(new BorderLayout(0, 0));
 		spine.setPreferredSize(new Dimension(700, 600));
+		
 		setupComponents();
 		updateChooseUser();
-		setContentPane(lp);
+		setJMenuBar(menuBar);
+		setContentPane(spine);
+		
 		pack();
 		setVisible(true);
 	}
@@ -93,6 +119,18 @@ public class Gui extends JFrame {
 	 * sets them up with custom designs.
 	 */
 	public void setupComponents(){
+		
+		//Sets up the JMenu
+		menuBar.add(file);
+		menuBar.add(help);
+		JMenuItem save = new JMenuItem("Save");
+		JMenuItem about = new JMenuItem("About");
+		file.add(save);
+		help.add(about);
+		
+		
+		
+		
 		//Sets up the JTable
 		qTable.setBackground(Color.white);
 		qTable.getAutoResizeMode();
@@ -112,6 +150,7 @@ public class Gui extends JFrame {
 		txtSearch = new JTextField("search/add User");
 		txtDate = new JTextField("search date");
 		txtPriority = new JTextField("search prior");
+		txtId = new JTextField("Search ID");
 		
 		//JComboBoxes
 		chooseUser.setBounds(290, 200, 160, 25);
@@ -119,6 +158,12 @@ public class Gui extends JFrame {
 		
 		choosePriority.setBounds(290, 240, 160, 25);
 		ip.add(choosePriority);
+		
+		chooseUser2.setBounds(290, 200, 160, 25);
+		up.add(chooseUser2);
+		
+		choosePrio2.setBounds(290, 240, 160, 25);
+		up.add(choosePrio2);
 
 
 		//Sets up the JPanel panelBackLeft
@@ -143,6 +188,7 @@ public class Gui extends JFrame {
 		txtSearch.setPreferredSize(new Dimension(190, 20));
 		txtDate.setPreferredSize(new Dimension(190, 20));
 		txtPriority.setPreferredSize(new Dimension(190, 20));
+		txtId.setPreferredSize(new Dimension(190, 20));
 
 
 		//Sets up the buttons
@@ -154,6 +200,8 @@ public class Gui extends JFrame {
 		btnDate = new JButton("Search Date");
 		btnPrior = new JButton("Search Prior");
 		btnSwitchUser = new JButton("Switch user");
+		update = new JButton("Update issue");
+		btnId = new JButton("Search ID");
 
 
 		//size the buttons
@@ -162,6 +210,8 @@ public class Gui extends JFrame {
 		btnAddUser.setSize(new Dimension(20, 20));
 		btnListAllIssues.setSize(new Dimension( 20, 20));
 		btnSwitchUser.setSize(new Dimension( 20, 20));
+		update.setSize(new Dimension( 20, 20));
+		btnId.setSize(new Dimension( 20, 20));
 
 		//Sets up the JLabels
 		txtInfo = new JTextPane();
@@ -173,9 +223,14 @@ public class Gui extends JFrame {
 		txtLoggedIn.setEditable(false);
 		txtLoggedIn.setPreferredSize(new Dimension(190, 20));
 
+			
+		
 		//Adds the components to the Panels
+		spine.add(menuBar);
 		spine.add(panelBackRight, BorderLayout.CENTER);
 		spine.add(panelBackLeft, BorderLayout.WEST);
+		
+		
 
 		panelBackRight.add(panelMidTopLeft);
 
@@ -191,7 +246,10 @@ public class Gui extends JFrame {
 		panelBackLeftTop.add(btnDate);
 		panelBackLeftTop.add(txtPriority);
 		panelBackLeftTop.add(btnPrior);
+		panelBackLeftTop.add(txtId);
+		panelBackLeftTop.add(btnId);
 		panelBackLeftTop.add(btnAddIssue);
+		panelBackLeftTop.add(update);
 
 		panelBackLeftTop.add(btnListAllUsers);
 		panelBackLeftTop.add(btnListAllIssues);
@@ -200,7 +258,7 @@ public class Gui extends JFrame {
 
 		panelBackLeftBot.add(txtLoggedIn);
 		panelBackLeftBot.add(btnSwitchUser);
-
+		
 		panelMidTopLeft.add(new JScrollPane(qTable));
 	}
 
@@ -227,7 +285,9 @@ public class Gui extends JFrame {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void updateChooseUser(){
 		chooseUser.setModel(new DefaultComboBoxModel(it.getUsers().toArray()));
+		chooseUser2 = chooseUser;
 		}
+	
 	
 	/**
 	 * @return the panelBackRight
@@ -667,6 +727,160 @@ public class Gui extends JFrame {
 	@SuppressWarnings("rawtypes")
 	public void setChoosePriority(JComboBox choosePriority) {
 		this.choosePriority = choosePriority;
+	}
+
+	/**
+	 * @return the up
+	 */
+	public UpdatePanel getUp() {
+		return up;
+	}
+
+	/**
+	 * @param up the up to set
+	 */
+	public void setUp(UpdatePanel up) {
+		this.up = up;
+	}
+
+	/**
+	 * @return the update
+	 */
+	public JButton getUpdate() {
+		return update;
+	}
+
+	/**
+	 * @param update the update to set
+	 */
+	public void setUpdate(JButton update) {
+		this.update = update;
+	}
+
+//	/**
+//	 * @return the menuBar
+//	 */
+//	public JMenuBar getMenuBar() {
+//		return menuBar;
+//	}
+
+	/**
+	 * @param menuBar the menuBar to set
+	 */
+	public void setMenuBar(JMenuBar menuBar) {
+		this.menuBar = menuBar;
+	}
+
+	/**
+	 * @return the file
+	 */
+	public JMenu getFile() {
+		return file;
+	}
+
+	/**
+	 * @param file the file to set
+	 */
+	public void setFile(JMenu file) {
+		this.file = file;
+	}
+
+	/**
+	 * @return the help
+	 */
+	public JMenu getHelp() {
+		return help;
+	}
+
+	/**
+	 * @param help the help to set
+	 */
+	public void setHelp(JMenu help) {
+		this.help = help;
+	}
+
+	/**
+	 * @return the chooseUser2
+	 */
+	public JComboBox getChooseUser2() {
+		return chooseUser2;
+	}
+
+	/**
+	 * @param chooseUser2 the chooseUser2 to set
+	 */
+	public void setChooseUser2(JComboBox chooseUser2) {
+		this.chooseUser2 = chooseUser2;
+	}
+
+	/**
+	 * @return the choosePrio2
+	 */
+	public JComboBox getChoosePrio2() {
+		return choosePrio2;
+	}
+
+	/**
+	 * @param choosePrio2 the choosePrio2 to set
+	 */
+	public void setChoosePrio2(JComboBox choosePrio2) {
+		this.choosePrio2 = choosePrio2;
+	}
+
+	/**
+	 * @return the save
+	 */
+	public JMenuItem getSave() {
+		return save;
+	}
+
+	/**
+	 * @param save the save to set
+	 */
+	public void setSave(JMenuItem save) {
+		this.save = save;
+	}
+
+	/**
+	 * @return the about
+	 */
+	public JMenuItem getAbout() {
+		return about;
+	}
+
+	/**
+	 * @param about the about to set
+	 */
+	public void setAbout(JMenuItem about) {
+		this.about = about;
+	}
+
+	/**
+	 * @return the btnId
+	 */
+	public JButton getBtnId() {
+		return btnId;
+	}
+
+	/**
+	 * @param btnId the btnId to set
+	 */
+	public void setBtnId(JButton btnId) {
+		this.btnId = btnId;
+	}
+
+	/**
+	 * @return the txtId
+	 */
+	public JTextField getTxtId() {
+		return txtId;
+	}
+
+	/**
+	 * @param txtId the txtId to set
+	 */
+	public void setTxtId(JTextField txtId) {
+		this.txtId = txtId;
 	}
 
 

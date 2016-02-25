@@ -1,0 +1,22 @@
+package no.uib.info233.v2016.puz001.esj002.Oblig2.FileHandling;
+
+public class ObjectSave {
+		private IssueTable it = new IssueTable();
+
+		/**
+		 * @return the it
+		 */
+		public IssueTable getIt() {
+			return it;
+		}
+
+		/**
+		 * @param it the it to set
+		 */
+		public void setIt(IssueTable it) {
+			this.it = it;
+		}
+		
+		
+	
+}
