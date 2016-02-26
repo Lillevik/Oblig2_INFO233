@@ -102,7 +102,7 @@ public class Gui extends JFrame implements Serializable{
 		setupComponents();
 		updateChooseUser();
 		setJMenuBar(menuBar);
-		setContentPane(lp);
+		setContentPane(spine);
 		
 		pack();
 		setVisible(true);
@@ -220,8 +220,12 @@ public class Gui extends JFrame implements Serializable{
 		spine.add(menuBar);
 		spine.add(panelBackRight, BorderLayout.CENTER);
 		spine.add(panelBackLeft, BorderLayout.WEST);
-
+<<<<<<< HEAD
 		
+		
+
+=======
+>>>>>>> master
 		panelBackRight.add(panelMidTopLeft);
 		panelBackLeft.add(panelBackLeftTop, BorderLayout.NORTH);
 		panelBackLeft.add(panelBackLeftBot, BorderLayout.CENTER);
@@ -236,16 +240,20 @@ public class Gui extends JFrame implements Serializable{
 		panelBackLeftTop.add(txtId);
 		panelBackLeftTop.add(btnId);
 		panelBackLeftTop.add(btnAddIssue);
-		
+<<<<<<< HEAD
 		panelBackLeftTop.add(update);
 
-
+=======
+>>>>>>> master
 		panelBackLeftTop.add(btnListAllUsers);
 		panelBackLeftTop.add(btnListAllIssues);
 		panelBackLeftTop.add(txtInfo);
 		panelBackLeftBot.add(txtLoggedIn);
 		panelBackLeftBot.add(btnSwitchUser);
-
+<<<<<<< HEAD
+		
+=======
+>>>>>>> master
 		panelMidTopLeft.add(new JScrollPane(qTable));
 	}
 

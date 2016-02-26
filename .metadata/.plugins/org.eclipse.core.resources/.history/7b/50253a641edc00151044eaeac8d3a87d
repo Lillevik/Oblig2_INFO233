@@ -2,10 +2,14 @@ package no.uib.info233.v2016.puz001.esj002.Oblig2.Main;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+<<<<<<< HEAD
 import java.io.Serializable;
 
 
 import no.uib.info233.v2016.puz001.esj002.Oblig2.FileHandling.SaveProgram;
+=======
+
+>>>>>>> master
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Gui.Gui;
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Issue.Issues;
 
@@ -27,7 +31,7 @@ public class Main implements Serializable{
 	 * @param args
 	 */
 	public static void main(String[] args) {
-//		SaveProgram.load();
+		SaveProgram.load();
 		Gui gui = new Gui();
 
 
@@ -231,6 +235,22 @@ public class Main implements Serializable{
         gui.getIp().getCreateButton().addActionListener(new ActionListener(){
 
 			@Override
+<<<<<<< HEAD
+			public void actionPerformed(ActionEvent e) {			
+			    	Issues is = new Issues(gui.getIt().maxIssueId() ,
+			    			gui.getChooseUser().getSelectedItem().toString(),
+			    			gui.getIt().currentDate(),
+			    			gui.getIp().getIssueText().getText(),
+			    			gui.getChoosePriority().getSelectedItem().toString(),
+			    			gui.getIp().getLocationText().getText());
+			    	gui.getIt().getIssueList().add(is);
+			    	gui.getIt().tableForIssues();
+			    	gui.setContentPane(gui.getSpine());
+			    	gui.pack();
+		};
+
+  });
+=======
 			public void actionPerformed(ActionEvent e) {
 				
 				Issues is = new Issues(gui.getIt().maxIssueId() ,
@@ -245,6 +265,7 @@ public class Main implements Serializable{
 			    	    gui.pack();
 	    	}
         });
+>>>>>>> master
 		
 		/**
 		 * This actionslistener for the login button
@@ -256,9 +277,13 @@ public class Main implements Serializable{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gui.authenticateLogin();
+<<<<<<< HEAD
 				if(gui.authenticateLogin() == false){	
 					gui.getLp().getStatus().setText("Username or password is incorrect.");
-
+=======
+				if(gui.authenticateLogin() == false){
+					gui.getLp().getStatus().setText("Username or password is incorrect.");
+>>>>>>> master
 				}
 			}
 		});
@@ -317,6 +342,16 @@ public class Main implements Serializable{
 				System.out.println("TEst");
 			}
 		});
+<<<<<<< HEAD
+		
+		
+		
+		
 	}
 }
+	
 
+=======
+	}
+}
+>>>>>>> master

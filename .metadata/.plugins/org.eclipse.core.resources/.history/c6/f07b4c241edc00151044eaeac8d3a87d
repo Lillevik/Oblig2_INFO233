@@ -37,7 +37,7 @@ public class SaveProgram implements Serializable{
     /**
      * Load the last saved game file into the game.
      */
-    public static IssueTable load(){ 
+    public IssueTable load(){ 
             if(checkFileExists()){
             	System.out.println(checkFileExists());
                 FileInputStream fis = null;

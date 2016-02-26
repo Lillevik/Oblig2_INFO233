@@ -98,11 +98,11 @@ public class Gui extends JFrame implements Serializable{
 		
 		spine.setLayout(new BorderLayout(0, 0));
 		spine.setPreferredSize(new Dimension(700, 600));
-		
+		setContentPane(spine);
 		setupComponents();
 		updateChooseUser();
 		setJMenuBar(menuBar);
-		setContentPane(lp);
+		setContentPane(spine);
 		
 		pack();
 		setVisible(true);

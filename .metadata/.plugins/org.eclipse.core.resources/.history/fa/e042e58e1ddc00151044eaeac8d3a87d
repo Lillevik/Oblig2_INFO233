@@ -46,9 +46,15 @@ public class IssueTable implements Serializable{
 	/**
 	 * Fields for the IssueTable class
 	 */
+<<<<<<< HEAD
 	Main m = new Main();
 	private File file = new File("old_issues.xml");
 	private transient DefaultTableModel model = new DefaultTableModel();
+=======
+	private static final long serialVersionUID = 1L;
+	private File file = new File("old_issues.xml");
+	private DefaultTableModel model = new DefaultTableModel();
+>>>>>>> master
 	private Set<String> users = new HashSet <String>();
 	private ArrayList<Issues> issueList = new ArrayList <Issues>();
 	private ArrayList<Integer> prio = new ArrayList<Integer>() ;
@@ -90,7 +96,7 @@ public class IssueTable implements Serializable{
                 Document doc = dBuilder.parse(file);
                 doc.getDocumentElement().normalize();
 	    	       
-
+<<<<<<< HEAD
 	    			NodeList nodelist = doc.getElementsByTagName("ISSUES");
 					      for (int i = 0; i < nodelist.getLength(); i++)
 					      {
@@ -104,7 +110,21 @@ public class IssueTable implements Serializable{
 					   		    catch (Exception e) {
 					   			e.printStackTrace();
 					   		    }
+=======
+                NodeList nodelist = doc.getElementsByTagName("USER");
+                for (int i = 0; i < nodelist.getLength(); i++)
+                {
+                    Node node = nodelist.item(i);
+                    Element eElement = (Element) node;
+                    if(!users.contains(eElement.getAttribute("name")))
+                        users.add(eElement.getAttribute("name"));
+                }
+            }
 
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+>>>>>>> master
 	    }
 	    
 

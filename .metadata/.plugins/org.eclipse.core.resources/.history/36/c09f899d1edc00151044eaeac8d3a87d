@@ -2,10 +2,14 @@ package no.uib.info233.v2016.puz001.esj002.Oblig2.Main;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+<<<<<<< HEAD
 import java.io.Serializable;
 
 
 import no.uib.info233.v2016.puz001.esj002.Oblig2.FileHandling.SaveProgram;
+=======
+
+>>>>>>> master
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Gui.Gui;
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Issue.Issues;
 
@@ -27,7 +31,7 @@ public class Main implements Serializable{
 	 * @param args
 	 */
 	public static void main(String[] args) {
-//		SaveProgram.load();
+		SaveProgram.load();
 		Gui gui = new Gui();
 
 
