@@ -281,9 +281,10 @@ public class Main implements Serializable{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int i = gui.getqTable().getSelectedRow();
-				if(i == -1){
-					System.out.println("Please select a row to edit.");
-				}else{
+				if(i == null){
+					System.out.println("");
+				}if else{
+				
 				int prio = Integer.parseInt(gui.getqTable().getValueAt(i, 4).toString().trim());
 				String user = gui.getqTable().getValueAt(i, 1).toString();
 					gui.getChooseUser2().setSelectedItem(user);
