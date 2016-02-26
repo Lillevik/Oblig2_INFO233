@@ -35,13 +35,7 @@ import no.uib.info233.v2016.puz001.esj002.Oblig2.Main.Main;
  */
 public class IssueTable implements Serializable{
 	
-	
-	
-	
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6349521349294077303L;
 	/**
 	 * Fields for the IssueTable class
@@ -240,6 +234,10 @@ public class IssueTable implements Serializable{
 		    return date;
 	    }    
 
+	    /**
+	     * This method writes all the objects and string in issueList and users list
+	     * into a single xml file containing all their info.
+	     */
 	    public void writeXmlFile() {
 
 	        try {
@@ -285,17 +283,9 @@ public class IssueTable implements Serializable{
 
 	            DOMSource source = new DOMSource(doc);
 	            try {
-	                // location and name of XML file you can change as per need
-	            	// We added 2 because we have 1 IntelliJ user and 1 eclipse.
 	                FileWriter fos = new FileWriter("old_issues.xml");
 	                StreamResult result = new StreamResult(fos);
 	                aTransformer.transform(source, result);
-//	                
-//	                FileWriter fos1 = new FileWriter("\old_issues.xml");
-//	                StreamResult result1 = new StreamResult(fos1);
-//	                aTransformer.transform(source, result1);
-
-
 	            } catch (IOException e) {
 
 	                e.printStackTrace();

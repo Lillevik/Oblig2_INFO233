@@ -13,15 +13,12 @@ import java.io.Serializable;
  */
 public class Gui extends JFrame implements Serializable{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 167504218040359025L;
+
+	
 	/**
 	 * The fields of the Gui class
 	 */
-
-	
+	private static final long serialVersionUID = 167504218040359025L;
 	private JPanel spine;
 	private LoginPanel lp = new LoginPanel();
 	private IssuePanel ip = new IssuePanel();
@@ -50,6 +47,8 @@ public class Gui extends JFrame implements Serializable{
 	private JTextField txtPriority;
 	private JTextField txtId;
 
+
+
 	//JLabels
 	private JLabel searchLabel;
 
@@ -59,11 +58,11 @@ public class Gui extends JFrame implements Serializable{
 
 	//Instance of the IssueTable class
 	private IssueTable it = new IssueTable();
+	
 
 	//JTable
 	private JTable qTable = new JTable(it.getModel());
 
-	//i dont fucking know
 	private CardLayout layout = new CardLayout();
 	
 	//JComboBoxes
@@ -87,6 +86,9 @@ public class Gui extends JFrame implements Serializable{
 	private JComboBox choosePriority = new JComboBox(it.getPrio().toArray());
 	
 
+
+	
+	
 	/**
 	 * Constructor for the Gui class which extends from JFrame.
 	 * Creates the Gui and starts it up.
@@ -159,6 +161,7 @@ public class Gui extends JFrame implements Serializable{
 		choosePrio2.setBounds(290, 240, 160, 25);
 		up.add(choosePrio2);
 
+
 		//Sets up the JPanel panelBackLeft
 		panelBackLeft.setPreferredSize(new Dimension(200, 300));
 		panelBackLeft.setBackground(Color.gray);
@@ -183,6 +186,7 @@ public class Gui extends JFrame implements Serializable{
 		txtPriority.setPreferredSize(new Dimension(190, 20));
 		txtId.setPreferredSize(new Dimension(190, 20));
 
+
 		//Sets up the buttons
 		btnSearch = new JButton("Search");
 		btnListAllIssues = new JButton("List Issues");
@@ -194,6 +198,7 @@ public class Gui extends JFrame implements Serializable{
 		btnSwitchUser = new JButton("Switch user");
 		update = new JButton("Update issue");
 		btnId = new JButton("Search ID");
+
 
 		//size the buttons
 		btnSearch.setSize(new Dimension( 20, 20));
@@ -220,12 +225,16 @@ public class Gui extends JFrame implements Serializable{
 		spine.add(menuBar);
 		spine.add(panelBackRight, BorderLayout.CENTER);
 		spine.add(panelBackLeft, BorderLayout.WEST);
-
 		
+		
+
 		panelBackRight.add(panelMidTopLeft);
+
 		panelBackLeft.add(panelBackLeftTop, BorderLayout.NORTH);
 		panelBackLeft.add(panelBackLeftBot, BorderLayout.CENTER);
+
 		panelBackLeftTop.add(searchLabel);
+		
 		panelBackLeftTop.add(txtSearch);
 		panelBackLeftTop.add(btnSearch);
 		panelBackLeftTop.add(btnAddUser);
@@ -236,16 +245,16 @@ public class Gui extends JFrame implements Serializable{
 		panelBackLeftTop.add(txtId);
 		panelBackLeftTop.add(btnId);
 		panelBackLeftTop.add(btnAddIssue);
-		
 		panelBackLeftTop.add(update);
-
 
 		panelBackLeftTop.add(btnListAllUsers);
 		panelBackLeftTop.add(btnListAllIssues);
 		panelBackLeftTop.add(txtInfo);
+
+
 		panelBackLeftBot.add(txtLoggedIn);
 		panelBackLeftBot.add(btnSwitchUser);
-
+		
 		panelMidTopLeft.add(new JScrollPane(qTable));
 	}
 
@@ -268,7 +277,9 @@ public class Gui extends JFrame implements Serializable{
 	}
 	
 	
-	
+	/**
+	 * This method updates  The JComboButto with new info from the users list.
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void updateChooseUser(){
 		chooseUser.setModel(new DefaultComboBoxModel(it.getUsers().toArray()));
@@ -744,13 +755,6 @@ public class Gui extends JFrame implements Serializable{
 		this.update = update;
 	}
 
-//	/**
-//	 * @return the menuBar
-//	 */
-//	public JMenuBar getMenuBar() {
-//		return menuBar;
-//	}
-
 	/**
 	 * @param menuBar the menuBar to set
 	 */
@@ -789,6 +793,7 @@ public class Gui extends JFrame implements Serializable{
 	/**
 	 * @return the chooseUser2
 	 */
+	@SuppressWarnings("rawtypes")
 	public JComboBox getChooseUser2() {
 		return chooseUser2;
 	}
@@ -796,6 +801,7 @@ public class Gui extends JFrame implements Serializable{
 	/**
 	 * @param chooseUser2 the chooseUser2 to set
 	 */
+	@SuppressWarnings("rawtypes")
 	public void setChooseUser2(JComboBox chooseUser2) {
 		this.chooseUser2 = chooseUser2;
 	}
@@ -803,6 +809,7 @@ public class Gui extends JFrame implements Serializable{
 	/**
 	 * @return the choosePrio2
 	 */
+	@SuppressWarnings("rawtypes")
 	public JComboBox getChoosePrio2() {
 		return choosePrio2;
 	}
@@ -810,6 +817,7 @@ public class Gui extends JFrame implements Serializable{
 	/**
 	 * @param choosePrio2 the choosePrio2 to set
 	 */
+	@SuppressWarnings("rawtypes")
 	public void setChoosePrio2(JComboBox choosePrio2) {
 		this.choosePrio2 = choosePrio2;
 	}

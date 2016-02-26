@@ -10,16 +10,12 @@ import java.io.Serializable;
  *This class is made to create objects containing the
  *values from the ISSUES elements in the old_issues.xml file.
  */
-
-
-
 public class Issues implements Serializable{
 
 	/**
-	 * 
+	 * //These are the fields for the Issues class
 	 */
 	private static final long serialVersionUID = -2428158722130066013L;
-	//These are the fields for the Issues class
 	private String id;
 	private String assigned;
 	private String created;

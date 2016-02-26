@@ -8,12 +8,19 @@ import javax.swing.*;
 
 
 
-
+/**
+ * The purpose of this class is to serve as a panel for
+ * updating issues.
+ * @author mariuslillevik
+ *
+ */
 public class UpdatePanel extends JPanel implements Serializable{
 
 
-
-		
+	
+	/**
+	 * These are the fields for the UpdatePanel	
+	 */
 	private static final long serialVersionUID = 4161520540703687836L;
 	private JLabel userLabel = new JLabel("Assign to:");
 	private JLabel priority = new JLabel("Priority:");
@@ -25,13 +32,21 @@ public class UpdatePanel extends JPanel implements Serializable{
 	
 	
 	
-	
+	/**
+	 * This is the constructor of the issuePanel which initialized its
+	 * components and sets a size pf the panel.
+	 */
 	public UpdatePanel(){
 		setPreferredSize(new Dimension(700, 600));
 		placeComponents(this);
 		setVisible(true);
 	}
 
+	/**
+	 * This is the method that sets up and add all the 
+	 * components to the panel.
+	 * @param panel
+	 */
 	private void placeComponents(JPanel panel) {
 
 		panel.setLayout(null);

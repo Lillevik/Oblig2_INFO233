@@ -27,7 +27,7 @@ public class Main implements Serializable{
 	 * @param args
 	 */
 	public static void main(String[] args) {
-//		SaveProgram.load();
+		SaveProgram.load();
 		Gui gui = new Gui();
 
 
@@ -62,7 +62,10 @@ public class Main implements Serializable{
 					}
 		});
 		
-		
+		/**
+		 * This is an actionListener for the btnId which 
+		 * finds a specific issues and displays it in the JTable.
+		 */
 		gui.getBtnId().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -89,7 +92,7 @@ public class Main implements Serializable{
 				    			  issue.getLocation()});
 							}
 						}
-			System.out.println(gui.getTxtId().getText());}
+			}
 		});
 		
 
@@ -100,8 +103,6 @@ public class Main implements Serializable{
 		gui.getBtnPrior().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				try {
 					gui.getIt().getModel().setRowCount(0);
 					gui.getIt().getModel().setColumnCount(0);
 					gui.getIt().getModel().addColumn("Issue ID: ");
@@ -124,18 +125,12 @@ public class Main implements Serializable{
 				    			  issue.getLocation()});
                         }
                     }
-                }
-
-				catch (Exception f ){
-					f.printStackTrace();
-				}
 			}
 		});
 		
 		
 		/**
 		 * This method tries to list the issues after a certain date.
-		 * *****NOT COMPLETE*****
 		 */
 		gui.getBtnDate().addActionListener(new ActionListener() {
 			@Override
@@ -263,19 +258,30 @@ public class Main implements Serializable{
 			}
 		});
 
-
+		/**
+		 * This metod switches the panel to login for a new login.
+		 */
 		gui.getBtnSwitchUser().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				gui.getLp().getStatus().setText("Not logged in.");
 				gui.setContentPane(gui.getLp());
 				gui.pack();
 			}
 		});
 		
+		/**
+		 * This method changes to the update panel if a row is selected.
+		 */
 		gui.getUpdate().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				
 				int i = gui.getqTable().getSelectedRow();
+				if(i == -1){
+					System.out.println("Please select a row to edit.");
+				}else{
 				int prio = Integer.parseInt(gui.getqTable().getValueAt(i, 4).toString().trim());
 				String user = gui.getqTable().getValueAt(i, 1).toString();
 					gui.getChooseUser2().setSelectedItem(user);
@@ -284,9 +290,12 @@ public class Main implements Serializable{
 					gui.getUp().getLocationText().setText(gui.getqTable().getValueAt(i, 5).toString());
 					gui.setContentPane(gui.getUp());
 					gui.pack();
+				}
 			}
 		});
-		
+		/**
+		 * This method edits a row depending on user inputs.
+		 */
 		gui.getUp().getCreateButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -303,13 +312,14 @@ public class Main implements Serializable{
 					}
 					
 				}
-				
-				
 				gui.setContentPane(gui.getSpine());
 				gui.pack();
 			}
 		});
 		
+		/**
+		 * This button attempts to save the current state of the game.
+		 */
 		gui.getSave().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

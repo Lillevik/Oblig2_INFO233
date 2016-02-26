@@ -11,20 +11,17 @@ import javax.swing.JTextField;
 
 
 
-
+/**
+ * The purpose of this class is to serve as a panel for
+ * creating new issues.
+ * @author mariuslillevik
+ *
+ */
 public class IssuePanel extends JPanel implements Serializable{
 
-
-	/**
-	 * 
-	 */
-	
-	/**
-	 * 
-	 */
-
-	//These are JComboBoxes
-	
+/**
+ * These are the fields of the IssuePanel class.
+ */
 	
 	private static final long serialVersionUID = 4161520540703687836L;
 	private JLabel userLabel = new JLabel("Assign to:");
@@ -36,13 +33,21 @@ public class IssuePanel extends JPanel implements Serializable{
 	
 	
 	
-	
+	/**
+	 * This is the constructor of the issuePanel which initialized its
+	 * components and sets a size pf the panel.
+	 */
 	public IssuePanel(){
 		setPreferredSize(new Dimension(700, 600));
 		placeComponents(this);
 		setVisible(true);
 	}
 
+	/**
+	 * This is the method that sets up and add all the 
+	 * components to the panel.
+	 * @param panel
+	 */
 	private void placeComponents(JPanel panel) {
 
 		panel.setLayout(null);

@@ -11,38 +11,51 @@ import javax.swing.JTextField;
 
 
 
-
+/**
+ * The purpose of this class is to serve as a panel logging 
+ * into the program.
+ * @author mariuslillevik
+ *
+ */
 public class LoginPanel extends JPanel implements Serializable{
 
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2311655122465975281L;
-	/**
-	 * 
-	 */
-
 
 	
+	/**
+	 * These are the fields for the LoginPanel.
+	 */
+	private static final long serialVersionUID = -2311655122465975281L;
 	private JLabel userLabel = new JLabel("Username");
 	private JLabel passwordLabel = new JLabel("Password");
 	private JButton loginButton = new JButton("login");
 	private JPasswordField passwordText = new JPasswordField(20);
 	private JTextField userText = new JTextField(20);
 	private JLabel info = new JLabel("Example: Username:admin Password:pass");
+	private JLabel status = new JLabel ("Not logged in.");
 	
 	
-	
+	/**
+	 * This is the constructor of the LoginPanel which initialized its
+	 * components and sets a size pf the panel.
+	 */
 	public LoginPanel(){
 		setPreferredSize(new Dimension(700, 600));
 		placeComponents(this);
 		setVisible(true);
 	}
 
+	/**
+	 * This is the method that sets up and add all the 
+	 * components to the panel.
+	 * @param panel
+	 */
 	private void placeComponents(JPanel panel) {
 
 		panel.setLayout(null);
+		
+		status.setBounds(200, 320, 400, 25);
+		panel.add(status);
 
 		info.setBounds(200, 150, 500, 25);
 		panel.add(info);
@@ -141,14 +154,28 @@ public class LoginPanel extends JPanel implements Serializable{
 	/**
 	 * @return the status
 	 */
-	public JLabel getStatus() {
+	public JLabel getInfo() {
 		return info;
 	}
 
 	/**
 	 * @param status the status to set
 	 */
-	public void setStatus(JLabel status) {
+	public void setInfo(JLabel status) {
 		this.info = status;
+	}
+
+	/**
+	 * @return the status
+	 */
+	public JLabel getStatus() {
+		return status;
+	}
+
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(JLabel status) {
+		this.status = status;
 	}
 }
