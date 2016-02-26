@@ -3,13 +3,22 @@
  */
 package no.uib.info233.v2016.puz001.esj002.Oblig2.Issue;
 
+import java.io.Serializable;
+
 /**
  * @author mariuslillevik
  *This class is made to create objects containing the
  *values from the ISSUES elements in the old_issues.xml file.
  */
-public class Issues {
 
+
+
+public class Issues implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2428158722130066013L;
 	//These are the fields for the Issues class
 	private String id;
 	private String assigned;
@@ -17,6 +26,7 @@ public class Issues {
 	private String issue;
 	private String priority;
 	private String location;
+	
 	
 	/**
 	 * This is the constructor for the Issues class.

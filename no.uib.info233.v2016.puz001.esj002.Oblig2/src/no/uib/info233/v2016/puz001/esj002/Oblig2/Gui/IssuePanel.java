@@ -1,6 +1,7 @@
 package no.uib.info233.v2016.puz001.esj002.Oblig2.Gui;
 
 import java.awt.Dimension;
+import java.io.Serializable;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -11,24 +12,28 @@ import javax.swing.JTextField;
 
 
 
-public class IssuePanel extends JPanel{
+public class IssuePanel extends JPanel implements Serializable{
 
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * 
+	 */
 
 	//These are JComboBoxes
 	
 	
-	
+	private static final long serialVersionUID = 4161520540703687836L;
 	private JLabel userLabel = new JLabel("Assign to:");
 	private JLabel priority = new JLabel("Priority:");
 	private JLabel locationField = new JLabel("Location:");
 	private JTextField locationText = new JTextField();
 	private JTextArea issueText = new JTextArea("Write issue here.");
 	private JButton createButton = new JButton("Create");
+	
 	
 	
 	

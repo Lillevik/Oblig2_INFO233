@@ -7,8 +7,8 @@ import java.util.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -26,21 +26,29 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Issue.Issues;
+import no.uib.info233.v2016.puz001.esj002.Oblig2.Main.Main;
 
 /**
  * @author mariuslillevik
  * This is a class which deals with handling the xml files
  * and creating lists of strings and object from the xml file.
  */
-public class IssueTable extends JTable{
+public class IssueTable implements Serializable{
+	
+	
+	
 	
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6349521349294077303L;
+	/**
 	 * Fields for the IssueTable class
 	 */
-	private static final long serialVersionUID = 1L;
+	Main m = new Main();
 	private File file = new File("old_issues.xml");
-	private DefaultTableModel model = new DefaultTableModel();
+	private transient DefaultTableModel model = new DefaultTableModel();
 	private Set<String> users = new HashSet <String>();
 	private ArrayList<Issues> issueList = new ArrayList <Issues>();
 	private ArrayList<Integer> prio = new ArrayList<Integer>() ;
@@ -59,7 +67,10 @@ public class IssueTable extends JTable{
 			tableForIssues();
 		}
 	    
-		
+		/**
+		 * This method fills the prio ArrayList 
+		 * with numbers from 1 to 100.
+		 */
 		public void fillPrio(){
 			
 			for (int a = 0; a < 101; a++) {
@@ -79,26 +90,27 @@ public class IssueTable extends JTable{
                 Document doc = dBuilder.parse(file);
                 doc.getDocumentElement().normalize();
 	    	       
-                NodeList nodelist = doc.getElementsByTagName("USER");
-                for (int i = 0; i < nodelist.getLength(); i++)
-                {
-                    Node node = nodelist.item(i);
-                    Element eElement = (Element) node;
-                    if(!users.contains(eElement.getAttribute("name")))
-                        users.add(eElement.getAttribute("name"));
-                }
-            }
 
-            catch (Exception e) {
-                e.printStackTrace();
-            }
+	    			NodeList nodelist = doc.getElementsByTagName("ISSUES");
+					      for (int i = 0; i < nodelist.getLength(); i++)
+					      {
+					          Node node = nodelist.item(i);
+					          Element eElement = (Element) node;
+					          if(!users.contains(eElement.getAttribute("assigned_user")))
+					        	  users.add(eElement.getAttribute("assigned_user"));
+					      }
+					      	}
+					   			
+					   		    catch (Exception e) {
+					   			e.printStackTrace();
+					   		    }
+
 	    }
 	    
 
 	    /**
-	     * This method simply changes users to only contain 
-	     * non duplicate employees, and represents this
-	     * in the table model.
+	     * This method Lists all the users from the ArrayList users
+	     * and displays them in the JTable in Gui.
 	     */
 	    public void listUniqueUsers(){
 	    	try {
@@ -384,6 +396,22 @@ public class IssueTable extends JTable{
 	 */
 	public void setUsers(Set<String> users) {
 		this.users = users;
+	}
+
+
+	/**
+	 * @return the m
+	 */
+	public Main getM() {
+		return m;
+	}
+
+
+	/**
+	 * @param m the m to set
+	 */
+	public void setM(Main m) {
+		this.m = m;
 	}
 
 }
