@@ -48,7 +48,6 @@ public class Main implements Serializable{
 					gui.getIt().getModel().addColumn("Location: ");
 
 
-					
 					for(Issues issue : gui.getIt().getIssueList()){
 						if(issue.getAssigned().equals(gui.getTxtSearch().getText())){
 						gui.getIt().getModel().addRow(new Object[]{issue.getId(),
@@ -69,9 +68,6 @@ public class Main implements Serializable{
 		gui.getBtnId().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-
-				
 					gui.getIt().getModel().setRowCount(0);
 					gui.getIt().getModel().setColumnCount(0);
 					gui.getIt().getModel().addColumn("Issue ID: ");
@@ -80,7 +76,6 @@ public class Main implements Serializable{
 					gui.getIt().getModel().addColumn("Issue: ");
 					gui.getIt().getModel().addColumn("Priority: ");
 					gui.getIt().getModel().addColumn("Location: ");
-
 					
 					for(Issues issue : gui.getIt().getIssueList()){
 						if(issue.getId().equals(gui.getTxtId().getText())){
@@ -90,6 +85,7 @@ public class Main implements Serializable{
 				    			  issue.getIssue(),
 				    			  issue.getPriority(),
 				    			  issue.getLocation()});
+						gui.getIt().writeXmlFile();
 							}
 						}
 			}
@@ -111,8 +107,6 @@ public class Main implements Serializable{
 					gui.getIt().getModel().addColumn("Issue: ");
 					gui.getIt().getModel().addColumn("Priority: ");
 					gui.getIt().getModel().addColumn("Location: ");
-
-					
 					for(Issues issue : gui.getIt().getIssueList()){
 						int priorInt = Integer.parseInt(issue.getPriority().trim());
 						int priorTxt = Integer.parseInt(gui.getTxtPriority().getText());
@@ -135,8 +129,6 @@ public class Main implements Serializable{
 		gui.getBtnDate().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				try {
 					gui.getIt().getModel().setRowCount(0);
 					gui.getIt().getModel().setColumnCount(0);
 					gui.getIt().getModel().addColumn("Issue ID: ");
@@ -145,7 +137,6 @@ public class Main implements Serializable{
 					gui.getIt().getModel().addColumn("Issue: ");
 					gui.getIt().getModel().addColumn("Priority: ");
 					gui.getIt().getModel().addColumn("Location: ");
-
 
 					for(Issues issue : gui.getIt().getIssueList()){
 						int dateInt = Integer.parseInt(issue.getCreated().replaceAll("/", ""));
@@ -160,11 +151,6 @@ public class Main implements Serializable{
                         }
                     }
 				}
-
-				catch (Exception f ){
-					f.printStackTrace();
-				}
-			}
 		});
 
 		/**
@@ -172,11 +158,10 @@ public class Main implements Serializable{
 		 * presents them using a JTable
 		 */
 		gui.getBtnListAllUsers().addActionListener(new ActionListener(){
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gui.getIt().listUniqueUsers();
-				
+
 			}
 		});
 		
@@ -190,7 +175,6 @@ public class Main implements Serializable{
 			@Override
 			public void actionPerformed(ActionEvent e){
 				gui.getIt().tableForIssues();
-				
 			}
 		});
 		
@@ -204,6 +188,7 @@ public class Main implements Serializable{
 			public void actionPerformed(ActionEvent e) {
 					gui.getIt().addUser(gui.getTxtSearch().getText());
 					gui.updateChooseUser();
+					gui.getIt().writeXmlFile();
 					gui.getIt().listUniqueUsers();
 			}
 		});
@@ -236,6 +221,7 @@ public class Main implements Serializable{
 						gui.getIp().getLocationText().getText());
 			            gui.getIt().getIssueList().add(is);
 			    	    gui.getIt().tableForIssues();
+						gui.getIt().writeXmlFile();
 			    	    gui.setContentPane(gui.getSpine());
 			    	    gui.pack();
 	    	}
@@ -250,16 +236,15 @@ public class Main implements Serializable{
 		gui.getLp().getLoginButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gui.authenticateLogin();
 				if(gui.authenticateLogin() == false){	
 					gui.getLp().getStatus().setText("Username or password is incorrect.");
-
 				}
 			}
 		});
 
 		/**
-		 * This metod switches the panel to login for a new login.
+		 * This metod switches the panel to login for a new login
+		 * when the buttom switch user is pressed.
 		 */
 		gui.getBtnSwitchUser().addActionListener(new ActionListener() {
 			@Override
@@ -271,13 +256,11 @@ public class Main implements Serializable{
 		});
 		
 		/**
-		 * This method changes to the update panel if a row is selected.
+		 * This method changes the update panel if a row is selected.
 		 */
 		gui.getUpdate().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				
 				int i = gui.getqTable().getSelectedRow();
 				if(i == -1){
 					System.out.println("Please select a row to edit.");
@@ -288,11 +271,13 @@ public class Main implements Serializable{
 					gui.getChoosePrio2().setSelectedItem(prio);			
 					gui.getUp().getIssueText().setText(gui.getqTable().getValueAt(i, 3).toString());
 					gui.getUp().getLocationText().setText(gui.getqTable().getValueAt(i, 5).toString());
+					gui.getIt().writeXmlFile();
 					gui.setContentPane(gui.getUp());
 					gui.pack();
 				}
 			}
 		});
+		
 		/**
 		 * This method edits a row depending on user inputs.
 		 */
@@ -309,21 +294,47 @@ public class Main implements Serializable{
 						i.setIssue(gui.getUp().getIssueText().getText());
 						i.setLocation(gui.getUp().getLocationText().getText());
 						gui.getIt().tableForIssues();
-					}
+						}
 					
 				}
+				gui.getIt().writeXmlFile();
 				gui.setContentPane(gui.getSpine());
 				gui.pack();
 			}
 		});
 		
 		/**
-		 * This button attempts to save the current state of the game.
+		 * This button attempts to save the current state of the program
+		 * when the menu button is pushed and writes a file.
 		 */
 		gui.getSave().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				SaveProgram.save(gui.getIt());
+				SaveProgram.save(gui.getIt());		
+				gui.getIt().writeXmlFile();
+			}
+		});
+		
+		
+		/**
+		 * This is an actionlistener for the backButton in the updatePanel class
+		 * which returns the user to the main panel if the button is pushed.
+		 */
+		gui.getUp().getBackButton().addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gui.setContentPane(gui.getSpine());
+			}
+		});
+		
+		/**
+		 * This is an actionlistener for the backButton in the IssuePanel class
+		 * which returns the user to the main panel if the button is pushed.
+		 */
+		gui.getIp().getBackButton().addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gui.setContentPane(gui.getSpine());
 			}
 		});
 	}

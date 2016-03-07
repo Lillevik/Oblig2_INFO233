@@ -14,16 +14,15 @@ public class Gui extends JFrame implements Serializable{
 
 
 	
-	/**
-	 * The fields of the Gui class
-	 */
+	
+	//The fields of the Gui class
 	private static final long serialVersionUID = 167504218040359025L;
 	private JPanel spine;
 	private LoginPanel lp = new LoginPanel();
 	private IssuePanel ip = new IssuePanel();
 	private UpdatePanel up = new UpdatePanel();
 
-	/**
+	/*
 	 * JPanels used in the Gui.
 	 * Can look at it as "Layers",
 	 * where panelBackRight is the far back
@@ -35,7 +34,7 @@ public class Gui extends JFrame implements Serializable{
 	private JPanel panelBackLeftTop;
 	private JPanel panelBackLeftBot;
 
-	/**
+	/*
 	 * All the buttons used in the program.
 	 * All the buttons are given action events
 	 * in the Main class.
@@ -51,7 +50,7 @@ public class Gui extends JFrame implements Serializable{
 	private JButton update;
 	private JButton btnId;
 
-	/**
+	/*
 	 * The JTexfields in the program.
 	 * All the JTextFields are
 	 * for user input.
@@ -62,27 +61,27 @@ public class Gui extends JFrame implements Serializable{
 	private JTextField txtId;
 
 
-	/**
+	/*
 	 * searchlabel is the label
 	 * above the input fields that says
 	 * "query here"
 	 */
 	private JLabel searchLabel;
 
-	/**
+	/*
 	 * The JTextPanes are simply displaying
 	 * info and who you are loged in as.
 	 */
 	private JTextPane txtInfo;
 	private JTextPane txtLoggedIn = new JTextPane();
 
-	/**
+	/*
 	 * The gui class gets and instance of the IssueTable class
 	 * to get methods from the class.
 	 */
 	private IssueTable it = new IssueTable();
 
-	/**
+	/*
 	 * The Jtable qTable (qTable was the intention,
 	 * not making a cutie table) is the
 	 * table that displays the arraylist
@@ -90,12 +89,12 @@ public class Gui extends JFrame implements Serializable{
 	 */
 	private JTable qTable = new JTable(it.getModel());
 
-	/**
+	/*
 	 * cardlayout is the layout used in the spine.
 	 */
 	private CardLayout layout = new CardLayout();
 
-	/**
+	/*
 	 * JComboBoxes are drop down panels
 	 * making it easier to chose and input.
 	 * The choose user lets you drop down all users etc.
@@ -110,14 +109,15 @@ public class Gui extends JFrame implements Serializable{
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private JComboBox choosePriority = new JComboBox(it.getPrio().toArray());
 
-	/**
+	/*
 	 * The JMenu items make the menue on the top of the program
 	 */
 	private JMenuBar menuBar = new JMenuBar();
 	private JMenu file = new JMenu("File");
 	private JMenu help = new JMenu("Help");
-	JMenuItem save = new JMenuItem("Save");
-	JMenuItem about = new JMenuItem("About");
+	private JMenuItem save = new JMenuItem("Save");
+	@SuppressWarnings("unused")
+	private JMenuItem about = new JMenuItem("About");
 
 	/**
 	 * Constructor for the Gui class which extends from JFrame.
@@ -182,7 +182,7 @@ public class Gui extends JFrame implements Serializable{
 		 * init the JTexFields in the class
 		 */
 		txtSearch = new JTextField("search/add User");
-		txtDate = new JTextField("search date");
+		txtDate = new JTextField("search date mm/dd/yy");
 		txtPriority = new JTextField("search prior");
 		txtId = new JTextField("Search ID");
 
@@ -310,16 +310,16 @@ public class Gui extends JFrame implements Serializable{
 	
 	
 	/**
-	 * This method updates  The JComboButton with new info from the users list,
-	 *
+	 * This method updates  The JComboButton with new info from the users list.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void updateChooseUser(){
 		chooseUser.setModel(new DefaultComboBoxModel(it.getUsers().toArray()));
 		chooseUser2 = chooseUser;
 	}
 	
 	/**
-	 * The cuteable is the table displaying the lists.
+	 * The qtable is the table displaying the lists.
 	 * the contents of the table are edited by other methods
 	 * mainly it contains users and issues.
 	 * @return the qTable
@@ -355,6 +355,7 @@ public class Gui extends JFrame implements Serializable{
 	}
 
 	/**
+	 * Getter for the JButton btnSearch
 	 * @return the btnSearch
 	 */
 	public JButton getBtnSearch() {
@@ -400,15 +401,11 @@ public class Gui extends JFrame implements Serializable{
 	public JButton getBtnAddUser() {
 		return btnAddUser;
 	}
-
-	public JPanel getPanelBackLeft() {
-		return panelBackLeft;
-	}
-
+	
 	/**
 	 * The btnAddIssue is a button that sends you to a new
 	 * panel, the IssuePanel.
-	 * read more in the ISsuePanel class.
+	 * read more in the IssuePanel class.
 	 * @return the btnAddIssue
 	 */
 	public JButton getBtnAddIssue() {

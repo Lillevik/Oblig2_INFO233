@@ -12,9 +12,8 @@ import java.io.Serializable;
  */
 public class Issues implements Serializable{
 
-	/**
-	 * //These are the fields for the Issues class
-	 */
+	
+	//These are the fields for the Issues class.
 	private static final long serialVersionUID = -2428158722130066013L;
 	private String id;
 	private String assigned;
@@ -45,6 +44,8 @@ public class Issues implements Serializable{
 
 
 	/**
+	 * This is a getter for the field id which
+	 * returns the current id value as a string.
 	 * @return the id
 	 */
 	public String getId() {
@@ -54,6 +55,8 @@ public class Issues implements Serializable{
 
 
 	/**
+	 * This is a setter for the field id which
+	 * sets the value of the field to a different value.
 	 * @param id the id to set
 	 */
 	public void setId(String id) {
@@ -63,6 +66,8 @@ public class Issues implements Serializable{
 
 
 	/**
+	 * This is a getter for the field id which
+	 * returns the assigned name value as a string.
 	 * @return the assigned
 	 */
 	public String getAssigned() {
@@ -72,6 +77,8 @@ public class Issues implements Serializable{
 
 
 	/**
+	 * This is a setter for the field assigned which
+	 * sets the value of the field to a new value.
 	 * @param assigned the assigned to set
 	 */
 	public void setAssigned(String assigned) {
@@ -81,6 +88,8 @@ public class Issues implements Serializable{
 
 
 	/**
+	 * This is a getter for the field created which
+	 * returns the current created date value as a string.
 	 * @return the created
 	 */
 	public String getCreated() {
@@ -90,6 +99,8 @@ public class Issues implements Serializable{
 
 
 	/**
+	 * This is a setter for the field created which
+	 * sets the value of the field to a different value.
 	 * @param created the created to set
 	 */
 	public void setCreated(String created) {
@@ -99,6 +110,8 @@ public class Issues implements Serializable{
 
 
 	/**
+	 * This is a getter for the field issue which
+	 * returns the current issue value as a string.
 	 * @return the issue
 	 */
 	public String getIssue() {
@@ -108,6 +121,8 @@ public class Issues implements Serializable{
 
 
 	/**
+	 * This is a setter for the field issue which
+	 * sets the value of the field to a different value.
 	 * @param issue the issue to set
 	 */
 	public void setIssue(String issue) {
@@ -117,6 +132,8 @@ public class Issues implements Serializable{
 
 
 	/**
+	 * This is a getter for the field priority which
+	 * returns the current priority value as a string.
 	 * @return the priority
 	 */
 	public String getPriority() {
@@ -126,6 +143,8 @@ public class Issues implements Serializable{
 
 
 	/**
+	 * This is a setter for the field priority which
+	 * sets the value of the field to a different value.
 	 * @param priority the priority to set
 	 */
 	public void setPriority(String priority) {
@@ -135,6 +154,8 @@ public class Issues implements Serializable{
 
 
 	/**
+	 * This is a getter for the field location which
+	 * returns the current location value as a string.
 	 * @return the location
 	 */
 	public String getLocation() {
@@ -144,6 +165,8 @@ public class Issues implements Serializable{
 
 
 	/**
+	 * This is a setter for the field location which
+	 * sets the value of the field to a different value.
 	 * @param location the location to set
 	 */
 	public void setLocation(String location) {

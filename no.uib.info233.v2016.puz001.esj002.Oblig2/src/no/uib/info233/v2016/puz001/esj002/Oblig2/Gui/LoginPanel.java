@@ -81,48 +81,8 @@ public class LoginPanel extends JPanel implements Serializable{
 	}
 
 	/**
-	 * @return the userLabel
-	 */
-	public JLabel getUserLabel() {
-		return userLabel;
-	}
-
-	/**
-	 * @param userLabel the userLabel to set
-	 */
-	public void setUserLabel(JLabel userLabel) {
-		this.userLabel = userLabel;
-	}
-
-	/**
-	 * @return the passwordLabel
-	 */
-	public JLabel getPasswordLabel() {
-		return passwordLabel;
-	}
-
-	/**
-	 * @param passwordLabel the passwordLabel to set
-	 */
-	public void setPasswordLabel(JLabel passwordLabel) {
-		this.passwordLabel = passwordLabel;
-	}
-
-	/**
-	 * @return the loginButton
-	 */
-	public JButton getLoginButton() {
-		return loginButton;
-	}
-
-	/**
-	 * @param loginButton the loginButton to set
-	 */
-	public void setLoginButton(JButton loginButton) {
-		this.loginButton = loginButton;
-	}
-
-	/**
+	 * This is a textfield which takes a user input
+	 * and uses the input for authentication.
 	 * @return the passwordText
 	 */
 	public JPasswordField getPasswordText() {
@@ -130,51 +90,31 @@ public class LoginPanel extends JPanel implements Serializable{
 	}
 
 	/**
-	 * @param passwordText the passwordText to set
-	 */
-	public void setPasswordText(JPasswordField passwordText) {
-		this.passwordText = passwordText;
-	}
-
-	/**
+	 * This is a textfield which takes a user input
+	 * and uses the input for authentication.
 	 * @return the userText
 	 */
 	public JTextField getUserText() {
 		return userText;
 	}
 
-	/**
-	 * @param userText the userText to set
-	 */
-	public void setUserText(JTextField userText) {
-		this.userText = userText;
-	}
 
 	/**
-	 * @return the status
+	 * This is the button used for authenticating login info
+	 * and changing the content pane if the login is correct.
+	 * @return the loginButton
 	 */
-	public JLabel getInfo() {
-		return info;
+	public JButton getLoginButton() {
+		return loginButton;
 	}
 
-	/**
-	 * @param status the status to set
-	 */
-	public void setInfo(JLabel status) {
-		this.info = status;
-	}
 
 	/**
+	 * This is a JLabel that simply changes depending on the
+	 * status of the login. Tells the user about errors.
 	 * @return the status
 	 */
 	public JLabel getStatus() {
 		return status;
-	}
-
-	/**
-	 * @param status the status to set
-	 */
-	public void setStatus(JLabel status) {
-		this.status = status;
 	}
 }

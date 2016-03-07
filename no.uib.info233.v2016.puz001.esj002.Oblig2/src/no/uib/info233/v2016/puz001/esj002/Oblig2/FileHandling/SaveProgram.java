@@ -2,21 +2,22 @@ package no.uib.info233.v2016.puz001.esj002.Oblig2.FileHandling;
 import java.io.*;
 
 /**
- * Write a description of class SaveGame here.
+ * This class creates and object file and saves it to the system
+ * to resume from the same place later.
  * 
  * @author Marius Lillevik
  * @version version 5.1
  */
 public class SaveProgram implements Serializable{
     
-	/**
-	 * 
-	 */
+	//Fields of the SaveProgram class
 	private static final long serialVersionUID = 8002287752953013587L;
 	public static final String filename = "IssueTracker.obj";
     public static final String root = "IssueTable";
+    
+    
     /**
-    * Method for saving the game into a folder (C:\Users\[user]\AppData\Roaming (Windows))"
+    * Method for saving the program into a folder (C:\Users\[user]\AppData\Roaming (Windows))"
     * It also works for the other OSs.
     */
     public static void save(Serializable objectToSerialise) {
@@ -34,12 +35,12 @@ public class SaveProgram implements Serializable{
             }
         }
         
+    
     /**
-     * Load the last saved game file into the game.
+     * Load the last saved program file into the program.
      */
     public static IssueTable load(){ 
             if(checkFileExists()){
-            	System.out.println(checkFileExists());
                 FileInputStream fis = null;
                 IssueTable loadedObject = null;
                 
@@ -59,18 +60,15 @@ public class SaveProgram implements Serializable{
         }
     
     /**
-     * Checks if the file allready exists.
-     * 
+     * Checks if the file allready exists.     
      * @return boolean
      */
     public static boolean checkFileExists() {
-
         return new File(createDataFolder() + filename).isFile();
     }
     
     /**
      * Creates a new folder containing the saved objects. 
-     * 
      * This folder is created differently depending on the current operating system.
      */
     public static String createDataFolder(){
@@ -109,47 +107,5 @@ public class SaveProgram implements Serializable{
         }
         System.err.println("File " + createDataFolder() + filename + " is write protected.");
         return false;
-    }
-    
-    public static void save1(Serializable objectToSerialize){
-    	 FileOutputStream fos = null;
-    	try {
-			fos = new FileOutputStream("IssueTable.obj");
-			// Write object with ObjectOutputStream
-			ObjectOutputStream obj_out = new ObjectOutputStream (fos);
-			// Write object out to disk
-			obj_out.writeObject(objectToSerialize);
-            obj_out.flush();
-			obj_out.close();
-            System.out.println("Saving: " + obj_out);
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
-    	
-    }
-    
-    public IssueTable load1() throws IOException, ClassNotFoundException {
-    	IssueTable loadedObject = null;
-    	try {
-			FileInputStream f_in = new FileInputStream("IssueTable.obj");
-			// Read object using ObjectInputStream
-			ObjectInputStream obj_in = new ObjectInputStream (f_in);
-			// Read an object
-			loadedObject = (IssueTable) obj_in.readObject();
-			System.out.println("Loaded: " + (loadedObject));
-			obj_in.close();
-
-
-			
-			
-			
-			
-			
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
     }
 }

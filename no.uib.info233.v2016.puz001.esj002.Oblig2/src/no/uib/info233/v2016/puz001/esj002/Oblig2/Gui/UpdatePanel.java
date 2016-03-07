@@ -11,7 +11,6 @@ import javax.swing.*;
 /**
  * The purpose of this class is to serve as a panel for
  * updating issues.
- *
  */
 public class UpdatePanel extends JPanel implements Serializable{
 
@@ -27,6 +26,7 @@ public class UpdatePanel extends JPanel implements Serializable{
 	private JTextField locationText = new JTextField();
 	private JTextArea issueText = new JTextArea("Write issue here.");
 	private JButton createButton = new JButton("Update");
+	private JButton backButton = new JButton("Cancel");
 
 	
 	
@@ -68,83 +68,24 @@ public class UpdatePanel extends JPanel implements Serializable{
 		
 		issueText.setBounds(290, 320, 160, 125);
 		panel.add(issueText);
-
 		
+		backButton.setBounds(390, 480, 80, 25);
+		panel.add(backButton );
 	}
 
 	/**
-	 * @return the userLabel
-	 */
-	public JLabel getUserLabel() {
-		return userLabel;
-	}
-
-	/**
-	 * @param userLabel the userLabel to set
-	 */
-	public void setUserLabel(JLabel userLabel) {
-		this.userLabel = userLabel;
-	}
-
-	/**
-	 * @return the passwordLabel
-	 */
-	public JLabel getPasswordLabel() {
-		return priority;
-	}
-
-	/**
-	 * @param passwordLabel the passwordLabel to set
-	 */
-	public void setPasswordLabel(JLabel passwordLabel) {
-		this.priority = passwordLabel;
-	}
-
-	/**
-	 * @return the loginButton
-	 */
-	public JButton getLoginButton() {
-		return createButton;
-	}
-
-	/**
-	 * @param loginButton the loginButton to set
-	 */
-	public void setLoginButton(JButton loginButton) {
-		this.createButton = loginButton;
-	}
-
-
-	/**
-	 * @return the priority
-	 */
-	public JLabel getPriority() {
-		return priority;
-	}
-
-	/**
-	 * @param priority the priority to set
-	 */
-	public void setPriority(JLabel priority) {
-		this.priority = priority;
-	}
-
-
-	/**
+	 * This is a getter for the field locationText
+	 * which is used to get location of an issue.
 	 * @return the locationText
 	 */
 	public JTextField getLocationText() {
 		return locationText;
 	}
 
-	/**
-	 * @param locationText the locationText to set
-	 */
-	public void setLocationText(JTextField locationText) {
-		this.locationText = locationText;
-	}
 
 	/**
+	 * This is a getter for the issueText
+	 * which is used to write the actual issue.
 	 * @return the issueText
 	 */
 	public JTextArea getIssueText() {
@@ -152,27 +93,8 @@ public class UpdatePanel extends JPanel implements Serializable{
 	}
 
 	/**
-	 * @param issueText the issueText to set
-	 */
-	public void setIssueText(JTextArea issueText) {
-		this.issueText = issueText;
-	}
-
-	/**
-	 * @return the location
-	 */
-	public JLabel getLocationField() {
-		return locationField;
-	}
-
-	/**
-	 * @param location the location to set
-	 */
-	public void setLocationField(JLabel location) {
-		this.locationField = location;
-	}
-
-	/**
+	 * This is the button that updates the issue
+	 * and returns the user to the main window.
 	 * @return the createButton
 	 */
 	public JButton getCreateButton() {
@@ -180,9 +102,16 @@ public class UpdatePanel extends JPanel implements Serializable{
 	}
 
 	/**
-	 * @param createButton the createButton to set
+	 * @return the backButton
 	 */
-	public void setCreateButton(JButton createButton) {
-		this.createButton = createButton;
+	public JButton getBackButton() {
+		return backButton;
 	}
+
+	/**
+	 * @param backButton the backButton to set
+	 */
+	public void setBackButton(JButton backButton) {
+		this.backButton = backButton;
+	}	
 }
