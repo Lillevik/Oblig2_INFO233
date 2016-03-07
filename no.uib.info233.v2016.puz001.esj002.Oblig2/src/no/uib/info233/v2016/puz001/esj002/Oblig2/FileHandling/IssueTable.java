@@ -29,7 +29,6 @@ import no.uib.info233.v2016.puz001.esj002.Oblig2.Issue.Issues;
 import no.uib.info233.v2016.puz001.esj002.Oblig2.Main.Main;
 
 /**
- * @author mariuslillevik
  * This is a class which deals with handling the xml files
  * and creating lists of strings and object from the xml file.
  */
@@ -59,6 +58,7 @@ public class IssueTable implements Serializable{
 			fillUsers();
 			fillIssues();
 			tableForIssues();
+			writeXmlFile();
 		}
 	    
 		/**

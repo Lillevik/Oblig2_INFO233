@@ -116,7 +116,7 @@ public class Main implements Serializable{
 					for(Issues issue : gui.getIt().getIssueList()){
 						int priorInt = Integer.parseInt(issue.getPriority().trim());
 						int priorTxt = Integer.parseInt(gui.getTxtPriority().getText());
-						if(priorInt >= priorTxt){
+						if(priorInt == priorTxt){
 						gui.getIt().getModel().addRow(new Object[]{issue.getId(),
 				    			  issue.getAssigned(),
 				    			  issue.getCreated(),

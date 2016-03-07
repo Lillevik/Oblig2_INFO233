@@ -11,7 +11,6 @@ import javax.swing.*;
 /**
  * The purpose of this class is to serve as a panel for
  * updating issues.
- * @author mariuslillevik
  *
  */
 public class UpdatePanel extends JPanel implements Serializable{
