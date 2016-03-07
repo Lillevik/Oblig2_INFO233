@@ -324,7 +324,6 @@ public class Main implements Serializable{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				SaveProgram.save(gui.getIt());
-				System.out.println("TEst");
 			}
 		});
 	}

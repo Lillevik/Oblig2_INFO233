@@ -136,6 +136,7 @@ public class IssueTable implements Serializable{
 	    
 	    
 	    
+	    
 	    /**
 	     * This method adds all the ISSUES elements in the old_issues.xml file
 	     * as object of Issues into the issues ArrayList.
