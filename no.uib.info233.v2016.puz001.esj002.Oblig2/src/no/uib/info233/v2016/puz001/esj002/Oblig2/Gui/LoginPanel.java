@@ -14,7 +14,6 @@ import javax.swing.JTextField;
 /**
  * The purpose of this class is to serve as a panel logging 
  * into the program.
- * @author mariuslillevik
  *
  */
 public class LoginPanel extends JPanel implements Serializable{

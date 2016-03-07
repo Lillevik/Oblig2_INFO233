@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="no.uib.info233.v2016.puz001.esj002.Oblig2:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/no_uib_info233_v2016_puz001_esj002_Oblig2_jar</output-path>
-    <root id="archive" name="no.uib.info233.v2016.puz001.esj002.Oblig2.jar">
-      <element id="module-output" name="no.uib.info233.v2016.puz001.esj002.Oblig2" />
-    </root>
-  </artifact>
-</component>
