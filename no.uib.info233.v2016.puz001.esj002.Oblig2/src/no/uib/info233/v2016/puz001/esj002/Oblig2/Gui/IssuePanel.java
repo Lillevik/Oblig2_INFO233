@@ -14,7 +14,6 @@ import javax.swing.JTextField;
 /**
  * The purpose of this class is to serve as a panel for
  * creating new issues.
- * @author mariuslillevik
  *
  */
 public class IssuePanel extends JPanel implements Serializable{
