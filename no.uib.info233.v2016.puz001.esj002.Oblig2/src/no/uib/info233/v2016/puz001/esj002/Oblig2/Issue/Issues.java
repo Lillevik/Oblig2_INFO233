@@ -55,17 +55,6 @@ public class Issues implements Serializable{
 
 
 	/**
-	 * This is a setter for the field id which
-	 * sets the value of the field to a different value.
-	 * @param id the id to set
-	 */
-	public void setId(String id) {
-		this.id = id;
-	}
-
-
-
-	/**
 	 * This is a getter for the field id which
 	 * returns the assigned name value as a string.
 	 * @return the assigned
@@ -94,17 +83,6 @@ public class Issues implements Serializable{
 	 */
 	public String getCreated() {
 		return created;
-	}
-
-
-
-	/**
-	 * This is a setter for the field created which
-	 * sets the value of the field to a different value.
-	 * @param created the created to set
-	 */
-	public void setCreated(String created) {
-		this.created = created;
 	}
 
 

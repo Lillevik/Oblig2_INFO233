@@ -100,16 +100,12 @@ public class IssuePanel extends JPanel implements Serializable{
 	}
 
 	/**
+	 * This is the backButton that returns the user
+	 * to the spine panel without making any changes.
 	 * @return the backButton
 	 */
 	public JButton getBackButton() {
 		return backButton;
 	}
 
-	/**
-	 * @param backButton the backButton to set
-	 */
-	public void setBackButton(JButton backButton) {
-		this.backButton = backButton;
-	}
 }

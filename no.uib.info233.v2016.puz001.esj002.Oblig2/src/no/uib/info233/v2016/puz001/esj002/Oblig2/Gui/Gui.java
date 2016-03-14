@@ -119,7 +119,7 @@ public class Gui extends JFrame implements Serializable{
 	@SuppressWarnings("unused")
 	private JMenuItem about = new JMenuItem("About");
 
-	/**
+	/*
 	 * Constructor for the Gui class which extends from JFrame.
 	 * Creates the Gui and fills it with components.
 	 */
@@ -140,13 +140,13 @@ public class Gui extends JFrame implements Serializable{
 		setVisible(true);
 	}
 
-	/**
+	/*
 	 * Initializes components and
 	 * sets them up with custom designs.
 	 */
 	public void setupComponents(){
 
-		/**
+		/*
 		 * Sets up the JMenu
 		 */
 		menuBar.add(file);
@@ -156,7 +156,7 @@ public class Gui extends JFrame implements Serializable{
 		file.add(save);
 		help.add(about);
 		
-		/**
+		/*
 		 * Sets up the JTable.
 		 * makin it a cutetable;)
 		 */
@@ -164,7 +164,7 @@ public class Gui extends JFrame implements Serializable{
 		qTable.getAutoResizeMode();
 		qTable.setFillsViewportHeight(true);
 
-		/**
+		/*
 		 *Initialize the JPanels
 		 */
 		panelBackLeft = new JPanel();
@@ -173,12 +173,12 @@ public class Gui extends JFrame implements Serializable{
 		panelBackLeftTop = new JPanel();
 		panelBackLeftBot = new JPanel();
 
-		/**
+		/*
 		 * init the one and only JLabels in the class
 		 */
 		searchLabel = new JLabel();
 
-		/**
+		/*
 		 * init the JTexFields in the class
 		 */
 		txtSearch = new JTextField("search/add User");
@@ -186,7 +186,7 @@ public class Gui extends JFrame implements Serializable{
 		txtPriority = new JTextField("search prior");
 		txtId = new JTextField("Search ID");
 
-		/**
+		/*
 		 * setting up the ComboBoxes
 		 * makin em pretty
 		 */
@@ -199,7 +199,7 @@ public class Gui extends JFrame implements Serializable{
 		choosePrio2.setBounds(290, 240, 160, 25);
 		up.add(choosePrio2);
 
-		/**
+		/*
 		 * Setting up the JPanel layers in the program
 		 * making everything fit and look ok+
 		 */
@@ -233,7 +233,7 @@ public class Gui extends JFrame implements Serializable{
 		update = new JButton("Update issue");
 		btnId = new JButton("Search ID");
 
-		/**
+		/*
 		 * seting up the buttons
 		 * pretty etc
 		 */
@@ -245,7 +245,7 @@ public class Gui extends JFrame implements Serializable{
 		update.setSize(new Dimension( 20, 20));
 		btnId.setSize(new Dimension( 20, 20));
 
-		/**
+		/*
 		 * Setting up the JLabels for txt info and login info
 		 * filling the info
 		 */
@@ -258,7 +258,7 @@ public class Gui extends JFrame implements Serializable{
 		txtLoggedIn.setEditable(false);
 		txtLoggedIn.setPreferredSize(new Dimension(190, 20));
 
-		/**
+		/*
 		 * where all the components are added to the
 		 * correct JPanels or "Layers" of the program.
 		 */

@@ -17,11 +17,7 @@ import javax.swing.JTextField;
  *
  */
 public class LoginPanel extends JPanel implements Serializable{
-
-
-
-	
-	/**
+	/*
 	 * These are the fields for the LoginPanel.
 	 */
 	private static final long serialVersionUID = -2311655122465975281L;

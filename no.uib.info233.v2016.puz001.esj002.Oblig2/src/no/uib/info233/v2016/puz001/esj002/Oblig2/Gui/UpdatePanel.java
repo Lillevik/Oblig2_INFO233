@@ -16,7 +16,7 @@ public class UpdatePanel extends JPanel implements Serializable{
 
 
 	
-	/**
+	/*
 	 * These are the fields for the UpdatePanel	
 	 */
 	private static final long serialVersionUID = 4161520540703687836L;
@@ -102,16 +102,11 @@ public class UpdatePanel extends JPanel implements Serializable{
 	}
 
 	/**
+	 * This is the backButton that returns the user
+	 * to the spine panel without making any changes.
 	 * @return the backButton
 	 */
 	public JButton getBackButton() {
 		return backButton;
 	}
-
-	/**
-	 * @param backButton the backButton to set
-	 */
-	public void setBackButton(JButton backButton) {
-		this.backButton = backButton;
-	}	
 }

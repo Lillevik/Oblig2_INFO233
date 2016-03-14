@@ -322,48 +322,18 @@ public class IssueTable implements Serializable{
 	    }
 
 		
-	    /**
-	     * 
+	/**
+	 * This method returns the model which is used to
+	 * create the JTable in gui.
 	 * @return the model
 	 */
 	public DefaultTableModel getModel() {
 		return model;
 	}
 
-
-
 	/**
-	 * @param model the model to set
-	 */
-	public void setModel(DefaultTableModel model) {
-		this.model = model;
-	}
-
-
-	/**
-	 * @return the serialversionuid
-	 */
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-
-	/**
-	 * @return the file
-	 */
-	public File getFile() {
-		return file;
-	}
-
-
-	/**
-	 * @param file the file to set
-	 */
-	public void setFile(File file) {
-		this.file = file;
-	}
-
-	/**
+	 * This method returns the ArrayList which is used to fill
+	 * the JComboBox by using .toArray() method.
 	 * @return the prio
 	 */
 	public ArrayList<Integer> getPrio() {
@@ -371,15 +341,10 @@ public class IssueTable implements Serializable{
 	}
 
 
-	/**
-	 * @param prio the prio to set
-	 */
-	public void setPrio(ArrayList<Integer> prio) {
-		this.prio = prio;
-	}
-
 
 	/**
+	 * This method returns the issueList
+	 * containing all the issues objects.
 	 * @return the issueList
 	 */
 	public ArrayList<Issues> getIssueList() {
@@ -387,26 +352,14 @@ public class IssueTable implements Serializable{
 	}
 
 
-	/**
-	 * @param issueList the issueList to set
-	 */
-	public void setIssueList(ArrayList<Issues> issueList) {
-		this.issueList = issueList;
-	}
-
 
 	/**
+	 * This method returns the users list
+	 * containing all the unique users.
 	 * @return the users
 	 */
 	public Set<String> getUsers() {
 		return users;
 	}
 
-
-	/**
-	 * @param users the users to set
-	 */
-	public void setUsers(Set<String> users) {
-		this.users = users;
-	}
 }
