@@ -26,3 +26,9 @@ out/
 .idea/
 .metadata/
 .recommenders/
+*.project
+*.settings/
+*.idea/
+*.metadata/
+*.iml
+
